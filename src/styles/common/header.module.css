@@ -1,7 +1,7 @@
 /* Header */
 .header {
   position: sticky;
-  top: 0;
+  top: var(--topbar-height, 48px);
   z-index: 40;
   background-color: white;
   /* background:
@@ -80,7 +80,7 @@
   color: #fff;
   text-decoration: none;
   cursor: pointer;
-  background: linear-gradient(135deg, #0f5fa8 0%, #0b79c9 55%, #00b2a0 140%);
+  background: linear-gradient(135deg, #0b2f42 0%, #0f5fa8 55%, #0a6d78 120%);
   box-shadow: 0 16px 36px rgba(15, 95, 168, 0.22);
   transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
 }

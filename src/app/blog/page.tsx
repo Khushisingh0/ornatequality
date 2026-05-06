@@ -1,0 +1,77 @@
+import React from "react";
+import Image from "next/image";
+import styles from "../../styles/blog.module.css";
+
+import blog1 from "../../assests/blog-1.webp";
+import blog2 from "../../assests/blog-2.webp";
+import blog3 from "../../assests/blog-3.webp";
+
+export default function BlogPage() {
+  const posts = [
+    {
+      img: blog1,
+      tag: "BIS-Certification for toys",
+      title: "Top 10 Common Mistakes Manufacturers Make During BIS Toy Certification",
+      excerpt:
+        "Learn how to get BIS certification for your products and ensure compliance with Indian standards.",
+    },
+    {
+      img: blog2,
+      tag: "EPR",
+      title: "The Future of EPR: Why It Matters and How It Will Revolutionise Industries",
+      excerpt:
+        "Understand Extended Producer Responsibility and how it impacts compliance, sustainability, and your brand’s growth.",
+    },
+    {
+      img: blog3,
+      tag: "WPC-ETA",
+      title: "WPC ETA Approval in India: Frequency Bands and Device Compliance Guide",
+      excerpt:
+        "A practical guide to WPC ETA—from frequency selection to documentation—so you can launch wireless products faster.",
+    },
+  ] as const;
+
+  return (
+    <main className={styles.page} aria-label="Blogs">
+      <div className={styles.container}>
+        <div className={styles.topRow}>
+          <div className={styles.headingBlock}>
+            <h1 className={styles.heading}>Explore Our Latest Blogs</h1>
+            <p className={styles.subheading}>
+              Discover expert insights, updates, and tips from the compliance &amp; certification
+              world.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.grid} role="list" aria-label="Blog posts">
+          {posts.map((p) => (
+            <article key={p.title} className={styles.card} role="listitem">
+              <div className={styles.media}>
+                <Image
+                  src={p.img}
+                  alt={p.title}
+                  fill
+                  sizes="(max-width: 900px) 92vw, 380px"
+                  className={styles.img}
+                  quality={80}
+                  priority={false}
+                />
+              </div>
+
+              <div className={styles.body}>
+                <div className={styles.tag}>{p.tag}</div>
+                <h2 className={styles.title}>{p.title}</h2>
+                <p className={styles.excerpt}>{p.excerpt}</p>
+                <a className={styles.readMore} href="#">
+                  Read More <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+}
+

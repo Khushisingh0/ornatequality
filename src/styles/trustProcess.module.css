@@ -1,0 +1,263 @@
+/* Trust + Process section */
+.section {
+  background: #ffffff;
+  padding: 56px 0 46px;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.left {
+  position: relative;
+  padding-right: 8px;
+}
+
+.leftGrid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 18px;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0 14px;
+  font-size: 38px;
+  line-height: 1.18;
+  font-weight: 900;
+  color: rgba(10, 27, 43, 0.92);
+}
+
+.brand {
+  color: #0f5fa8;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(10, 27, 43, 0.72);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.bulletIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #a16207; /* warm gold */
+  background: rgba(255, 193, 7, 0.18);
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.bulletText {
+  font-weight: 700;
+  font-size: 15px;;
+}
+
+.manWrap {
+  position: relative;
+  width: 300px;
+  height: 320px;
+  justify-self: start;
+  display: grid;
+  place-items: end center;
+}
+
+.manWrap::before {
+  content: "";
+  position: absolute;
+  inset: 22px 18px 56px 18px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 40% 30%, rgba(255, 193, 7, 0.38), rgba(255, 193, 7, 0.18));
+  filter: blur(0px);
+}
+
+.manImg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 22px 40px rgba(2, 24, 64, 0.16));
+  transform: translateY(6px);
+  top:-18px;
+}
+
+.right {
+  padding-left: 8px;
+}
+
+.titleRight {
+  margin: 0 0 16px;
+  font-size: 26px;
+  line-height: 1.18;
+  font-weight: 900;
+  color: rgba(10, 27, 43, 0.92);
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+  padding-top: 10px; 
+}
+
+.connector {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 42px; 
+  height: 2px;
+  z-index: 0;
+  background-image: linear-gradient(
+    90deg,
+    rgba(10, 27, 43, 0.18) 0%,
+    rgba(10, 27, 43, 0.18) 45%,
+    transparent 45%,
+    transparent 60%,
+    rgba(10, 27, 43, 0.18) 60%,
+    rgba(10, 27, 43, 0.18) 100%
+  );
+  background-size: 12px 2px;
+  background-repeat: repeat-x;
+  opacity: 0.85;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.stepTop {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.stepCircleBlue,
+.stepCircleGold {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(2, 24, 64, 0.16);
+  border: 5px solid rgba(255, 255, 255, 0.85);
+  position: relative;
+  z-index: 2; 
+}
+
+.stepCircleBlue {
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.25), transparent 55%),
+    linear-gradient(135deg, #0b2f42 0%, #0f5fa8 55%, #0b79c9 120%);
+}
+
+.stepCircleGold {
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.24), transparent 55%),
+    linear-gradient(135deg, #b45309 0%, #f59e0b 58%, #fbbf24 125%);
+}
+
+.stepNo {
+  font-weight: 900;
+  color: rgba(10, 27, 43, 0.62);
+  font-size: 13px;
+}
+
+.stepTitle {
+  font-weight: 900;
+  font-size: 14px;
+  color: rgba(10, 27, 43, 0.88);
+  min-height: 32px;
+  display: grid;
+  align-content: center;
+}
+
+.stepText {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(7, 11, 15, 0.62);
+  max-width: 170px;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .right {
+    padding-left: 0;
+  }
+
+  .left {
+    padding-right: 0;
+  }
+
+  .leftGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .manWrap {
+    justify-self: center;
+    width: min(340px, 92%);
+    height: 340px;
+  }
+}
+
+@media (max-width: 700px) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 14px;
+  }
+
+  .connector {
+    display: none;
+  }
+
+  .stepText {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .title,
+  .titleRight {
+    font-size: 22px;
+  }
+}
+

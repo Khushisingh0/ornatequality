@@ -65,12 +65,10 @@
 .subtitle {
   margin: 0 0 22px;
   font-size: 16px;
-  /* line-height: 1.55; */
   color: rgba(1, 6, 10, 0.72);
   max-width: 52ch;
 }
 
-/* Stats strip (exact screenshot-like) */
 .stats {
   margin: 18px 0 26px;
   display: grid;
@@ -92,7 +90,7 @@
   border-radius: 12px;
   display: grid;
   place-items: center;
-  color: #c7a04a; /* warm gold */
+  color: #c7a04a; 
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(199, 160, 74, 0.22);
   box-shadow: 0 10px 26px rgba(2, 24, 64, 0.08);
@@ -144,7 +142,7 @@
 
 .primaryBtn {
   color: #fff;
-  background: linear-gradient(135deg, #0f5fa8 0%, #0b79c9 55%, #00b2a0 140%);
+  background: linear-gradient(135deg, #0b2f42 0%, #0f5fa8 55%, #0a6d78 120%);
   box-shadow: 0 16px 36px rgba(15, 95, 168, 0.25);
 }
 
