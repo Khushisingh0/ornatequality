@@ -12,10 +12,10 @@ const Header = () => {
   const navItems = useMemo(
     () => [
       { label: "Home", href: "/" },
-      { label: "About", href: "#about" },
+      { label: "About", href: "/about" },
       { label: "Services", href: "#services" },
       { label: "Blogs", href: "#blogs" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "Contact Us", href: "/contact" },
     ],
     []
   );
