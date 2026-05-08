@@ -1,5 +1,9 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "../../styles/common/footer.module.css";
+
+import logo from "../../assests/logo.png";
 
 function IconPin(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -93,127 +97,211 @@ const Footer = () => {
   return (
     <footer className={styles.footer} aria-label="Footer">
       <div className={styles.container}>
-        <div className={styles.grid}>
-          <div className={styles.col}>
-            <div className={styles.colTitle}>Contact Us</div>
-            <div className={styles.titleUnderline} aria-hidden="true" />
-
-            <div className={styles.item}>
-              <span className={styles.itemIcon} aria-hidden="true">
-                <IconPin />
-              </span>
-              <div>
-                <div className={styles.itemLabel}>ADDRESS (CORPORATE OFFICE)</div>
-                <div className={styles.itemText}>
-                  Office No. 1726, Astralis Tower,
-                  <br />
-                  Sector 94, Noida, Uttar Pradesh,
-                  <br />
-                  201301
-                </div>
-              </div>
+        <div className={styles.topGrid}>
+          <div className={styles.brandCol}>
+            <div className={styles.brandRow}>
+              <Image src={logo} alt="Ornate" className={styles.logo} priority />
             </div>
+            <p className={styles.brandText}>
+              Your trusted partner for certification, compliance and regulatory approvals. We
+              help you achieve compliance with confidence.
+            </p>
 
-            <div className={styles.item}>
-              <span className={styles.itemIcon} aria-hidden="true">
-                <IconPhone />
-              </span>
-              <div>
-                <div className={styles.itemLabel}>PHONE</div>
-                <div className={styles.itemText}>
-                  <a className={styles.link} href="tel:+919266877738">
-                    +91 9266877738
-                  </a>
-                  <br />
-                  <a className={styles.link} href="tel:+918880013897">
-                    +91 8880013897
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.item}>
-              <span className={styles.itemIcon} aria-hidden="true">
-                <IconMail />
-              </span>
-              <div>
-                <div className={styles.itemLabel}>EMAIL</div>
-                <div className={styles.itemText}>
-                  <a className={styles.link} href="mailto:chetan@ornatequality.com">
-                    chetan@ornatequality.com
-                  </a>
-                  <br />
-                  <a className={styles.link} href="mailto:marketing@ornatequality.com">
-                    marketing@ornatequality.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.col}>
-            <div className={styles.colTitle}>Services</div>
-            <div className={styles.titleUnderline} aria-hidden="true" />
-
-            <ul className={styles.list}>
-              <li>E-WASTE MANAGEMENT (EPR)</li>
-              <li>ISI REGISTRATION</li>
-              <li>CE CERTIFICATION</li>
-              <li>LMPC REGISTRATION</li>
-            </ul>
-
-            <div className={styles.subTitle}>Social Presence</div>
             <div className={styles.socialRow} aria-label="Social links">
-              <a className={`${styles.socialBtn} ${styles.whatsapp}`} href="#" aria-label="WhatsApp">
-                <IconWhatsApp />
-              </a>
-              <a className={`${styles.socialBtn} ${styles.facebook}`} href="#" aria-label="Facebook">
-                <IconFacebook />
-              </a>
-              <a className={`${styles.socialBtn} ${styles.linkedin}`} href="#" aria-label="LinkedIn">
+              <a className={styles.socialBtn} href="#" aria-label="LinkedIn">
                 <IconLinkedIn />
               </a>
-              <a className={`${styles.socialBtn} ${styles.youtube}`} href="#" aria-label="YouTube">
+              <a className={styles.socialBtn} href="#" aria-label="Facebook">
+                <IconFacebook />
+              </a>
+              <a className={styles.socialBtn} href="#" aria-label="YouTube">
                 <IconYouTube />
               </a>
-              <a className={`${styles.socialBtn} ${styles.instagram}`} href="#" aria-label="Instagram">
+              <a className={styles.socialBtn} href="#" aria-label="Instagram">
                 <IconInstagram />
               </a>
             </div>
           </div>
 
-          <div className={styles.col}>
-            <div className={styles.colTitle}>Useful Links</div>
-            <div className={styles.titleUnderline} aria-hidden="true" />
-
-            <ul className={styles.list}>
-              <li>ENGINEERING CENTRE</li>
-              <li>BUREAU OF INDIAN STANDARDS (BIS)</li>
-              <li>WIRELESS PLANNING</li>
-              <li>NABL INDIA</li>
-              <li>BEE INDIA</li>
-              <li>MINISTRY OF STEEL</li>
+          <div className={styles.linksCol}>
+            <div className={styles.colTitle}>QUICK LINKS</div>
+            <ul className={styles.linkList}>
+              <li>
+                <Link className={styles.link} href="/">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link className={styles.link} href="/about">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link className={styles.link} href="/services">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <a className={styles.link} href="#industries">
+                  Industries
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="#resources">
+                  Resources
+                </a>
+              </li>
+              <li>
+                <Link className={styles.link} href="/contact">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
-          <div className={styles.col}>
-            <div className={styles.colTitle}>Quick Contact</div>
-            <div className={styles.titleUnderline} aria-hidden="true" />
+          <div className={styles.linksCol}>
+            <div className={styles.colTitle}>OUR SERVICES</div>
+            <ul className={styles.linkList}>
+              <li>
+                <a className={styles.link} href="/services">
+                  BIS Certification
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="/services">
+                  WPC Approval
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="/services">
+                  BEE Registration
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="/services">
+                  EPR Authorization
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="/services">
+                  CE Certification
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="/services">
+                  Audit &amp; Inspection
+                </a>
+              </li>
+            </ul>
+          </div>
 
-            <form className={styles.form} action="#" method="post">
-              <input className={styles.input} placeholder="Name" type="text" />
-              <input className={styles.input} placeholder="Email Id" type="email" />
-              <input className={styles.input} placeholder="10 digit mobile No." type="tel" />
-              <textarea className={styles.textarea} placeholder="Let us know..." rows={4} />
-              <button type="submit" className={styles.submit}>
-                SUBMIT
-              </button>
-            </form>
+          <div className={styles.linksCol}>
+            <div className={styles.colTitle}>GOVERNMENT LINKS</div>
+            <ul className={styles.linkList}>
+              <li>
+                <a className={styles.link} href="#" target="_blank" rel="noreferrer">
+                  BIS
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="#" target="_blank" rel="noreferrer">
+                  WPC
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="#" target="_blank" rel="noreferrer">
+                  BEE
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="#" target="_blank" rel="noreferrer">
+                  CPCB
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="#" target="_blank" rel="noreferrer">
+                  TEC
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className={styles.contactCol}>
+            <div className={styles.colTitle}>CONTACT US</div>
+
+            <div className={styles.contactList}>
+              <div className={styles.contactItem}>
+                <span className={styles.contactIcon} aria-hidden="true">
+                  <IconPin />
+                </span>
+                <div className={styles.contactText}>
+                  <strong className={styles.contactLabel}>ADDRESS (CORPORATE OFFICE)</strong>
+                  <div className={styles.contactValue}>
+                    Office No. 1726, Astralis Tower,
+                    <br />
+                    Sector 94, Noida, Uttar Pradesh,
+                    <br />
+                    201301
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.contactItem}>
+                <span className={styles.contactIcon} aria-hidden="true">
+                  <IconPhone />
+                </span>
+                <div className={styles.contactText}>
+                  <strong className={styles.contactLabel}>PHONE</strong>
+                  <div className={styles.contactValue}>
+                    <a className={styles.link} href="tel:+919266877738">
+                      +91 9266877738
+                    </a>
+                    <br />
+                    <a className={styles.link} href="tel:+918880013897">
+                      +91 8880013897
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.contactItem}>
+                <span className={styles.contactIcon} aria-hidden="true">
+                  <IconMail />
+                </span>
+                <div className={styles.contactText}>
+                  <strong className={styles.contactLabel}>EMAIL</strong>
+                  <div className={styles.contactValue}>
+                    <a className={styles.link} href="mailto:chetan@ornatequality.com">
+                      chetan@ornatequality.com
+                    </a>
+                    <br />
+                    <a className={styles.link} href="mailto:marketing@ornatequality.com">
+                      marketing@ornatequality.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Link href="/contact" className={styles.consultBtn}>
+              GET FREE CONSULTATION
+            </Link>
           </div>
         </div>
 
-        <div className={styles.bottom}>
-          © 2023 Ornate Quality Services. All rights reserved.
+        <div className={styles.bottomBar}>
+          <div className={styles.bottomLeft}>© 2024 Ornate Certification. All Rights Reserved.</div>
+          <div className={styles.bottomRight}>
+            <a className={styles.bottomLink} href="#">
+              Privacy Policy
+            </a>
+            <span className={styles.bottomSep} aria-hidden="true">
+              |
+            </span>
+            <a className={styles.bottomLink} href="#">
+              Terms &amp; Conditions
+            </a>
+          </div>
         </div>
       </div>
     </footer>

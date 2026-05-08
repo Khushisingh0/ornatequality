@@ -13,8 +13,8 @@ const Header = () => {
     () => [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "Services", href: "#services" },
-      { label: "Blogs", href: "#blogs" },
+      { label: "Services", href: "/services" },
+      { label: "Knowledge Hub", href: "#knowledge hub" },
       { label: "Contact Us", href: "/contact" },
     ],
     []
