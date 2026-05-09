@@ -23,7 +23,7 @@ export function Journey() {
               <div className={`${styles.milestoneDot} ${styles[`tone_${m.tone}`]}`} aria-hidden="true">
                 {m.icon}
               </div>
-              <div className={styles.milestoneYear}>{m.year}</div>
+              <div className={styles.milestoneYear}>{m.year}</div> 
               <div className={styles.milestoneText}>{m.label}</div>
             </div>
           ))}

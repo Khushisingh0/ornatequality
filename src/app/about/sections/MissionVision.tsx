@@ -4,7 +4,8 @@ import { IconEye, IconTarget } from "./icons";
 
 export function MissionVision() {
   return (
-    <section className={styles.section} aria-label="Mission and vision">
+
+<section className={`${styles.section} ${styles.mvSection}`} aria-label="Mission and vision">
       <div className={styles.container}>
         <div className={styles.mvGrid}>
           <div className={styles.mvCard}>

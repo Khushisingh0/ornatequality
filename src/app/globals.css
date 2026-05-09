@@ -3,6 +3,38 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand palette (logo) */
+  --brand-navy: #0a1f44;
+  --brand-blue: #0b57b5;
+  --brand-blue-deep: #082f6b;
+  --brand-red: #c41e3a;
+  --brand-slate: #0a1b2b;
+
+  /* Reusable gradients (try anywhere) */
+  --grad-brand-primary: linear-gradient(165deg, var(--brand-blue-deep) 0%, var(--brand-blue) 52%, #2563eb 100%);
+  --grad-brand-red-soft: linear-gradient(135deg, rgba(196, 30, 58, 0.16) 0%, rgba(196, 30, 58, 0.04) 58%, transparent 100%);
+  --grad-login: linear-gradient(135deg, #0b2f42 0%, #0f5fa8 55%, #0a6d78 120%);
+  --grad-hero-red-white: linear-gradient(
+    180deg,
+    #ff2f23 0%,
+    #ff6d64 14%,
+    #ffb7b4 34%,
+    #ffffff 58%,
+    #eaf5ff 82%,
+    #d7ecff 100%
+  );
+
+  /* Alt hero theme: dark blue → white (more corporate) */
+  --grad-hero-navy-white: linear-gradient(
+    180deg,
+    #071a33 0%,
+    #0b2f42 18%,
+    #1a4f7a 34%,
+    #ffffff 60%,
+    #eaf5ff 84%,
+    #d7ffdf 100%
+  );
 }
 
 @theme inline {

@@ -140,62 +140,8 @@ function Badge({ label }: { label: string }) {
 
 const Hero = () => {
   return (
-    <section
-      className={styles.hero}
-      style={{
-        position: "relative",
-        background:
-          "linear-gradient(180deg, #ff3b30 0%, #ff8a80 18%, #ffd1d1 42%, #d8ecff 68%, #7cb3ff 100%)",
-      }}
-    >
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      >
-        {/* Bottom multi-color wave overlay (colors kept same family) */}
-        <svg
-          viewBox="0 0 1440 240"
-          preserveAspectRatio="none"
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: "100%",
-            height: "42%",
-            opacity: 0.95,
-          }}
-        >
-          <defs>
-            <linearGradient id="heroWaveGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ffd1d1" />
-              <stop offset="48%" stopColor="#d8ecff" />
-              <stop offset="100%" stopColor="#7cb3ff" />
-            </linearGradient>
-            <linearGradient id="heroWaveGrad2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#ff8a80" stopOpacity="0.55" />
-              <stop offset="55%" stopColor="#d8ecff" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#7cb3ff" stopOpacity="0.55" />
-            </linearGradient>
-          </defs>
-
-          <path
-            d="M0,150 C180,95 360,205 540,165 C720,125 900,75 1080,120 C1260,165 1350,210 1440,175 L1440,240 L0,240 Z"
-            fill="url(#heroWaveGrad)"
-          />
-          <path
-            d="M0,175 C220,210 420,110 620,150 C820,190 980,240 1180,195 C1320,165 1400,145 1440,155 L1440,240 L0,240 Z"
-            fill="url(#heroWaveGrad2)"
-          />
-        </svg>
-      </div>
-
-      <div className={styles.container} style={{ position: "relative", zIndex: 1 }}>
+    <section className={styles.hero}>
+      <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles.pill}>Your Trusted Partner</div>
 

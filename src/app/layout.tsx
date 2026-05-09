@@ -28,7 +28,7 @@ export default function RootLayout({
         <TopBar />
 
         {/*  Header */}
-        <Header/>
+        <Header />
 
         {/*  Page Content */}
         <main className="grow bg-white">
@@ -36,7 +36,7 @@ export default function RootLayout({
         </main>
 
         {/*  Footer */}
-        <Footer/>
+        <Footer />
 
       </body>
     </html>
