@@ -32,11 +32,12 @@ export default function BlogPage() {
   ] as const;
 
   return (
-    <main className={styles.page} aria-label="Blogs">
+    <section className={styles.page} aria-label="Blogs">
       <div className={styles.container}>
         <div className={styles.topRow}>
           <div className={styles.headingBlock}>
             <h1 className={styles.heading}>Explore Our Latest Blogs</h1>
+            <div className={styles.headingUnderline} aria-hidden="true" />
             <p className={styles.subheading}>
               Discover expert insights, updates, and tips from the compliance &amp; certification
               world.
@@ -52,7 +53,7 @@ export default function BlogPage() {
                   src={p.img}
                   alt={p.title}
                   fill
-                  sizes="(max-width: 900px) 92vw, 380px"
+                  sizes="(max-width: 700px) min(100vw, 520px), (max-width: 1100px) 45vw, 32vw"
                   className={styles.img}
                   quality={80}
                   priority={false}
@@ -71,7 +72,7 @@ export default function BlogPage() {
           ))}
         </div>
       </div>
-    </main>
+    </section>
   );
 }
 

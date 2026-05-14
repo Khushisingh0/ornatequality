@@ -135,7 +135,8 @@ const TrustProcess = () => {
         <div className={styles.grid}>
           <div className={styles.left}>
             <h2 className={styles.title}>
-              Why Businesses Trust <span className={styles.brand}>Ornate</span> Certification
+              Why Businesses Trust{" "}
+              <span className={styles.brand}>Ornate Certification</span>
             </h2>
 
             <div className={styles.leftGrid}>

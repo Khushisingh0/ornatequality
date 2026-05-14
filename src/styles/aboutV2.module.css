@@ -745,7 +745,9 @@
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid rgba(10, 27, 43, 0.08);
-  box-shadow: 0 20px 54px rgba(2, 24, 64, 0.10);
+  box-shadow:
+    0 0 18px rgba(0, 0, 0, 0.12),
+    0 0 40px rgba(0, 0, 0, 0.1);
   padding: 26px 22px 20px;
   min-height: 300px; /* taller like screenshot */
   display: grid;
@@ -789,7 +791,9 @@
   overflow: hidden;
   border: 1px solid rgba(10, 27, 43, 0.10);
   background: rgba(10, 27, 43, 0.04);
-  box-shadow: 0 14px 30px rgba(2, 24, 64, 0.10);
+  box-shadow:
+    0 0 12px rgba(0, 0, 0, 0.14),
+    0 0 28px rgba(0, 0, 0, 0.08);
 }
 
 .testimonialAvatarImgV2 {

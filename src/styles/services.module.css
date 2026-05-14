@@ -1,6 +1,6 @@
 /* Services */
 .services {
-  background: #ffffff;
+  background: #eceef1;
   padding: 52px 0 58px;
 }
 
@@ -30,7 +30,11 @@
   width: 84px;
   height: 4px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(225, 32, 7, 0.95), rgba(255, 193, 7, 0.15));
+  background: linear-gradient(
+    90deg,
+    var(--about-section-accent) 0%,
+    color-mix(in srgb, var(--about-section-accent) 35%, transparent) 100%
+  );
 }
 
 .carouselWrap {
@@ -40,7 +44,7 @@
 
 .carousel {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
   overflow: visible;
   padding: 10px 6px 14px;
@@ -51,56 +55,74 @@
   background: #ffffff;
   border: 1px solid rgba(10, 27, 43, 0.08);
   border-radius: 16px;
-  padding: 22px 12px 18px;
-  box-shadow: 0 18px 44px rgba(2, 24, 64, 0.08);
-  min-height: 280px;
+  padding: 22px 14px 18px;
+  box-shadow:
+    0 0 18px rgba(0, 0, 0, 0.1),
+    0 0 40px rgba(0, 0, 0, 0.08);
+  min-height: 292px;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   align-content: start;
   justify-items: center;
   text-align: center;
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    outline-color 180ms ease;
 }
 
 .card:hover {
   transform: translateY(-2px);
-  border-color: rgba(15, 95, 168, 0.16);
-  box-shadow: 0 22px 60px rgba(2, 24, 64, 0.12);
+  border-color: rgba(15, 95, 168, 0.35);
+  outline-color: rgba(15, 95, 168, 0.75);
+  box-shadow:
+    0 0 22px rgba(0, 0, 0, 0.12),
+    0 0 48px rgba(0, 0, 0, 0.1);
 }
 
 .iconWrap {
-  width: 58px;
-  height: 58px;
+  width: 62px;
+  height: 62px;
   border-radius: 16px;
   display: grid;
   place-items: center;
-  background: rgba(15, 95, 168, 0.05);
-  border: 1px solid rgba(15, 95, 168, 0.08);
-  margin-bottom: 10px;
+  background: color-mix(in srgb, var(--about-section-accent) 9%, white);
+  border: 1px solid color-mix(in srgb, var(--about-section-accent) 18%, white);
+  margin: 0 auto 12px;
   justify-self: center;
 }
 
 .cardTitle {
-  margin: 2px 0 6px;
-  font-size: 14px;
+  margin: 2px 0 8px;
+  font-size: 16px;
   font-weight: 900;
   line-height: 1.25;
   color: rgba(10, 27, 43, 0.88);
-  min-height: 36px;
+  min-height: 40px;
   display: grid;
   align-content: center;
+  justify-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .cardText {
   margin: 0 0 12px;
-  font-size: 12px;
-  line-height: 1.6;
-  color: rgba(10, 27, 43, 0.6);
-  min-height: 58px;
+  font-size: 14px;
+  line-height: 1.62;
+  color: rgba(10, 27, 43, 0.62);
+  min-height: 62px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: center;
+  width: 100%;
+  justify-self: center;
 }
 
 .learnMore {
@@ -109,15 +131,17 @@
   justify-content: center;
   gap: 8px;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
-  color: rgba(15, 95, 168, 0.95);
+  color: var(--about-section-accent);
   padding-top: 6px;
   justify-self: center;
+  text-align: center;
 }
 
 .learnMore:hover {
   text-decoration: underline;
+  color: color-mix(in srgb, var(--about-section-accent) 82%, black);
 }
 
 .ctaRow {
@@ -136,19 +160,20 @@
   font-weight: 900;
   color: #ffffff;
   text-decoration: none;
-  background: linear-gradient(135deg, #0b2f42 0%, #0f5fa8 55%, #0a6d78 120%);
-  box-shadow: 0 16px 36px rgba(2, 24, 64, 0.22);
+  /* Match header LOGIN button */
+  background: #041e5b;
+  box-shadow: 0 16px 36px rgba(4, 30, 91, 0.28);
   transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
 }
 
 .ctaBtn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 44px rgba(2, 24, 64, 0.26);
-  filter: saturate(1.05);
+  box-shadow: 0 18px 44px rgba(4, 30, 91, 0.36);
+  filter: brightness(1.04);
 }
 
 .ctaBtn:focus-visible {
-  outline: 2px solid rgba(15, 95, 168, 0.35);
+  outline: 2px solid color-mix(in srgb, var(--about-section-accent) 45%, transparent);
   outline-offset: 3px;
 }
 

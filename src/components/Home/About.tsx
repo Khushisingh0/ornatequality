@@ -1,9 +1,46 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { Playfair_Display } from "next/font/google";
 import styles from "../../styles/about.module.css";
 
 import aboutImg1 from "../../assests/about.jpg";
 import aboutImg2 from "../../assests/about2.webp";
+import {
+  IconEndToEnd,
+  IconExpertTeam,
+  IconGlobalStandards,
+  IconPanIndia,
+} from "./AboutFeatureIcons";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const FEATURES = [
+  {
+    title: "Expert Team",
+    desc: "Industry experts at your service",
+    Icon: IconExpertTeam,
+  },
+  {
+    title: "End-to-End Support",
+    desc: "From consultation to certification",
+    Icon: IconEndToEnd,
+  },
+  {
+    title: "Pan India Presence",
+    desc: "Serving clients across India",
+    Icon: IconPanIndia,
+  },
+  {
+    title: "Global Standards",
+    desc: "Aligned with international regulations.",
+    Icon: IconGlobalStandards,
+  },
+] as const;
 
 const About = () => {
   return (
@@ -36,35 +73,41 @@ const About = () => {
 
           <div className={styles.content}>
             <div className={styles.kicker}>ABOUT COMPANY</div>
-            <h2 className={styles.title}>India's Trusted Compliance & Certification Partner</h2>
+            <h2 className={`${styles.title} ${playfair.className}`}>
+              Your Strategic
+              <br />
+              Compliance Partner
+            </h2>
             <p className={styles.text}>
-              At Ornate Quality Services Pvt. Ltd., popularly known as Ornate Certification, we specialize in delivering reliable, transparent, and end-to-end compliance, certification, and regulatory approval solutions for businesses across India and global markets.
+              Ornate Certification is a leading regulatory compliance and certification consultancy. We
+              help businesses across industries obtain mandatory approvals and certifications from
+              regulatory bodies in India and international markets.
             </p>
-            <p className={styles.textMuted}>
-             With a strong commitment to quality, accuracy, and client satisfaction, we help manufacturers, importers, startups, and enterprises navigate complex certification procedures with ease. Our expertise includes BIS Certification, ISO Certification, WPC Approval, CE Marking, TEC Certification, EPR Registration, LMPC Registration, and other regulatory compliance services.
+            <p className={styles.text}>
+              With deep expertise and a client-first approach, we ensure fast approvals, reduced risk,
+              and complete peace of mind.{" "}
+              <Link href="/about" className={styles.inlineReadMore}>
+                 Read More 
+              </Link>
             </p>
 
-            <a className={styles.readMoreBtn} href="#">
-              Read More
-              <span className={styles.btnArrow} aria-hidden="true">
-                →
-              </span>
-            </a>
+            <div className={styles.features} role="list">
+              {FEATURES.map(({ title, desc, Icon }) => (
+                <div key={title} className={styles.featureItem} role="listitem">
+                  <div className={styles.featureIcon} aria-hidden="true">
+                    <Icon />
+                  </div>
+                  <div className={styles.featureText}>
+                    <div className={styles.featureTitle}>{title}</div>
+                    <p className={styles.featureDesc}>{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+           
           </div>
         </div>
-      </div>
-
-      <div className={styles.wave} aria-hidden="true">
-        <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
-          <path
-            d="M0,120 C180,70 360,190 540,150 C720,110 900,60 1080,100 C1260,140 1350,175 1440,150 L1440,220 L0,220 Z"
-            fill="rgba(216, 236, 255, 0.95)"
-          />
-          <path
-            d="M0,150 C220,195 420,95 620,130 C820,165 980,220 1180,180 C1320,155 1400,135 1440,145 L1440,220 L0,220 Z"
-            fill="rgba(216, 236, 255, 0.65)"
-          />
-        </svg>
       </div>
     </section>
   );

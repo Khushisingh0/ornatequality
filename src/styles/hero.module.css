@@ -1,48 +1,26 @@
-/* Hero */
+/* Hero — single off-white surface (matches reference); image fades in via mask */
 .hero {
+  --hero-surface: #f7f6f2;
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   isolation: isolate;
-  background: var(--grad-hero-red-white);
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  /* soft brand haze over the gradient */
-  background:
-    radial-gradient(ellipse 70% 55% at 18% 22%, rgba(255, 59, 48, 0.16), transparent 62%),
-    radial-gradient(ellipse 85% 65% at 70% 18%, rgba(11, 87, 181, 0.14), transparent 62%),
-    radial-gradient(ellipse 80% 60% at 92% 78%, rgba(10, 31, 68, 0.06), transparent 64%);
-  filter: blur(12px);
-  opacity: 0.95;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: clamp(84px, 13vw, 160px);
-  pointer-events: none;
-  z-index: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 240' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23ffd1d1'/%3E%3Cstop offset='50%25' stop-color='%23ffffff'/%3E%3Cstop offset='100%25' stop-color='%23d7ecff'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23ff8a80' stop-opacity='0.55'/%3E%3Cstop offset='55%25' stop-color='%23ffffff' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%23d7ecff' stop-opacity='0.55'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,150 C180,95 360,205 540,165 C720,125 900,75 1080,120 C1260,165 1350,210 1440,175 L1440,240 L0,240 Z' fill='url(%23g1)'/%3E%3Cpath d='M0,175 C220,210 420,110 620,150 C820,190 980,240 1180,195 C1320,165 1400,145 1440,155 L1440,240 L0,240 Z' fill='url(%23g2)'/%3E%3C/svg%3E") no-repeat center bottom;
-  background-size: 100% 100%;
-  opacity: 0.98;
+  background: var(--hero-surface);
 }
 
 .container {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 56px 20px 64px;
+  padding-top: clamp(40px, 5vw, 56px);
+  padding-bottom: clamp(48px, 6vw, 64px);
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
-  gap: 56px;
+  gap: 40px;
 }
 
 .left {
@@ -83,14 +61,15 @@
 }
 
 .titleAccent {
-  color: #0f5fa8;
+  color:#041E5B;
   font-weight: 700;
-  font-size: 45px;
+  font-size: clamp(26px, 2.6vw + 12px, 45px);
+  line-height: 1.08;
 }
 
 .subtitle {
   margin: 0 0 22px;
-  font-size: 16px;
+  font-size: clamp(15px, 1.1vw + 13px, 16px);
   color: rgba(1, 6, 10, 0.72);
   max-width: 52ch;
 }
@@ -166,9 +145,9 @@
     border-color 160ms ease, color 160ms ease;
 }
 
-.primaryBtn {
+.primaryBtn { 
   color: #fff;
-  background: linear-gradient(135deg, #0b2f42 0%, #0f5fa8 55%, #0a6d78 120%);
+  background: linear-gradient(135deg, #041E5B 0%, #06427a 55%, #0a6d78 120%);
   box-shadow: 0 16px 36px rgba(15, 95, 168, 0.25);
 }
 
@@ -218,15 +197,11 @@
 
 .visual {
   position: relative;
-  height: 520px;
-}
-
-.orbit {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+  height: clamp(380px, 52vw, 540px);
+  background: var(--hero-surface);
+  /* Extend photo to viewport right when layout is centered (max-width 1200px) */
+  width: calc(100% + max(0px, (100vw - 1200px) / 2 + 20px));
+  margin-right: calc(-1 * max(0px, (100vw - 1200px) / 2 + 20px));
 }
 
 .heroImageWrap {
@@ -234,17 +209,33 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(360px, 46vw, 640px);
-  height: auto;
-  aspect-ratio: 26 / 21;
-  border-radius: 26px;
+  width: min(720px, 58vw);
+  height: 100%;
+  max-height: 540px;
+  border-radius: 0 22px 22px 0;
   overflow: hidden;
- 
 }
 
 .heroImage {
   object-fit: cover;
-  object-position: left;
+  object-position: center right;
+  /* Feather left edge into hero background (same as --hero-surface on .visual) */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 12%,
+    rgba(0, 0, 0, 0.65) 26%,
+    #000 44%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 12%,
+    rgba(0, 0, 0, 0.65) 26%,
+    #000 44%,
+    #000 100%
+  );
 }
 
 .shield {
@@ -311,12 +302,22 @@
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
-    padding: 44px 16px 54px;
+    padding-top: clamp(36px, 6vw, 44px);
+    padding-bottom: clamp(44px, 7vw, 54px);
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
     gap: 26px;
   }
 
+  .right {
+    margin-right: 0;
+    padding-right: 0;
+  }
+
   .visual {
-    height: 440px;
+    width: 100%;
+    margin-right: 0;
+    height: 400px;
   }
 
   .heroImageWrap {
@@ -325,8 +326,28 @@
     right: auto;
     transform: none;
     margin: 0 auto;
-    height: 380px;
+    height: 100%;
     width: min(720px, 100%);
+    max-height: 400px;
+    border-radius: 22px;
+  }
+
+  .heroImage {
+    object-position: center;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 10%,
+      #000 36%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 10%,
+      #000 36%,
+      #000 100%
+    );
   }
 
   .shield {
@@ -352,17 +373,69 @@
     max-width: 520px;
   }
 
+  .statValue {
+    white-space: normal;
+  }
+
+  .subtitle {
+    max-width: 100%;
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+
   .visual {
-    height: 380px;
+    height: clamp(260px, 58vw, 340px);
   }
 
   .heroImageWrap {
-    height: 320px;
-    border-radius: 22px;
+    max-height: clamp(260px, 58vw, 340px);
+    border-radius: 18px;
   }
 
   .badgeWpc,
   .badgeCe {
     display: none;
+  }
+
+  .shield {
+    width: 76px;
+    height: 76px;
+    border-radius: 22px;
+  }
+
+  .shieldInner {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+@media (max-width: 380px) {
+  .pill {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
+  .title {
+    font-size: clamp(26px, 7.2vw, 30px);
+  }
+
+  .visual {
+    height: clamp(220px, 62vw, 280px);
+  }
+
+  .heroImageWrap {
+    max-height: clamp(220px, 62vw, 280px);
   }
 }

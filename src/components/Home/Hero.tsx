@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "../../styles/hero.module.css";
-import heroImg from "../../assests/heroimg-transparent.png";
+import heroImg from "../../assests/abtor.png";
 
 function IconShield(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -212,24 +212,14 @@ Government Approvals Faster — Without Hassle .          </p>
 
         <div className={styles.right} aria-hidden="true">
           <div className={styles.visual}>
-            <svg className={styles.orbit} viewBox="0 0 420 260">
-              <path
-                d="M40 210c70-120 270-160 340-60"
-                fill="none"
-                stroke="rgba(15, 95, 168, 0.28)"
-                strokeWidth="2.5"
-                strokeDasharray="3 8"
-                strokeLinecap="round"
-              />
-            </svg>
-
             <div className={styles.heroImageWrap}>
               <Image
                 src={heroImg}
-                alt="Trusted Certification & Compliance Partner"
+                alt="ORNATE Quality Services office"
                 fill
                 priority
                 className={styles.heroImage}
+                sizes="(max-width: 1024px) 100vw, min(720px, 55vw)"
               />
             </div>
 

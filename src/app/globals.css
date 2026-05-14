@@ -11,6 +11,9 @@
   --brand-red: #c41e3a;
   --brand-slate: #0a1b2b;
 
+  /* Home About + matching sections (Services, etc.) */
+  --about-section-accent: #e83b47;
+
   /* Reusable gradients (try anywhere) */
   --grad-brand-primary: linear-gradient(165deg, var(--brand-blue-deep) 0%, var(--brand-blue) 52%, #2563eb 100%);
   --grad-brand-red-soft: linear-gradient(135deg, rgba(196, 30, 58, 0.16) 0%, rgba(196, 30, 58, 0.04) 58%, transparent 100%);

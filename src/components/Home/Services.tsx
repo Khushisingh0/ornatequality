@@ -163,30 +163,6 @@ function IconBee(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconMore(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true" {...props}>
-      <rect
-        x="14"
-        y="10"
-        width="36"
-        height="44"
-        rx="10"
-        fill="rgba(59,130,246,0.10)"
-        stroke="rgba(59,130,246,0.35)"
-        strokeWidth="2"
-      />
-      <path
-        d="M24 26h16M24 34h16M24 42h10"
-        stroke="#1d4ed8"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <circle cx="43" cy="42" r="2.4" fill="#16a34a" />
-    </svg>
-  );
-}
-
 type ServiceItem = {
   title: string;
   description: string;
@@ -220,11 +196,6 @@ const Services = () => {
         title: "BEE Certification",
         description: "Energy efficiency certification for various products.",
         Icon: IconBee,
-      },
-      {
-        title: "More Certifications",
-        description: "TEC, CE, ISO and other mandatory & voluntary certifications.",
-        Icon: IconMore,
       },
     ],
     []
