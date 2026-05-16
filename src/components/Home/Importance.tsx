@@ -183,7 +183,7 @@ const Importance = () => {
     <section className={styles.section} aria-label="Why certification is important">
       <div className={styles.container}>
         <div className={styles.headingWrap}>
-          <div className={styles.heading}>WHY CERTIFICATION IS IMPORTANT</div>
+          <h2 className={styles.heading}>WHY CERTIFICATION IS IMPORTANT</h2>
           <div className={styles.underline} aria-hidden="true" />
         </div>
 

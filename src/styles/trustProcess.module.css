@@ -1,11 +1,13 @@
-/* Trust + Process — white section, hero-aligned palette (navy #0a1b2b / #041E5B, blue #0f5fa8, gold accents) */
+/* Trust + Process — top bar surface; headings align with home Hero; height-neutral spacing */
 .section {
-  --tp-navy: #0a1b2b;
+  --hero-navy: #001b3d;
+  --hero-gold: #ff9c08;
+  --hero-gray: #555555;
   --tp-deep: #041e5b;
   --tp-blue: #0f5fa8;
   --tp-muted: rgba(1, 6, 10, 0.72);
-  --tp-gold: #c7a04a;
-  background: #ffffff;
+
+  background: #fdf8ee;
   padding: clamp(44px, 6vw, 64px) 0 clamp(40px, 5vw, 56px);
 }
 
@@ -18,7 +20,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;
-  gap: clamp(26px, 4vw, 40px);
+  gap: clamp(22px, 3.5vw, 36px);
   align-items: start;
 }
 
@@ -27,25 +29,18 @@
   padding-right: 4px;
 }
 
-.leftGrid {
-  display: grid;
-  grid-template-columns: 1fr minmax(220px, 300px);
-  gap: clamp(14px, 2.5vw, 22px);
-  align-items: center;
-}
-
 .title {
-  margin: 0 0 clamp(12px, 2vw, 18px);
-  font-size: clamp(1.45rem, 1rem + 1.8vw, 2.35rem);
-  line-height: 1.15;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  color: var(--tp-navy);
+  margin: 0 0 10px;
+  font-size: clamp(32px, 3.6vw + 14px, 56px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--hero-navy);
 }
 
 .brand {
-  color: var(--tp-blue);
-  font-weight: 900;
+  color: var(--hero-gold);
+  font-weight: 700;
 }
 
 .bullets {
@@ -53,16 +48,17 @@
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 11px;
+  gap: 9px;
 }
 
 .bullet {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: var(--tp-muted);
+  color: var(--hero-gray);
   font-size: 14px;
   line-height: 1.55;
+  font-weight: 500;
 }
 
 .bulletIcon {
@@ -73,25 +69,32 @@
   place-items: center;
   flex: 0 0 auto;
   margin-top: 0;
-  color: var(--tp-gold);
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(199, 160, 74, 0.28);
+  color: var(--hero-gold);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 156, 8, 0.28);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.8) inset,
-    0 8px 18px rgba(2, 24, 64, 0.08);
+    0 0 0 1px rgba(255, 255, 255, 0.85) inset,
+    0 8px 18px rgba(2, 24, 64, 0.06);
 }
 
 .bulletText {
-  font-weight: 700;
-  font-size: clamp(14px, 0.35vw + 13px, 15px);
-  color: rgba(10, 27, 43, 0.82);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--hero-gray);
+}
+
+.leftGrid {
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 300px);
+  gap: clamp(10px, 2vw, 18px);
+  align-items: center;
 }
 
 .manWrap {
   position: relative;
   width: min(300px, 100%);
-  height: min(300px, 52vw);
-  max-height: 320px;
+  height: min(292px, 52vw);
+  max-height: 312px;
   justify-self: start;
   display: grid;
   place-items: end center;
@@ -100,13 +103,13 @@
 .manWrap::before {
   content: "";
   position: absolute;
-  inset: 18px 14px 48px 14px;
+  inset: 12px 14px 52px 14px;
   border-radius: 999px;
   background: radial-gradient(
-    circle at 42% 32%,
-    rgba(199, 160, 74, 0.28) 0%,
-    rgba(247, 246, 242, 0.65) 52%,
-    rgba(255, 255, 255, 0.9) 100%
+    circle at 42% 28%,
+    rgba(255, 156, 8, 0.22) 0%,
+    rgba(253, 248, 238, 0.85) 52%,
+    rgba(253, 248, 238, 0.95) 100%
   );
   z-index: 0;
 }
@@ -117,9 +120,9 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: bottom center;
+  object-position: center 18%;
   filter: drop-shadow(0 18px 36px rgba(4, 30, 91, 0.14));
-  transform: translateY(4px);
+  transform: translateY(-14px);
 }
 
 .right {
@@ -128,12 +131,12 @@
 }
 
 .titleRight {
-  margin: 0 0 clamp(14px, 2vw, 22px);
-  font-size: clamp(1.15rem, 0.85rem + 1.1vw, 1.55rem);
-  line-height: 1.2;
-  font-weight: 900;
+  margin: 0 0 12px;
+  font-size: clamp(22px, 1.35vw + 12px, 34px);
+  line-height: 1.12;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--tp-navy);
+  color: var(--hero-navy);
   text-align: center;
 }
 
@@ -141,9 +144,9 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 2vw, 18px);
+  gap: clamp(10px, 1.8vw, 16px);
   align-items: start;
-  padding-top: 12px;
+  padding-top: 8px;
 }
 
 .connector {
@@ -222,7 +225,7 @@
 }
 
 .stepCircleGold {
-  background: linear-gradient(145deg, #8b6914 0%, var(--tp-gold) 52%, #e8d9a8 130%);
+  background: linear-gradient(145deg, #8b6914 0%, var(--hero-gold) 52%, #e8d9a8 130%);
 }
 
 .stepNo {
@@ -233,9 +236,9 @@
 }
 
 .stepTitle {
-  font-weight: 900;
+  font-weight: 800;
   font-size: clamp(13px, 0.4vw + 12px, 14px);
-  color: rgba(10, 27, 43, 0.9);
+  color: var(--hero-navy);
   min-height: 0;
   display: grid;
   align-content: center;
@@ -245,7 +248,7 @@
 .stepText {
   font-size: clamp(12px, 0.25vw + 11px, 13px);
   line-height: 1.55;
-  color: var(--tp-muted);
+  color: var(--hero-gray);
   max-width: 168px;
 }
 

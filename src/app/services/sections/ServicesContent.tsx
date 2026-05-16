@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { SERVICE_PAGE_ANCHORS } from "@/components/common/servicesMegaMenu.data";
 import Image from "next/image";
+import { Inter, Playfair_Display } from "next/font/google";
 import styles from "@/styles/servicesPage.module.css";
-
 import heroArt from "@/assests/service.png";
 import faqArt from "@/assests/Faqs.png";
 
@@ -11,17 +12,40 @@ import bisLogo from "@/assests/certi-img/BIS.webp";
 import wpcLogo from "@/assests/certi-img/wpc.webp";
 import beeLogo from "@/assests/certi-img/BEElogo.webp";
 import tecLogo from "@/assests/certi-img/tec.webp";
+import bisBannerImg from "@/assests/ser1.png";
+import wpcBannerImg from "@/assests/ser2.png";
+import tecBannerImg from "@/assests/certi-img/ser3.png";
+import beeBannerImg from "@/assests/certi-img/ser4.png";
+import lmpcBannerImg from "@/assests/certi-img/ser5.png";
+import testingBannerImg from "@/assests/certi-img/ser6.png";
+import ceBannerImg from "@/assests/certi-img/ser7.png";
+import eprBannerImg from "@/assests/certi-img/ser8.png";
 import nablLogo from "@/assests/certi-img/nabl.webp";
 import msmeLogo from "@/assests/certi-img/msmp.jpeg";
 import isoLogo from "@/assests/certi-img/iso.webp";
 import lmpcLogo from "@/assests/certi-img/lmpc.webp";
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
 type TabKey = "domestic" | "international";
 
 type ServiceItem = {
+  slug: string;
   title: string;
   description: string;
   icon: any;
+  /** Optional wide image at the top of the card; icon row stays below unchanged. */
+  cardBanner?: any;
 };
 
 function TabIcon({ type }: { type: TabKey }) {
@@ -182,48 +206,89 @@ export function ServicesContent() {
   const [tab, setTab] = useState<TabKey>("domestic");
   const [openFaq, setOpenFaq] = useState<number>(0);
 
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY - 110;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    };
+
+    scrollToHash();
+    window.addEventListener("hashchange", scrollToHash);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, []);
+
   const items = useMemo<ServiceItem[]>(() => {
     const base: ServiceItem[] = [
       {
-        title: "BIS CRS Certification",
+        slug: SERVICE_PAGE_ANCHORS.bis,
+        title: "BIS Certification",
         description:
-          "Mandatory registration for electronic and IT products under BIS CRS Scheme.",
+          "End-to-end support for BIS registration, product testing, documentation, and approvals as per Indian standards.",
         icon: bisLogo,
+        cardBanner: bisBannerImg,
       },
       {
-        title: "ISI Certification",
-        description: "ISI Mark certification for various products as per Indian Standards.",
-        icon: isoLogo,
-      },
-      {
-        title: "WPC ETA Approval",
-        description: "Mandatory approval for wireless and telecom products.",
+        slug: SERVICE_PAGE_ANCHORS.wpc,
+        title: "WPC Approval",
+        description:
+          "Approvals for wireless products including Wi-Fi, Bluetooth, RF, and other telecommunication devices.",
         icon: wpcLogo,
+        cardBanner: wpcBannerImg,
       },
       {
-        title: "BEE Registration",
-        description: "BEE registration for energy efficient appliances and equipment.",
-        icon: beeLogo,
-      },
-      {
-        title: "EPR Registration",
-        description: "EPR authorization for producers as per CPCB guidelines.",
-        icon: lmpcLogo,
-      },
-      {
-        title: "CE Certification",
-        description: "Conformité Européenne certification for global market access.",
+        slug: SERVICE_PAGE_ANCHORS.tec,
+        title: "TEC Certification",
+        description:
+          "Telecommunication product certification and compliance support as per TEC regulations.",
         icon: tecLogo,
+        cardBanner: tecBannerImg,
       },
       {
-        title: "Product Testing",
-        description: "Accredited lab testing for safety, performance and compliance.",
-        icon: nablLogo,
+        slug: SERVICE_PAGE_ANCHORS.lmpc,
+        title: "LMPC Registration",
+        description:
+          "Legal Metrology registration for importers and packaged commodities under LMPC regulations.",
+        icon: lmpcLogo,
+        cardBanner: lmpcBannerImg,
       },
       {
-        title: "Factory Audit & Inspection",
-        description: "Factory audit and inspection as per regulatory requirements.",
+        slug: SERVICE_PAGE_ANCHORS.bee,
+        title: "BEE Registration",
+        description:
+          "Energy efficiency labeling and registration for appliances and electrical products under BEE.",
+        icon: beeLogo,
+        cardBanner: beeBannerImg,
+      },
+      {
+        slug: SERVICE_PAGE_ANCHORS.epr,
+        title: "EPR Registration",
+        description:
+          "EPR authorization for Plastic, E-waste, Battery, and other waste categories under CPCB guidelines.",
         icon: msmeLogo,
+        cardBanner: eprBannerImg,
+      },
+      {
+        slug: SERVICE_PAGE_ANCHORS.ce,
+        title: "CE Certification",
+        description:
+          "CE marking support for products entering the European market as per EU directives.",
+        icon: isoLogo,
+        cardBanner: ceBannerImg,
+      },
+      {
+        slug: SERVICE_PAGE_ANCHORS.testing,
+        title: "Testing & Documentation",
+        description:
+          "Product testing, lab coordination, technical file preparation, and compliance documentation support.",
+        icon: nablLogo,
+        cardBanner: testingBannerImg,
       },
     ];
 
@@ -239,8 +304,8 @@ export function ServicesContent() {
   const faqs = useMemo(
     () => [
       {
-        q: "What is BIS CRS certification?",
-        a: "BIS CRS certification is mandatory for electronic and IT products to ensure they meet the safety and quality standards as per the Compulsory Registration Scheme implemented by BIS.",
+        q: "What is BIS certification?",
+        a: "BIS certification helps ensure your products meet Indian safety and quality standards. We support registration, testing, documentation, and approvals end to end.",
       },
       {
         q: "How long does the certification process take?",
@@ -259,12 +324,12 @@ export function ServicesContent() {
   );
 
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} ${inter.className}`}>
       <section className={styles.hero} aria-label="Services hero">
         <div className={styles.heroInner}>
           <div className={styles.heroLeft}>
-            <div className={styles.heroKicker}>OUR SERVICES</div>
-            <h1 className={styles.heroTitle}>
+            <p className={styles.heroKicker}>OUR SERVICES</p>
+            <h1 className={`${styles.heroTitle} ${playfair.className}`}>
               <span className={styles.heroTitleLine}>Certification &amp; Compliance</span>
               <br />
               Solutions
@@ -314,7 +379,11 @@ export function ServicesContent() {
         </div>
       </section>
 
-      <section className={styles.section} aria-label="Services list">
+      <section
+        id={SERVICE_PAGE_ANCHORS.list}
+        className={styles.section}
+        aria-label="Services list"
+      >
         <div className={styles.sectionHead}>
           <div className={styles.sectionTitleRow}>
             <div className={styles.sectionTitleLeft}>
@@ -322,9 +391,9 @@ export function ServicesContent() {
                   <TabIcon type={tab} />
               </span>
               <div>
-                <div className={styles.sectionTitle}>
+                <h2 className={`${styles.sectionTitle} ${playfair.className}`}>
                   {tab === "domestic" ? "Domestic Certifications" : "International Certifications"}
-                </div>
+                </h2>
                 <div className={styles.sectionSubtitle}>
                   {tab === "domestic"
                     ? "Mandatory certifications, registrations & approvals for Indian market."
@@ -356,23 +425,36 @@ export function ServicesContent() {
 
         <div className={styles.grid} role="list">
           {items.map((s) => (
-            <article className={styles.card} key={s.title} role="listitem">
-              <div className={styles.cardTop}>
-                <div className={styles.cardIconWrap} aria-hidden="true">
+            <article className={styles.card} id={s.slug} key={s.slug} role="listitem">
+              {s.cardBanner ? (
+                <div className={styles.cardBanner} aria-hidden="true">
                   <Image
-                    src={s.icon}
+                    src={s.cardBanner}
                     alt=""
                     fill
-                    sizes="48px"
-                    className={styles.cardIcon}
+                    sizes="(max-width: 720px) 92vw, 280px"
+                    className={styles.cardBannerImg}
                   />
                 </div>
-                <div className={styles.cardTitle}>{s.title}</div>
+              ) : null}
+              <div className={styles.cardContent}>
+                <div className={styles.cardTop}>
+                  <div className={styles.cardIconWrap} aria-hidden="true">
+                    <Image
+                      src={s.icon}
+                      alt=""
+                      fill
+                      sizes="48px"
+                      className={styles.cardIcon}
+                    />
+                  </div>
+                  <div className={styles.cardTitle}>{s.title}</div>
+                </div>
+                <div className={styles.cardDesc}>{s.description}</div>
+                <a className={styles.cardLink} href="/contact">
+                  Learn More <span aria-hidden="true">→</span>
+                </a>
               </div>
-              <div className={styles.cardDesc}>{s.description}</div>
-              <a className={styles.cardLink} href="/contact">
-                Learn More <span aria-hidden="true">→</span>
-              </a>
             </article>
           ))}
         </div>
@@ -399,8 +481,10 @@ export function ServicesContent() {
           <div className={styles.faqCard}>
             <div className={styles.faqGrid}>
               <div className={styles.faqLeft}>
-                <div className={styles.faqKicker}>FAQ</div>
-                <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
+                <p className={styles.faqKicker}>FAQ</p>
+                <h2 className={`${styles.faqTitle} ${playfair.className}`}>
+                  Frequently Asked Questions
+                </h2>
                 <div className={styles.faqUnderline} aria-hidden="true" />
                 <p className={styles.faqSub}>
                   Find quick answers to the most common queries about our certification and

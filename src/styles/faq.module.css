@@ -1,7 +1,11 @@
-/* FAQ */
+/* FAQ — aligned with home Hero (navy, gold, gray) */
 .section {
+  --hero-navy: #001b3d;
+  --hero-gold: #ff9c08;
+  --hero-gray: #555555;
+
   background-color: #ffffff;
-  padding: 56px 0 62px;
+  padding: clamp(40px, 5vw, 56px) 0 clamp(44px, 5vw, 62px);
 }
 
 .container {
@@ -19,34 +23,35 @@
 
 .heading {
   margin: 0;
-  font-size: 32px;
-  font-weight: 900;
-  letter-spacing: -0.2px;
-  color: rgba(10, 27, 43, 0.92);
+  font-size: clamp(26px, 2vw + 18px, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--hero-navy);
   text-align: center;
 }
 
 .accent {
-  color: #e12007;
+  color: var(--hero-gold);
 }
 
 .underline {
   width: 86px;
   height: 4px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(225, 32, 7, 0.9), rgba(225, 32, 7, 0.15));
+  background: linear-gradient(90deg, rgba(255, 156, 8, 0.95), rgba(255, 156, 8, 0.15));
 }
 
 .card {
   background: #ffffff;
   border-radius: 14px;
-  border: 1px solid rgba(10, 27, 43, 0.08);
+  border: 1px solid rgba(0, 27, 61, 0.08);
   box-shadow: 0 18px 48px rgba(2, 24, 64, 0.08);
   overflow: hidden;
 }
 
 .item + .item {
-  border-top: 1px solid rgba(10, 27, 43, 0.08);
+  border-top: 1px solid rgba(0, 27, 61, 0.08);
 }
 
 .qRow {
@@ -63,18 +68,18 @@
 }
 
 .qRow:hover {
-  background: rgba(15, 95, 168, 0.04);
+  background: rgba(255, 156, 8, 0.06);
 }
 
 .qRow:focus-visible {
-  outline: 2px solid rgba(15, 95, 168, 0.35);
+  outline: 2px solid rgba(255, 156, 8, 0.45);
   outline-offset: -2px;
 }
 
 .qText {
   font-size: 14px;
-  font-weight: 900;
-  color: rgba(10, 27, 43, 0.9);
+  font-weight: 700;
+  color: var(--hero-navy);
 }
 
 .icon {
@@ -84,28 +89,29 @@
   display: grid;
   place-items: center;
   font-size: 18px;
-  font-weight: 900;
-  color: rgba(10, 27, 43, 0.78);
-  background: rgba(10, 27, 43, 0.04);
-  border: 1px solid rgba(10, 27, 43, 0.08);
+  font-weight: 800;
+  color: var(--hero-navy);
+  background: rgba(255, 156, 8, 0.1);
+  border: 1px solid rgba(255, 156, 8, 0.28);
 }
 
 .panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 220ms ease;
+  transition: max-height 240ms ease;
 }
 
 .panelOpen {
-  max-height: 220px;
+  max-height: 360px;
 }
 
 .answer {
   margin: 0;
   padding: 0 18px 16px;
   font-size: 13px;
-  line-height: 1.75;
-  color: rgba(10, 27, 43, 0.68);
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--hero-gray);
 }
 
 @media (max-width: 640px) {
@@ -114,7 +120,7 @@
   }
 
   .heading {
-    font-size: 26px;
+    font-size: clamp(22px, 5vw + 12px, 26px);
   }
 
   .qRow {
@@ -126,4 +132,3 @@
     padding: 0 14px 14px;
   }
 }
-

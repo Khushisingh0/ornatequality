@@ -1,0 +1,205 @@
+/* Services mega menu — 3-column dropdown */
+.panel {
+  width: min(1080px, calc(100vw - 32px));
+  background: #ffffff;
+  border: 1px solid rgba(10, 27, 43, 0.1);
+  border-radius: 10px;
+  box-shadow:
+    0 24px 60px rgba(2, 24, 64, 0.14),
+    0 8px 24px rgba(2, 24, 64, 0.08);
+  padding: 22px 24px 16px;
+}
+
+.mobilePanel {
+  background: #ffffff;
+  border: 1px solid rgba(10, 27, 43, 0.1);
+  border-radius: 12px;
+  padding: 16px 14px 12px;
+  margin-top: 8px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.column {
+  min-width: 0;
+}
+
+.columnHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.columnHeadIcon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: #0b57b5;
+  flex-shrink: 0;
+}
+
+.columnTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #001b3d;
+  line-height: 1.2;
+}
+
+.column:nth-child(3) .columnTitle {
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+}
+
+.columnRule {
+  height: 3px;
+  width: 100%;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.columnRuleRed {
+  background: linear-gradient(90deg, #c62828 0%, rgba(198, 40, 40, 0.35) 100%);
+}
+
+.columnRuleTeal {
+  background: linear-gradient(90deg, #00838f 0%, rgba(0, 131, 143, 0.35) 100%);
+}
+
+.itemList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.itemLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #001b3d;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.itemLink:hover {
+  background: rgba(11, 87, 181, 0.06);
+  color: #0b57b5;
+}
+
+.itemLink:focus-visible {
+  outline: 2px solid rgba(11, 87, 181, 0.35);
+  outline-offset: 2px;
+}
+
+.itemIcon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f8fafc;
+  border: 1px solid rgba(10, 27, 43, 0.06);
+}
+
+.itemIconImg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.glyphText {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+}
+
+.glyph_blue {
+  background: rgba(11, 87, 181, 0.1);
+  color: #0b57b5;
+}
+
+.glyph_green {
+  background: rgba(22, 163, 74, 0.12);
+  color: #15803d;
+}
+
+.glyph_red {
+  background: rgba(198, 40, 40, 0.1);
+  color: #c62828;
+}
+
+.glyph_teal {
+  background: rgba(0, 131, 143, 0.12);
+  color: #00838f;
+}
+
+.glyph_navy {
+  background: rgba(0, 27, 61, 0.08);
+  color: #001b3d;
+}
+
+.glyph_orange {
+  background: rgba(249, 115, 22, 0.12);
+  color: #ea580c;
+}
+
+.itemLabel {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: inherit;
+  padding-top: 4px;
+}
+
+.panelFooter {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(10, 27, 43, 0.08);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.viewAllLink {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0b57b5;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.viewAllLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 16px 14px 12px;
+  }
+}

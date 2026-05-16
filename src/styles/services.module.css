@@ -1,7 +1,11 @@
-/* Services */
+/* Services — white surface; header matches home Hero tagline/title; 4-card row */
 .services {
-  background: #eceef1;
-  padding: 52px 0 58px;
+  --hero-navy: #001b3d;
+  --hero-gold: #ff9c08;
+  --hero-gray: #555555;
+
+  background: #ffffff;
+  padding: 48px 0 52px;
 }
 
 .container {
@@ -13,28 +17,36 @@
 .headerRow {
   display: grid;
   justify-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.sectionTagline {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hero-gold);
+  text-align: center;
 }
 
 .heading {
   margin: 0;
-  font-size: 32px;
-  font-weight: 900;
-  letter-spacing: -0.2px;
-  color: rgba(10, 27, 43, 0.9);
+  font-size: clamp(32px, 3.6vw + 14px, 56px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--hero-navy);
   text-align: center;
 }
 
 .headingUnderline {
   width: 84px;
-  height: 4px;
+  height: 3px;
   border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    var(--about-section-accent) 0%,
-    color-mix(in srgb, var(--about-section-accent) 35%, transparent) 100%
-  );
+  margin-top: 4px;
+  background: linear-gradient(90deg, rgba(255, 156, 8, 0.95), rgba(255, 156, 8, 0.2));
 }
 
 .carouselWrap {
@@ -44,10 +56,10 @@
 
 .carousel {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
   overflow: visible;
-  padding: 10px 6px 14px;
+  padding: 6px 4px 12px;
 }
 
 .card {
@@ -55,7 +67,7 @@
   background: #ffffff;
   border: 1px solid rgba(10, 27, 43, 0.08);
   border-radius: 16px;
-  padding: 22px 14px 18px;
+  padding: 20px 16px 16px;
   box-shadow:
     0 0 18px rgba(0, 0, 0, 0.1),
     0 0 40px rgba(0, 0, 0, 0.08);
@@ -77,8 +89,8 @@
 
 .card:hover {
   transform: translateY(-2px);
-  border-color: rgba(15, 95, 168, 0.35);
-  outline-color: rgba(15, 95, 168, 0.75);
+  border-color: rgba(255, 156, 8, 0.45);
+  outline-color: rgba(0, 27, 61, 0.2);
   box-shadow:
     0 0 22px rgba(0, 0, 0, 0.12),
     0 0 48px rgba(0, 0, 0, 0.1);
@@ -90,8 +102,8 @@
   border-radius: 16px;
   display: grid;
   place-items: center;
-  background: color-mix(in srgb, var(--about-section-accent) 9%, white);
-  border: 1px solid color-mix(in srgb, var(--about-section-accent) 18%, white);
+  background: rgba(255, 156, 8, 0.1);
+  border: 1px solid rgba(255, 156, 8, 0.22);
   margin: 0 auto 12px;
   justify-self: center;
 }
@@ -99,9 +111,9 @@
 .cardTitle {
   margin: 2px 0 8px;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
-  color: rgba(10, 27, 43, 0.88);
+  color: var(--hero-navy);
   min-height: 40px;
   display: grid;
   align-content: center;
@@ -113,8 +125,9 @@
 .cardText {
   margin: 0 0 12px;
   font-size: 14px;
-  line-height: 1.62;
-  color: rgba(10, 27, 43, 0.62);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--hero-gray);
   min-height: 62px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -132,8 +145,8 @@
   gap: 8px;
   text-decoration: none;
   font-size: 13px;
-  font-weight: 900;
-  color: var(--about-section-accent);
+  font-weight: 800;
+  color: var(--hero-gold);
   padding-top: 6px;
   justify-self: center;
   text-align: center;
@@ -141,11 +154,11 @@
 
 .learnMore:hover {
   text-decoration: underline;
-  color: color-mix(in srgb, var(--about-section-accent) 82%, black);
+  color: color-mix(in srgb, var(--hero-gold) 82%, #001b3d);
 }
 
 .ctaRow {
-  margin-top: 18px;
+  margin-top: 14px;
   display: grid;
   justify-items: center;
 }
@@ -173,27 +186,23 @@
 }
 
 .ctaBtn:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--about-section-accent) 45%, transparent);
+  outline: 2px solid rgba(255, 156, 8, 0.55);
   outline-offset: 3px;
 }
 
 @media (max-width: 900px) {
   .services {
-    padding: 44px 0 52px;
+    padding: 40px 0 48px;
   }
 
   .carousel {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 520px) {
   .container {
     padding: 0 14px;
-  }
-
-  .heading {
-    font-size: 22px;
   }
 
   .carouselWrap {

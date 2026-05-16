@@ -1,6 +1,13 @@
 "use client"
 import React, { useMemo } from "react";
+import { Playfair_Display } from "next/font/google";
 import styles from "../../styles/services.module.css";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
 
 function IconBis(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -138,31 +145,6 @@ function IconEpr(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconBee(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true" {...props}>
-      <path
-        d="M32 10c7 0 12 5 12 12v10c0 12-7 20-12 22-5-2-12-10-12-22V22c0-7 5-12 12-12Z"
-        fill="rgba(34,197,94,0.14)"
-        stroke="rgba(10,27,43,0.20)"
-        strokeWidth="2"
-      />
-      <path
-        d="M26 26h12M26 34h12M26 42h12"
-        stroke="#16a34a"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M32 20v28"
-        stroke="#0b79c9"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 type ServiceItem = {
   title: string;
   description: string;
@@ -192,11 +174,6 @@ const Services = () => {
         description: "EPR compliance for producers, importers & brands.",
         Icon: IconEpr,
       },
-      {
-        title: "BEE Certification",
-        description: "Energy efficiency certification for various products.",
-        Icon: IconBee,
-      },
     ],
     []
   );
@@ -205,7 +182,10 @@ const Services = () => {
     <section className={styles.services} aria-label="Our core certification services">
       <div className={styles.container}>
         <div className={styles.headerRow}>
-          <h2 className={styles.heading}>Our Core Certification Services</h2>
+          <p className={styles.sectionTagline}>Your compliance partner —</p>
+          <h2 className={`${styles.heading} ${playfair.className}`}>
+            Our Core Certification Services
+          </h2>
           <div className={styles.headingUnderline} aria-hidden="true" />
         </div>
 

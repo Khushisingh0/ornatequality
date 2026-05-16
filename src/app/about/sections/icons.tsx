@@ -99,6 +99,28 @@ export function IconCheck(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+export function IconMapPin(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        d="M12 2.25a6.1 6.1 0 0 0-6.1 6.1c0 4.55 6.1 13.4 6.1 13.4s6.1-8.85 6.1-13.4a6.1 6.1 0 0 0-6.1-6.1Zm0 8.35a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z"
+      />
+    </svg>
+  );
+}
+
+export function IconDoc(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        d="M14 2.25H7.5a2.25 2.25 0 0 0-2.25 2.25v15c0 1.24 1 2.25 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-11L14 2.25Zm-.5 1.9 4.85 4.85H13.5a1 1 0 0 1-1-1V4.15ZM8.25 11.5h7.5v1.5h-7.5v-1.5Zm0-3h7.5v1.5h-7.5v-1.5Zm0 6h4.5v1.5h-4.5v-1.5Z"
+      />
+    </svg>
+  );
+}
+
 /* Industries icons */
 export function IconChip(props: React.SVGProps<SVGSVGElement>) {
   return (

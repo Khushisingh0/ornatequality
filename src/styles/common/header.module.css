@@ -1,5 +1,7 @@
 /* Header */
 .header {
+  --header-nav-gold:#ff9c08;
+
   position: sticky;
   top: var(--topbar-height, 48px);
   z-index: 40;
@@ -31,7 +33,7 @@
 
 .logo {
   width: auto;
-  height: 44px;
+  height: 54px;
 }
 
 .nav {
@@ -47,18 +49,101 @@
   text-decoration: none;
   padding: 8px 6px;
   border-radius: 10px;
+  cursor: pointer;
   transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .navLink:hover {
-  color: rgba(10, 27, 43, 0.92);
-  background: rgba(15, 95, 168, 0.06);
+  color: var(--header-nav-gold);
+  background: rgba(197, 157, 95, 0.12);
   transform: translateY(-1px);
+}
+
+.navLinkActive {
+  color: var(--header-nav-gold);
+  background: rgba(197, 157, 95, 0.16);
+}
+
+.navLinkActive:hover {
+  color: var(--header-nav-gold);
+  background: rgba(197, 157, 95, 0.2);
 }
 
 .navLink:focus-visible {
   outline: 2px solid rgba(15, 95, 168, 0.35);
   outline-offset: 2px;
+}
+
+.navDropdown {
+  position: relative;
+}
+
+.navLinkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  font-family: inherit;
+}
+
+.chevron {
+  display: inline-flex;
+  transition: transform 180ms ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.megaMenuWrap {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+}
+
+.hubMenuWrap {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+}
+
+.mobileServicesBlock {
+  display: grid;
+  gap: 0;
+}
+
+.mobileServicesRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.mobileServicesMain {
+  margin: 0;
+}
+
+.mobileServicesExpand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 14px;
+  background: rgba(15, 95, 168, 0.05);
+  cursor: pointer;
+  font-family: inherit;
+  color: rgba(10, 27, 43, 0.82);
+}
+
+.mobileServicesExpand:hover {
+  background: rgba(197, 157, 95, 0.12);
+  color: var(--header-nav-gold);
 }
 
 .actions {
@@ -72,7 +157,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 6px;
   padding: 10px 19px;
   font-size: 14px;
   font-weight: 800;
@@ -165,17 +250,34 @@
   text-decoration: none;
   color: rgba(10, 27, 43, 0.82);
   background: rgba(15, 95, 168, 0.05);
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.mobileLink:hover {
+  color: var(--header-nav-gold);
+  background: rgba(197, 157, 95, 0.12);
+}
+
+.mobileLinkActive {
+  color: var(--header-nav-gold);
+  background: rgba(197, 157, 95, 0.16);
+}
+
+.mobileLinkActive:hover {
+  color: var(--header-nav-gold);
+  background: rgba(197, 157, 95, 0.2);
 }
 
 .mobileLoginBtn {
   margin-top: 6px;
   width: fit-content;
   padding: 12px 18px;
-  border-radius: 999px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(135deg, #0f5fa8 0%, #0b79c9 55%, #00b2a0 140%);
+  background: #041e5b;
   box-shadow: 0 16px 36px rgba(15, 95, 168, 0.22);
 }
 
@@ -191,7 +293,7 @@
   }
 
   .logo {
-    height: 40px;
+    height: 48px;
   }
 }
 

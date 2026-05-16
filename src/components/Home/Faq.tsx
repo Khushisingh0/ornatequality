@@ -1,7 +1,20 @@
 "use client";
 
 import React, { useId, useMemo, useState } from "react";
+import { Inter, Playfair_Display } from "next/font/google";
 import styles from "../../styles/faq.module.css";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+});
 
 type FaqItem = {
   q: string;
@@ -31,10 +44,13 @@ const Faq = () => {
   const [openIdx, setOpenIdx] = useState<number>(0);
 
   return (
-    <section className={styles.section} aria-label="Frequently Asked Questions">
+    <section
+      className={`${styles.section} ${inter.className}`}
+      aria-label="Frequently Asked Questions"
+    >
       <div className={styles.container}>
         <div className={styles.headingWrap}>
-          <h2 className={styles.heading}>
+          <h2 className={`${styles.heading} ${playfair.className}`}>
             Frequently Asked <span className={styles.accent}>Questions</span>
           </h2>
           <div className={styles.underline} aria-hidden="true" />

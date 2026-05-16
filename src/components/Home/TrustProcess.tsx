@@ -1,7 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import { Playfair_Display } from "next/font/google";
 import styles from "../../styles/trustProcess.module.css";
 import manImg from "../../assests/man.png";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
 
 function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -134,7 +141,7 @@ const TrustProcess = () => {
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.left}>
-            <h2 className={styles.title}>
+            <h2 className={`${styles.title} ${playfair.className}`}>
               Why Businesses Trust{" "}
               <span className={styles.brand}>Ornate Certification</span>
             </h2>
@@ -192,7 +199,7 @@ const TrustProcess = () => {
           </div>
 
           <div className={styles.right}>
-            <h2 className={styles.titleRight}>Our Simple 4-Step Process</h2>
+            <h2 className={`${styles.titleRight} ${playfair.className}`}>Our Simple 4-Step Process</h2>
 
             <div className={styles.steps} role="list" aria-label="Process steps">
               <div className={styles.connector} aria-hidden="true" />

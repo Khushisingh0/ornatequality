@@ -1,0 +1,177 @@
+import type { StaticImageData } from "next/image";
+
+import bisLogo from "@/assests/certi-img/BIS.webp";
+import beeLogo from "@/assests/certi-img/BEElogo.webp";
+import eprLogo from "@/assests/certi-img/msmp.jpeg";
+import lmpcLogo from "@/assests/certi-img/lmpc.webp";
+import isoLogo from "@/assests/certi-img/iso.webp";
+import wpcLogo from "@/assests/certi-img/wpc.webp";
+import tecLogo from "@/assests/certi-img/tec.webp";
+import nablLogo from "@/assests/certi-img/nabl.webp";
+
+export type MegaMenuIcon =
+  | { type: "image"; src: StaticImageData; alt: string }
+  | { type: "glyph"; glyph: string; tone: "blue" | "green" | "red" | "teal" | "navy" | "orange" };
+
+export type MegaMenuItem = {
+  label: string;
+  slug: string;
+  icon: MegaMenuIcon;
+};
+
+export type MegaMenuColumn = {
+  id: string;
+  title: string;
+  accent: "red" | "teal";
+  headerGlyph: string;
+  items: MegaMenuItem[];
+};
+
+/** Anchor ids on /services — must match card ids in ServicesContent */
+export const SERVICE_PAGE_ANCHORS = {
+  bis: "bis-certification",
+  bee: "bee-registration",
+  epr: "epr-registration",
+  lmpc: "lmpc-registration",
+  wpc: "wpc-approval",
+  tec: "tec-certification",
+  ce: "ce-certification",
+  testing: "testing-documentation",
+  list: "services-list",
+} as const;
+
+export function serviceHref(slug: string) {
+  return `/services#${slug}`;
+}
+
+export const servicesMegaMenuColumns: MegaMenuColumn[] = [
+  {
+    id: "registration",
+    title: "REGISTRATION",
+    accent: "red",
+    headerGlyph: "reg",
+    items: [
+      {
+        label: "BIS CRS REGISTRATION",
+        slug: SERVICE_PAGE_ANCHORS.bis,
+        icon: { type: "image", src: bisLogo, alt: "BIS CRS" },
+      },
+      {
+        label: "BEE (Bureau of Energy Efficiency)",
+        slug: SERVICE_PAGE_ANCHORS.bee,
+        icon: { type: "image", src: beeLogo, alt: "BEE" },
+      },
+      {
+        label: "EPR (Extended Producer Responsibility)",
+        slug: SERVICE_PAGE_ANCHORS.epr,
+        icon: { type: "image", src: eprLogo, alt: "EPR" },
+      },
+      {
+        label: "GEM (Government e-Marketplace)",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "GeM", tone: "orange" },
+      },
+      {
+        label: "TRADEMARK REGISTRATION",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "™", tone: "red" },
+      },
+      {
+        label: "IEC (Import Export Code)",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "IEC", tone: "blue" },
+      },
+      {
+        label: "LMPC (Legal Metrology Packaged Commodities)",
+        slug: SERVICE_PAGE_ANCHORS.lmpc,
+        icon: { type: "image", src: lmpcLogo, alt: "LMPC" },
+      },
+    ],
+  },
+  {
+    id: "certification",
+    title: "CERTIFICATION",
+    accent: "teal",
+    headerGlyph: "cert",
+    items: [
+      {
+        label: "BIS-ISI MARK CERTIFICATION",
+        slug: SERVICE_PAGE_ANCHORS.bis,
+        icon: { type: "image", src: bisLogo, alt: "BIS ISI" },
+      },
+      {
+        label: "ISO (International Organization for Standardization)",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "image", src: isoLogo, alt: "ISO" },
+      },
+      {
+        label: "CE CERTIFICATION",
+        slug: SERVICE_PAGE_ANCHORS.ce,
+        icon: { type: "glyph", glyph: "CE", tone: "blue" },
+      },
+      {
+        label: "FMCS (Foreign Manufacturers Certification Scheme)",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "FM", tone: "navy" },
+      },
+      {
+        label: "BIS CERTIFICATION FOR TOYS",
+        slug: SERVICE_PAGE_ANCHORS.bis,
+        icon: { type: "glyph", glyph: "TOY", tone: "teal" },
+      },
+      {
+        label: "CCOE / PESO",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "CC", tone: "navy" },
+      },
+      {
+        label: "CDSCO (Central Drugs Standard Control Organization)",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "Rx", tone: "red" },
+      },
+    ],
+  },
+  {
+    id: "other",
+    title: "Other Services",
+    accent: "red",
+    headerGlyph: "other",
+    items: [
+      {
+        label: "FSSAI (Food Safety and Standards Authority of India)",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "FSS", tone: "green" },
+      },
+      {
+        label: "WPC-ETA Approval",
+        slug: SERVICE_PAGE_ANCHORS.wpc,
+        icon: { type: "image", src: wpcLogo, alt: "WPC ETA" },
+      },
+      {
+        label: "TEC APPROVAL | Department of Telecommunications",
+        slug: SERVICE_PAGE_ANCHORS.tec,
+        icon: { type: "image", src: tecLogo, alt: "TEC" },
+      },
+      {
+        label: "RoHS COMPLIANCE",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "RoHS", tone: "green" },
+      },
+      {
+        label: "NABL LAB TESTING SERVICES",
+        slug: SERVICE_PAGE_ANCHORS.testing,
+        icon: { type: "image", src: nablLogo, alt: "NABL" },
+      },
+      {
+        label: "TPI (Third Party Inspection)",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "TPI", tone: "red" },
+      },
+      {
+        label: "AUDIT SERVICES",
+        slug: SERVICE_PAGE_ANCHORS.list,
+        icon: { type: "glyph", glyph: "AUD", tone: "navy" },
+      },
+    ],
+  },
+];

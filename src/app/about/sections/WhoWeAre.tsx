@@ -1,73 +1,98 @@
 import React from "react";
 import Image from "next/image";
+import { Inter, Playfair_Display } from "next/font/google";
 import styles from "@/styles/aboutV2.module.css";
 
 import aboutTopImg from "@/assests/about3.webp";
-import { IconBadge, IconBriefcase, IconGlobe, IconUsers } from "./icons";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
 
 export function WhoWeAre() {
   return (
-    <section className={styles.section} aria-label="Who we are">
+    <section className={`${styles.section} ${inter.className}`} aria-label="Who we are">
       <div className={styles.container}>
-        <div className={styles.whoGrid}>
-          <div className={styles.whoMedia} aria-hidden="true">
-            <Image
-              src={aboutTopImg}
-              alt=""
-              fill
-              priority
-              sizes="(max-width: 900px) 92vw, 560px"
-              className={styles.whoImg}
-            />
-          </div>
-
-          <div>
-            <div className={styles.kicker}>WHO WE ARE</div>
-            <h2 className={styles.whoTitle}>Your Strategic Compliance Partner</h2>
-            <p className={styles.p}>
-              Ornate Certification is a leading regulatory compliance and certification consultancy. We
-              help businesses across industries obtain mandatory approvals and certifications from
-              regulatory bodies in India and international markets.
-            </p>
-            <p className={styles.p} style={{ marginTop: 10 }}>
-              With deep expertise and a client-first approach, we ensure fast approvals, reduced risk,
-              and complete peace of mind.
-            </p>
-
-            <div className={styles.statsRow} aria-label="Company stats">
-              <div className={styles.statBox}>
-                <div className={styles.statIcon} aria-hidden="true">
-                  <IconBriefcase />
-                </div>
-                <div className={styles.statValue}>13+</div>
-                <div className={styles.statLabel}>Years Experience</div>
-              </div>
-              <div className={styles.statBox}>
-                <div className={styles.statIcon} aria-hidden="true">
-                  <IconBadge />
-                </div>
-                <div className={styles.statValue}>5000+</div>
-                <div className={styles.statLabel}>Projects Completed</div>
-              </div>
-              <div className={styles.statBox}>
-                <div className={styles.statIcon} aria-hidden="true">
-                  <IconGlobe />
-                </div>
-                <div className={styles.statValue}>100+</div>
-                <div className={styles.statLabel}>Global Clients</div>
-              </div>
-              <div className={styles.statBox}>
-                <div className={styles.statIcon} aria-hidden="true">
-                  <IconUsers />
-                </div>
-                <div className={styles.statValue}>25+</div>
-                <div className={styles.statLabel}>Industry Experts</div>
-              </div>
+        <div className={styles.whoShell}>
+          <div className={styles.whoWrap}>
+            <div className={styles.whoMedia} aria-hidden="true">
+              <Image
+                src={aboutTopImg}
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 900px) 92vw, 420px"
+                className={styles.whoImg}
+              />
             </div>
+
+            <div className={styles.whoKicker}>About company</div>
+            <h2 className={`${styles.whoTitle} ${playfair.className}`}>
+              Your{" "}
+              <span className={styles.whoTitleAccent}>Strategic Compliance</span> Partner
+            </h2>
+
+            <p className={styles.whoBody}>
+              At <span className={styles.whoHighlight}>Ornate Quality Services</span>, we are a trusted
+              name in regulatory compliance, product certification, testing, and quality assurance
+              solutions, dedicated to helping businesses achieve seamless market access and regulatory
+              success. Since our establishment in{" "}
+              <span className={styles.whoHighlight}>2013</span>, we have been committed to simplifying
+              complex certification processes and delivering reliable compliance solutions to
+              manufacturers, importers, exporters, startups, SMEs, and global enterprises across diverse
+              industries.
+            </p>
+
+            <p className={styles.whoBody}>
+              With over <span className={styles.whoHighlight}>13 years of industry experience</span>, we
+              have built a strong reputation for providing expert guidance in{" "}
+              <span className={styles.whoHighlight}>
+                BIS Certification, CRS Registration, ISI Certification, WPC Approval, TEC Certification,
+                LMPC Registration
+              </span>
+              , testing coordination, technical documentation, and other regulatory services. Our deep
+              understanding of national and international compliance frameworks enables us to support
+              businesses in meeting quality standards, regulatory requirements, and market entry
+              obligations with confidence and efficiency.
+            </p>
+
+            <p className={styles.whoBody}>
+              <span className={styles.whoHighlight}>At Ornate</span>, we believe compliance is more than just
+              meeting regulations
+              {"\u2014"}it is about building trust, ensuring product credibility, and creating
+              long-term business growth. Our team of experienced consultants, compliance specialists, and
+              technical experts works closely with every client to understand their unique business goals,
+              product requirements, and industry challenges. This allows us to deliver customized compliance
+              strategies that reduce complexity, save valuable time, and accelerate certification approvals.
+            </p>
+
+            <p className={styles.whoBody}>
+              What sets us apart is our commitment to{" "}
+              <span className={styles.whoHighlight}>transparency, precision, and client success</span>. From
+              initial consultation and documentation to testing coordination and final certification
+              approval, we provide <span className={styles.whoHighlight}>end-to-end support</span> throughout
+              the entire compliance journey. By combining industry expertise, innovative processes, and a
+              customer-focused approach, we help businesses confidently expand in both domestic and
+              international markets.
+            </p>
+
+            <p className={styles.whoBody}>
+              As we continue to grow, our focus remains on delivering{" "}
+              <span className={styles.whoHighlight}>world-class compliance solutions</span>, building
+              long-term partnerships, and helping businesses achieve sustainable success in an increasingly
+              regulated global marketplace.
+            </p>
           </div>
         </div>
       </div>
     </section>
   );
 }
-

@@ -1,12 +1,44 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { Playfair_Display } from "next/font/google";
 import styles from "../../styles/blog.module.css";
 
 import blog1 from "../../assests/blog-1.webp";
 import blog2 from "../../assests/blog-2.webp";
 import blog3 from "../../assests/blog-3.webp";
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
 export default function BlogPage() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    if (isHome) return;
+
+    const scrollToHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY - 110;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    };
+
+    scrollToHash();
+    window.addEventListener("hashchange", scrollToHash);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, [isHome]);
+
   const posts = [
     {
       img: blog1,
@@ -34,9 +66,13 @@ export default function BlogPage() {
   return (
     <section className={styles.page} aria-label="Blogs">
       <div className={styles.container}>
-        <div className={styles.topRow}>
+        <div id="latest-news" className={styles.topRow}>
           <div className={styles.headingBlock}>
-            <h1 className={styles.heading}>Explore Our Latest Blogs</h1>
+            {isHome ? (
+              <h2 className={`${styles.heading} ${playfair.className}`}>Explore Our Latest Blogs</h2>
+            ) : (
+              <h1 className={`${styles.heading} ${playfair.className}`}>Explore Our Latest Blogs</h1>
+            )}
             <div className={styles.headingUnderline} aria-hidden="true" />
             <p className={styles.subheading}>
               Discover expert insights, updates, and tips from the compliance &amp; certification
@@ -62,7 +98,7 @@ export default function BlogPage() {
 
               <div className={styles.body}>
                 <div className={styles.tag}>{p.tag}</div>
-                <h2 className={styles.title}>{p.title}</h2>
+                <h3 className={styles.title}>{p.title}</h3>
                 <p className={styles.excerpt}>{p.excerpt}</p>
                 <a className={styles.readMore} href="#">
                   Read More <span aria-hidden="true">→</span>
@@ -75,4 +111,3 @@ export default function BlogPage() {
     </section>
   );
 }
-

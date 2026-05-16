@@ -1,8 +1,11 @@
-/* Valued clients — white surface, hero-aligned typography */
+/* Valued clients — gray surface; heading/subheading match home Hero; layout/height unchanged */
 .section {
-  --vc-navy: #0a1b2b;
-  --vc-muted: rgba(1, 6, 10, 0.72);
-  background: #ffffff;
+  --hero-navy: #001b3d;
+  --hero-gray: #555555;
+  --hero-gold: #ff9c08;
+  --vc-surface: #f3f4f6;
+
+  background: var(--vc-surface);
   padding: clamp(48px, 7vw, 72px) 0 clamp(44px, 6vw, 64px);
   overflow-x: clip;
 }
@@ -13,24 +16,40 @@
   padding: 0 clamp(14px, 3vw, 22px);
 }
 
-.heading {
-  margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: clamp(2.5rem, 1rem + 1.6vw, 2.25rem);
-  line-height: 1.15;
-  font-weight: 900;
-  letter-spacing: -0.03em;
+/* Match blog / hero strip: centered stack + gold underline */
+.headingBlock {
+  display: grid;
+  justify-items: center;
   text-align: center;
-  color: var(--vc-navy);
+  gap: 6px;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(32px, 3.6vw + 14px, 56px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--hero-navy);
+}
+
+.headingUnderline {
+  width: min(88px, 20vw);
+  height: 3px;
+  border-radius: 999px;
+  margin-top: 2px;
+  background: linear-gradient(90deg, rgba(255, 156, 8, 0.95), rgba(255, 156, 8, 0.2));
 }
 
 .subheading {
   margin: 0 auto;
-  max-width: min(100ch, 96vw);
-  font-size: clamp(18px, 0.35vw + 14px, 17px);
-  line-height: 1.65;
-  font-weight: 400;
+  max-width: min(92ch, 100%);
+  font-size: clamp(16px, 0.6vw + 15px, 18px);
+  line-height: 1.55;
+  font-weight: 500;
   text-align: center;
-  color: var(--vc-muted);
+  color: var(--hero-gray);
 }
 
 /* Full-viewport-width marquee (break out of centered content column) */
@@ -45,7 +64,7 @@
   position: relative;
   overflow: hidden;
   padding: clamp(18px, 2.5vw, 28px) 0;
-  background: #ffffff;
+  background: var(--vc-surface);
 }
 
 .marquee::before,
@@ -61,12 +80,12 @@
 
 .marquee::before {
   left: 0;
-  background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+  background: linear-gradient(90deg, var(--vc-surface) 0%, transparent 100%);
 }
 
 .marquee::after {
   right: 0;
-  background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
+  background: linear-gradient(270deg, var(--vc-surface) 0%, transparent 100%);
 }
 
 .marqueeInner {
@@ -125,12 +144,16 @@
   position: relative;
   height: clamp(68px, 9.5vw, 112px);
   width: clamp(88px, 9vw, 138px);
+  background: transparent;
 }
 
+/* Knock out baked-in white in client logos on gray marquee (same idea as print “multiply”) */
 .logoImg {
   object-fit: contain;
+  object-position: center;
+  mix-blend-mode: multiply;
   filter: grayscale(0.08);
-  opacity: 0.92;
+  opacity: 0.94;
   transition: opacity 180ms ease, filter 180ms ease;
 }
 

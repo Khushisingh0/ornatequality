@@ -2,10 +2,10 @@ import React from "react";
 import styles from "@/styles/aboutV2.module.css";
 
 import { AboutHero } from "./sections/AboutHero";
+import { AboutStatsBar } from "./sections/AboutStatsBar";
 import { WhoWeAre } from "./sections/WhoWeAre";
 import { Journey } from "./sections/Journey";
 import { MissionVision } from "./sections/MissionVision";
-import { CoreValues } from "./sections/CoreValues";
 import { Team } from "./sections/Team";
 import { WhyBrandsTrustUs } from "./sections/WhyBrandsTrustUs";
 import { CertificationsAndAssociations } from "./sections/CertificationsAndAssociations";
@@ -17,15 +17,19 @@ export default function AboutPage() {
     <div className={styles.page}>
       <AboutHero />
       <WhoWeAre />
-      <Journey />
+      <AboutStatsBar />
       <MissionVision />
-      <CoreValues />
+      <Journey />
       <Team />
       <WhyBrandsTrustUs />
       <CertificationsAndAssociations />
-      <ClientTestimonials />
+      <ClientTestimonials/>
       <HandshakeCta />
     </div>
   );
 }
+
+
+
+
 

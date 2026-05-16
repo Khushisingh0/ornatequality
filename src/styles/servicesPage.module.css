@@ -1,16 +1,27 @@
 .page {
+  --hero-navy: #001b3d;
+  --hero-gold: #f9ac38;
+  --hero-gray: #555555;
+  --hero-white: #ffffff;
+
   background: #ffffff;
 }
 
 .hero {
-  background: radial-gradient(900px 420px at 20% 30%, rgba(235, 244, 255, 0.85), rgba(238, 245, 255, 0.55) 55%, rgba(255, 255, 255, 0) 100%),
-    linear-gradient(180deg, rgba(241, 247, 255, 0.95) 0%, rgba(255, 255, 255, 1) 74%);
-  box-shadow:
-    inset 0 -1px 0 rgba(148, 163, 184, 0.26),
-    0 22px 44px rgba(2, 24, 64, 0.06);
+  --hero-navy: #001b3d;
+  --hero-gold: #f9ac38;
+  --hero-gray: #555555;
+  --hero-white: #ffffff;
+
+  background: var(--hero-white);
 }
 
 .main {
+  --hero-navy: #001b3d;
+  --hero-gold: #f9ac38;
+  --hero-gray: #555555;
+  --hero-white: #ffffff;
+
   width: 100%;
 }
 
@@ -31,28 +42,22 @@
 }
 
 .heroKicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 1.6px;
+  display: inline-block;
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(15, 55, 110, 0.9);
-  background: rgba(44, 126, 255, 0.10);
-  border: 1px solid rgba(44, 126, 255, 0.18);
-  margin-bottom: 12px;
+  color: var(--hero-gold);
 }
 
 .heroTitle {
-  margin: 0 0 10px;
-  font-size: 38px;
+  margin: 0 0 16px;
+  font-size: clamp(26px, 2.6vw + 10px, 42px);
   line-height: 1.12;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  color: rgba(10, 27, 43, 0.92);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--hero-navy);
 }
 
 .heroTitleLine {
@@ -60,11 +65,12 @@
 }
 
 .heroText {
-  margin: 0 0 16px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(10, 27, 43, 0.62);
-  max-width: 52ch;
+  margin: 0 0 28px;
+  font-size: clamp(16px, 0.6vw + 15px, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--hero-gray);
+  max-width: 48ch;
 }
 
 .heroTabs {
@@ -86,8 +92,8 @@
   border-radius: 12px;
   padding: 10px 16px;
   font-size: 12px;
-  font-weight: 900;
-  color: rgba(10, 27, 43, 0.72);
+  font-weight: 700;
+  color: var(--hero-navy);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -97,9 +103,9 @@
 }
 
 .tabActive {
-  background: linear-gradient(135deg, #0b3a86 0%, #0b57b5 55%, #0a6bd6 120%);
+  background: #041e5b;
   color: #ffffff;
-  box-shadow: 0 14px 28px rgba(2, 24, 64, 0.22);
+  box-shadow: 0 16px 36px rgba(15, 95, 168, 0.22);
 }
 
 .tab:hover,
@@ -137,6 +143,7 @@
   max-width: 1320px;
   margin: 40px auto;
   padding: 18px 20px 56px;
+  scroll-margin-top: 96px;
 }
 
 .sectionHead {
@@ -169,15 +176,20 @@
 }
 
 .sectionTitle {
-  font-size: 16px;
-  font-weight: 900;
-  color: rgba(10, 27, 43, 0.88);
+  margin: 0;
+  font-size: clamp(32px, 3.6vw + 14px, 56px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--hero-navy);
 }
 
 .sectionSubtitle {
-  font-size: 12px;
-  color: rgba(10, 27, 43, 0.58);
-  margin-top: 2px;
+  margin-top: 4px;
+  font-size: clamp(16px, 0.6vw + 15px, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--hero-gray);
 }
 
 .pills {
@@ -211,13 +223,38 @@
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(148, 163, 184, 0.30);
   border-radius: 12px;
-  padding: 14px 14px 12px;
+  padding: 0;
+  overflow: hidden;
   box-shadow: 0 14px 34px rgba(2, 24, 64, 0.08);
   min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  scroll-margin-top: 110px;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.cardBanner {
+  position: relative;
+  width: 100%;
+  height: clamp(140px, 22vw, 200px);
+  min-height: 140px;
+  flex-shrink: 0;
+  background: rgba(44, 126, 255, 0.08);
+}
+
+.cardBannerImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.cardContent {
   display: grid;
   align-content: start;
   gap: 8px;
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  padding: 14px 14px 12px;
+  flex: 1;
+  min-height: 0;
 }
 
 .card:hover {
@@ -249,7 +286,7 @@
 }
 
 .cardTitle {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
   color: rgba(10, 27, 43, 0.88);
 }
@@ -309,15 +346,20 @@
 }
 
 .helpTitle {
-  font-size: 15px;
-  font-weight: 900;
-  color: rgba(10, 27, 43, 0.88);
+  margin: 0;
+  font-size: clamp(18px, 1.6vw + 10px, 26px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--hero-navy);
 }
 
 .helpText {
-  font-size: 13px;
-  color: rgba(10, 27, 43, 0.58);
-  margin-top: 2px;
+  margin: 4px 0 0;
+  font-size: clamp(16px, 0.6vw + 15px, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--hero-gray);
 }
 
 .helpBtn {
@@ -368,41 +410,38 @@
 }
 
 .faqKicker {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 900;
-  color: rgba(11, 87, 181, 0.95);
-  background: rgba(44, 126, 255, 0.10);
-  border: 1px solid rgba(44, 126, 255, 0.18);
-  margin-bottom: 10px;
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hero-gold);
 }
 
 .faqTitle {
-  margin: 0;
-  font-size: 30px;
-  line-height: 1.14;
-  font-weight: 900;
-  color: rgba(10, 27, 43, 0.92);
+  margin: 0 0 16px;
+  font-size: clamp(26px, 2.6vw + 10px, 42px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--hero-navy);
 }
 
 .faqUnderline {
-  width: 46px;
-  height: 4px;
+  width: 84px;
+  height: 3px;
   border-radius: 999px;
-  background: rgba(11, 87, 181, 0.95);
-  margin: 10px 0 10px;
+  background: linear-gradient(90deg, rgba(249, 172, 56, 0.95), rgba(249, 172, 56, 0.2));
+  margin: 0 0 16px;
 }
 
 .faqSub {
   margin: 0 0 14px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(10, 27, 43, 0.62);
-  max-width: 70ch;
+  font-size: clamp(16px, 0.6vw + 15px, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--hero-gray);
+  max-width: 48ch;
 }
 
 .faqList {
@@ -626,7 +665,7 @@
   }
 
   .heroTitle {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .heroTitleLine {

@@ -1,10 +1,23 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Inter, Playfair_Display } from "next/font/google";
 import styles from "@/styles/aboutV2.module.css";
 
 import manPng from "@/assests/man.png";
 import { IconLinkedIn } from "./icons";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
 
 const members = [
   { name: "Amit Sharma", role: "Founder & CEO" },
@@ -16,10 +29,11 @@ const members = [
 
 export function Team() {
   return (
-    <section className={styles.section} aria-label="Meet our expert team">
+    <section className={`${styles.teamBand} ${inter.className}`} aria-label="Meet our expert team">
       <div className={styles.container}>
         <div className={styles.teamHead}>
-          <h2 className={styles.sectionHeadingCenter}>MEET OUR EXPERT TEAM</h2>
+          <div className={styles.teamKicker}>Our team</div>
+          <h2 className={`${styles.teamTitle} ${playfair.className}`}>Meet our expert team</h2>
         </div>
 
         <div className={styles.teamGrid} role="list">
@@ -29,7 +43,7 @@ export function Team() {
                 <Image src={manPng} alt="" fill sizes="220px" className={styles.memberImg} />
               </div>
               <div className={styles.memberBody}>
-                <div className={styles.memberName}>{m.name}</div>
+                <div className={`${styles.memberName} ${playfair.className}`}>{m.name}</div>
                 <div className={styles.memberRole}>{m.role}</div>
                 <a
                   className={styles.linkedinBtn}
@@ -46,7 +60,7 @@ export function Team() {
         </div>
 
         <div className={styles.teamCtaRow}>
-          <Link className={styles.outlineBtn} href="#">
+          <Link className={styles.teamCtaBtn} href="#">
             View all team members →
           </Link>
         </div>
@@ -54,4 +68,3 @@ export function Team() {
     </section>
   );
 }
-

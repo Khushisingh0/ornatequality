@@ -1,5 +1,18 @@
 import React from "react";
+import { Inter, Playfair_Display } from "next/font/google";
 import styles from "../../styles/query.module.css";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
 
 function PhoneIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -14,7 +27,10 @@ function PhoneIcon(props: React.SVGProps<SVGSVGElement>) {
 
 const Query = () => {
   return (
-    <section className={styles.section} aria-label="Request a call back">
+    <section
+      className={`${styles.section} ${inter.className}`}
+      aria-label="Request a call back"
+    >
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.left}>
@@ -22,51 +38,78 @@ const Query = () => {
               <span className={styles.phoneIcon} aria-hidden="true">
                 <PhoneIcon />
               </span>
-              <h2 className={styles.title}>
-                Request a call <br />
-                back
+              <h2 className={`${styles.title} ${playfair.className}`}>
+                Request a call back
               </h2>
             </div>
 
             <p className={styles.subtitle}>
               Would you like to speak to one of our Senior Technical advisers over the phone? Just
-              submit your details and we'll be in touch shortly. You can also email us if you would
-              prefer.
+              submit your details and we&apos;ll be in touch shortly. You can also email us if you
+              would prefer.
             </p>
           </div>
 
           <form className={styles.form} action="#" method="post">
             <div className={styles.field}>
-              <label className={styles.label}>Would you like to know more about this</label>
-              <select className={styles.control} defaultValue="">
-                <option value="" disabled>
-                  Select
-                </option>
-                <option>BIS CRS Registration</option>
-                <option>ISI Mark Certification</option>
-                <option>WPC ETA Approval</option>
-                <option>EPR Registration</option>
-                <option>BEE Certification</option>
-                <option>Other / More Certifications</option>
-              </select>
-            </div>
-
-            <div className={styles.field}>
-              <label className={styles.label}>Your Name</label>
-              <input className={styles.control} type="text" placeholder="Your Name" />
-            </div>
-
-            <div className={styles.field}>
-              <label className={styles.label}>10 digit Mobile No</label>
-              <input className={styles.control} type="tel" inputMode="numeric" placeholder="10 digit Mobile No" />
-            </div>
-
-            <div className={styles.field}>
-              <label className={styles.label} aria-hidden="true">
-                &nbsp;
+              <label className={styles.label} htmlFor="query-name">
+                Your Name
               </label>
+              <input
+                id="query-name"
+                className={styles.control}
+                type="text"
+                name="name"
+                autoComplete="name"
+                placeholder="Your Name"
+              />
+            </div>
+
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="query-mobile">
+                10 digit Mobile No
+              </label>
+              <input
+                id="query-mobile"
+                className={styles.control}
+                type="tel"
+                name="phone"
+                inputMode="numeric"
+                autoComplete="tel"
+                placeholder="10 digit Mobile No"
+              />
+            </div>
+
+            <div className={`${styles.field} ${styles.fieldSpan2}`}>
+              <label className={styles.label} htmlFor="query-email">
+                Email
+              </label>
+              <input
+                id="query-email"
+                className={styles.control}
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div className={`${styles.field} ${styles.fieldSpan2}`}>
+              <label className={styles.label} htmlFor="query-message">
+                Message
+              </label>
+              <textarea
+                id="query-message"
+                className={`${styles.control} ${styles.textarea}`}
+                name="message"
+                rows={3}
+                placeholder="How can we help you?"
+              />
+            </div>
+
+            <div className={`${styles.field} ${styles.fieldSubmit}`}>
               <button type="submit" className={styles.submit}>
-                SUBMIT
+                Submit
               </button>
             </div>
           </form>
@@ -77,4 +120,3 @@ const Query = () => {
 };
 
 export default Query;
-

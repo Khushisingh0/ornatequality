@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Playfair_Display } from "next/font/google";
 import styles from "@/styles/valuedClients.module.css";
 
 import flipkart from "@/assests/clientslogo/Flipkart.webp";
@@ -10,6 +11,12 @@ import hyundai from "@/assests/clientslogo/Hyundai.webp";
 import reliance from "@/assests/clientslogo/Reliance-digital.webp";
 import tseries from "@/assests/clientslogo/tseries.webp";
 import nokia from "@/assests/clientslogo/Nokia.webp";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
 
 const CLIENTS = [
   { name: "Flipkart", src: flipkart },
@@ -55,19 +62,21 @@ export default function ValuedClients() {
   return (
     <section className={styles.section} aria-labelledby="valued-clients-heading">
       <div className={styles.container}>
-        <h2 id="valued-clients-heading" className={styles.heading}>
-          Our Valued Clients
-        </h2>
-        <p className={styles.subheading}>
-          Trusted by leading brands and organizations across multiple industries for reliable
-          certification, compliance, and end-to-end regulatory support.
-        </p>
+        <div className={styles.headingBlock}>
+          <h2 id="valued-clients-heading" className={`${styles.heading} ${playfair.className}`}>
+            Our Valued Clients
+          </h2>
+          <div className={styles.headingUnderline} aria-hidden="true" />
+          <p className={styles.subheading}>
+            Trusted by leading brands and organizations across multiple industries for reliable
+            certification, compliance, and end-to-end regulatory support.
+          </p>
+        </div>
       </div>
 
       <div className={styles.marqueeBleed}>
         <div className={styles.marquee} role="presentation">
           <div className={styles.marqueeInner}>
-            {/* Three identical strips: animate by exactly one strip width (-33.333%) for a seamless loop */}
             <div className={styles.track}>
               <LogoStrip stripId="m1" />
               <LogoStrip stripId="m2" ariaHidden />

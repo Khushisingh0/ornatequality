@@ -1,6 +1,9 @@
-/* Importance strip */
+/* Importance strip — surface matches top bar; heading/body scale matches home Hero */
 .section {
-  background: linear-gradient(180deg, #eaf5ff 0%, #d7ecff 70%, #eaf5ff 100%);
+  --imp-navy: #001b3d;
+  --imp-gray: #555555;
+
+  background: #fdf8ee;
   padding: 22px 0;
 }
 
@@ -17,11 +20,16 @@
   margin-bottom: 12px;
 }
 
+/* Same vertical footprint as original strip (28px title); colors aligned with hero navy */
 .heading {
+  margin: 0;
+  text-align: center;
   font-size: 28px;
   font-weight: 900;
   letter-spacing: 1.3px;
-  color: rgba(10, 27, 43, 0.72);
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--imp-navy);
 }
 
 .underline {
@@ -76,13 +84,15 @@
 .itemTitle {
   font-size: 15px;
   font-weight: 900;
-  color: rgba(10, 27, 43, 0.84);
+  line-height: 1.25;
+  color: var(--imp-navy);
 }
 
 .itemDesc {
   font-size: 12.5px;
   font-weight: 700;
-  color: rgba(10, 27, 43, 0.6);
+  line-height: 1.45;
+  color: var(--imp-gray);
 }
 
 @media (max-width: 900px) {

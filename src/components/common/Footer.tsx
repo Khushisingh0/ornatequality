@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Inter } from "next/font/google";
 import styles from "../../styles/common/footer.module.css";
 
 import logo from "../../assests/logo.png";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+});
 
 function IconPin(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -94,12 +101,14 @@ function IconInstagram(props: React.SVGProps<SVGSVGElement>) {
 
 const Footer = () => {
   return (
-    <footer className={styles.footer} aria-label="Footer">
+    <footer className={`${styles.footer} ${inter.className}`} aria-label="Footer">
       <div className={styles.container}>
         <div className={styles.topGrid}>
           <div className={styles.brandCol}>
             <div className={styles.brandRow}>
-              <Image src={logo} alt="Ornate" className={styles.logo} priority />
+              <div className={styles.logoPlate}>
+                <Image src={logo} alt="Ornate" className={styles.logo} priority />
+              </div>
             </div>
             <p className={styles.brandText}>
               Your trusted partner for certification, compliance and regulatory approvals. We
@@ -173,12 +182,22 @@ const Footer = () => {
               </li>
               <li>
                 <a className={styles.link} href="/services">
+                  TEC Certification
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="/services">
+                  LMPC Registration
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="/services">
                   BEE Registration
                 </a>
               </li>
               <li>
                 <a className={styles.link} href="/services">
-                  EPR Authorization
+                  EPR Registration
                 </a>
               </li>
               <li>
@@ -188,7 +207,7 @@ const Footer = () => {
               </li>
               <li>
                 <a className={styles.link} href="/services">
-                  Audit &amp; Inspection
+                  Testing &amp; Documentation
                 </a>
               </li>
             </ul>

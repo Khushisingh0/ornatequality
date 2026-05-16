@@ -1,13 +1,26 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Inter, Playfair_Display } from "next/font/google";
 import styles from "@/styles/aboutV2.module.css";
 
 import aboutHeroImg from "@/assests/about11.png";
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
 export function AboutHero() {
   return (
-    <section className={styles.aboutHero} aria-label="About hero">
+    <section className={`${styles.aboutHero} ${inter.className}`} aria-label="About hero">
       <div className={styles.aboutHeroMedia} aria-hidden="true">
         <Image
           src={aboutHeroImg}
@@ -23,17 +36,16 @@ export function AboutHero() {
         <div className={styles.aboutHeroInner}>
           <div className={styles.aboutHeroKicker}>ABOUT US</div>
 
-          <h1 className={styles.aboutHeroTitle}>
-            Building Trust Through
-            <br />
-            Compliance Excellence
-            <br />
-            Since 2013
+          <h1 className={`${styles.aboutHeroTitle} ${playfair.className}`}>
+            The{" "}
+            <span className={styles.aboutHeroHighlight}>People, Passion, and Expertise</span> Behind{" "}
+            <span className={styles.aboutHeroHighlight}>India&apos;s Trusted Compliance Partner</span>
           </h1>
 
           <p className={styles.aboutHeroText}>
-            Helping manufacturers, importers, and global brands navigate regulatory requirements with
-            confidence and speed.
+            For over 13 years, Ornate has been helping manufacturers, importers, and global brands
+            simplify regulatory compliance, secure certifications, and achieve seamless market access
+            with confidence.
           </p>
 
           <div className={styles.aboutHeroCtaRow}>
@@ -59,4 +71,3 @@ export function AboutHero() {
     </section>
   );
 }
-

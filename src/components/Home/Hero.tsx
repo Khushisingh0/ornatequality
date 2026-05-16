@@ -1,11 +1,24 @@
 import React from "react";
 import Image from "next/image";
+import { Inter, Playfair_Display } from "next/font/google";
 import styles from "../../styles/hero.module.css";
 import heroImg from "../../assests/abtor.png";
 
-function IconShield(props: React.SVGProps<SVGSVGElement>) {
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+function IconShieldCheck(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" {...props}>
       <path
         fill="currentColor"
         d="M12 2 4 5.5V11c0 5.25 3.45 10.2 8 11 4.55-.8 8-5.75 8-11V5.5L12 2Zm-1 13.1-3.2-3.2 1.4-1.4L11 12.3l4.8-4.8 1.4 1.4L11 15.1Z"
@@ -14,31 +27,9 @@ function IconShield(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconClock(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
-      <path
-        fill="currentColor"
-        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 11h5v-2h-4V6h-2v7Z"
-      />
-    </svg>
-  );
-}
-
-function IconDoc(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
-      <path
-        fill="currentColor"
-        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm0 2.5L19.5 10H14V4.5ZM7 13h10v2H7v-2Zm0 4h10v2H7v-2Zm0-8h6v2H7V9Z"
-      />
-    </svg>
-  );
-}
-
 function IconUsers(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" {...props}>
       <path
         fill="currentColor"
         d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4ZM8 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-3 0-6 1.5-6 4v3h12v-3c0-2.5-3-4-6-4ZM8 13c-2.65 0-5 1.2-5 3.2V20h6v-2.6c0-1.35.65-2.5 1.7-3.35A8.7 8.7 0 0 0 8 13Z"
@@ -47,39 +38,9 @@ function IconUsers(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconTrophy(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M8 4h8v2a4 4 0 0 1-8 0V4Zm-3 2h3v2a3 3 0 0 1-3-3V6Zm14 0h-3v2a3 3 0 0 0 3-3V6ZM10 14h4M9 20h6M10 20v-3.2c0-.9.7-1.6 1.6-1.6h.8c.9 0 1.6.7 1.6 1.6V20"
-      />
-    </svg>
-  );
-}
-
-function IconBriefcase(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1M4 9.5A2.5 2.5 0 0 1 6.5 7h11A2.5 2.5 0 0 1 20 9.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9.5ZM10 12h4"
-      />
-    </svg>
-  );
-}
-
 function IconGlobe(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" {...props}>
       <path
         fill="none"
         stroke="currentColor"
@@ -92,155 +53,131 @@ function IconGlobe(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+function IconTarget(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.75" />
+      <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="1.75" />
+      <circle cx="12" cy="12" r="1.8" fill="currentColor" />
+    </svg>
+  );
+}
+
+/** WhatsApp mark — white on brand green (parent sets background) */
 function IconWhatsApp(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
       <path
         fill="currentColor"
-        d="M12.04 2A9.96 9.96 0 0 0 2 11.96a9.85 9.85 0 0 0 1.45 5.16L2 22l5-1.3a10 10 0 0 0 5.04 1.34h.01A9.96 9.96 0 0 0 22 12.04 10.01 10.01 0 0 0 12.04 2Zm5.8 14.46c-.24.67-1.2 1.23-1.95 1.4-.52.11-1.2.2-3.48-.75-2.92-1.21-4.8-4.19-4.95-4.39-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.58c.19 0 .45-.07.7.54.24.6.84 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.17-.31.38-.44.5-.15.15-.31.31-.14.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.64-.08.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.7.8 1.99.95.3.15.5.22.57.34.07.12.07.7-.17 1.37Z"
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
       />
     </svg>
   );
 }
 
-function Badge({ label }: { label: string }) {
-  return (
-    <span className={styles.badge} aria-label={label}>
-      <svg
-        className={styles.badgeSvg}
-        viewBox="0 0 80 80"
-        width="44"
-        height="44"
-        role="img"
-        aria-hidden="true"
-      >
-        <rect x="6" y="6" width="68" height="68" rx="16" fill="white" />
-        <path
-          d="M14 54c12-10 40-10 52 0"
-          stroke="rgba(0,0,0,0.08)"
-          strokeWidth="3"
-          fill="none"
-          strokeLinecap="round"
-        />
-        <text
-          x="40"
-          y="44"
-          textAnchor="middle"
-          fontSize="18"
-          fontWeight="800"
-          fill="#1b3a57"
-          fontFamily="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto"
-        >
-          {label}
-        </text>
-      </svg>
-    </span>
-  );
-}
+const WHATSAPP_HREF =
+  "https://wa.me/919266877738?text=" +
+  encodeURIComponent("Hi, I'd like to speak with an expert at Ornate Quality.");
 
 const Hero = () => {
   return (
-    <section className={styles.hero}>
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <div className={styles.pill}>Your Trusted Partner</div>
+    <section className={`${styles.hero} ${inter.className}`} aria-label="Hero">
+      <div className={styles.heroTop}>
+        <div className={styles.container}>
+          <div className={styles.left}>
+            <p className={styles.tagline}>Your compliance partner —</p>
 
-          <h1 className={styles.title}>
-              India's Leading
-            <span className={styles.titleAccent}> BIS,ISI </span>
-                & Compliance certification <span className={styles.titleAccent}>Experts</span>
+            <h1 className={`${styles.title} ${playfair.className}`}>
+              Helping Businesses Achieve Compliance. Build Trust. Grow Globally.
+            </h1>
 
-          </h1>
+            <p className={styles.subtitle}>
+              Expert solutions for BIS, WPC, BEE, EPR, CE and more. From consultation to
+              certification – we make compliance simple.
+            </p>
 
-          <p className={styles.subtitle}>
- Helping Manufacturers, Importers & Brands Get
-Government Approvals Faster — Without Hassle .          </p>
-
-          <div className={styles.stats} role="list" aria-label="Highlights">
-            <div className={styles.statItem} role="listitem">
-              <span className={styles.statIcon} aria-hidden="true">
-                <IconTrophy />
-              </span>
-              <div className={styles.statText}>
-                <div className={styles.statValue}>5000+</div>
-                <div className={styles.statLabel}>Certifications Done</div>
-              </div>
-            </div>
-
-            <div className={styles.statItem} role="listitem">
-              <span className={styles.statIcon} aria-hidden="true">
-                <IconBriefcase />
-              </span>
-              <div className={styles.statText}>
-                <div className={styles.statValue}>15+</div>
-                <div className={styles.statLabel}>Years Experience</div>
-              </div>
-            </div>
-
-            <div className={styles.statItem} role="listitem">
-              <span className={styles.statIcon} aria-hidden="true">
-                <IconGlobe />
-              </span>
-              <div className={styles.statText}>
-                <div className={styles.statValue}>PAN India</div>
-                <div className={styles.statLabel}>Service</div>
-              </div>
+            <div className={styles.ctaRow}>
+              <a className={styles.primaryBtn} href="/contact">
+                Book free consultation
+                <span className={styles.btnArrow} aria-hidden="true">
+                  →
+                </span>
+              </a>
+              <a
+                className={styles.secondaryBtn}
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className={styles.waIconWrap} aria-hidden="true">
+                  <IconWhatsApp width={22} height={22} />
+                </span>
+                WhatsApp
+                <span className={styles.btnArrowMuted} aria-hidden="true">
+                  →
+                </span>
+              </a>
             </div>
           </div>
 
-          <div className={styles.ctaRow}>
-            <a className={styles.primaryBtn} href="#">
-              Get Free Consultation
-              <span className={styles.btnArrow} aria-hidden="true">
-                →
-              </span>
-            </a>
-            <a
-              className={styles.secondaryBtn}
-              href="https://wa.me/919266877738"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconWhatsApp className={styles.whatsappIcon} />
-              WhatsApp
-              <span className={styles.btnArrowMuted} aria-hidden="true">
-                →
-              </span>
-            </a>
+          <div className={styles.right} aria-hidden="true">
+            <div className={styles.visual}>
+              <div className={styles.fadeIntoWhite} />
+              <div className={styles.heroImageWrap}>
+                <Image
+                  src={heroImg}
+                  alt=""
+                  fill
+                  priority
+                  className={styles.heroImage}
+                  sizes="(max-width: 1024px) 100vw, min(720px, 52vw)"
+                />
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className={styles.right} aria-hidden="true">
-          <div className={styles.visual}>
-            <div className={styles.heroImageWrap}>
-              <Image
-                src={heroImg}
-                alt="ORNATE Quality Services office"
-                fill
-                priority
-                className={styles.heroImage}
-                sizes="(max-width: 1024px) 100vw, min(720px, 55vw)"
-              />
+      <div className={styles.statsBar}>
+        <div className={styles.statsBarInner} role="list" aria-label="Company highlights">
+          <div className={styles.barStat} role="listitem">
+            <span className={styles.barStatIcon}>
+              <IconUsers />
+            </span>
+            <div className={styles.barStatText}>
+              <span className={styles.barStatValue}>13+</span>
+              <span className={styles.barStatLabel}>Years Experience</span>
             </div>
+          </div>
 
-            {/* <div className={styles.shield}>
-              <span className={styles.shieldInner}>
-                <IconShield />
-              </span>
-            </div> */}
+          <div className={styles.barStat} role="listitem">
+            <span className={styles.barStatIcon}>
+              <IconShieldCheck />
+            </span>
+            <div className={styles.barStatText}>
+              <span className={styles.barStatValue}>5000+</span>
+              <span className={styles.barStatLabel}>Certifications Delivered</span>
+            </div>
+          </div>
 
-            {/* <div className={styles.badgeIso}>
-              <Badge label="ISO" />
+          <div className={styles.barStat} role="listitem">
+            <span className={styles.barStatIcon}>
+              <IconGlobe />
+            </span>
+            <div className={styles.barStatText}>
+              <span className={styles.barStatValue}>100+</span>
+              <span className={styles.barStatLabel}>Global Clients</span>
             </div>
-            <div className={styles.badgeWpc}>
-              <Badge label="WPC" />
+          </div>
+
+          <div className={styles.barStat} role="listitem">
+            <span className={styles.barStatIcon}>
+              <IconTarget />
+            </span>
+            <div className={styles.barStatText}>
+              <span className={styles.barStatValue}>98%</span>
+              <span className={styles.barStatLabel}>Success Rate</span>
             </div>
-            <div className={styles.badgeBis}>
-              <Badge label="BIS" />
-            </div>
-            <div className={styles.badgeCe}>
-              <Badge label="CE" />
-            </div> */}
           </div>
         </div>
       </div>
