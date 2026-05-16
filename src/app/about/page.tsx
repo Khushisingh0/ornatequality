@@ -24,7 +24,7 @@ export default function AboutPage() {
       <WhyBrandsTrustUs />
       <CertificationsAndAssociations />
       <ClientTestimonials/>
-      <HandshakeCta />
+      {/* <HandshakeCta /> */}
     </div>
   );
 }

@@ -24,7 +24,8 @@ export function KnowledgeHubMenu({ variant = "desktop", onNavigate }: KnowledgeH
                 <span className={styles.itemTitle}>{item.title}</span>
                 <span className={styles.itemDesc}>{item.description}</span>
               </span>
-              <span className={styles.itemArrow} aria-hidden="true">
+              <span
+               className={styles.itemArrow} aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path
                     d="m9 6 6 6-6 6"

@@ -75,10 +75,16 @@ const Topbar = () => {
         </div>
 
         <div className={styles.section} data-slot="right">
-           <div className={styles.itemStatic}>
+          <a
+            className={styles.item}
+            href="https://www.google.com/maps/place/Supertech+Astralis/@28.5510933,77.3245904,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce5ce975fb079:0xe10ea4df9cc7fa68!8m2!3d28.5510933!4d77.3245904!16s%2Fg%2F11gk7j2v35"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Ornate Quality office location in Google Maps"
+          >
             <IconLocation className={styles.icon} />
             <span className={styles.text}>Ornate Quality Services Pvt. Ltd.</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>

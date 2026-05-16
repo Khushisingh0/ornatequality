@@ -27,7 +27,6 @@ export type MegaMenuColumn = {
   items: MegaMenuItem[];
 };
 
-/** Anchor ids on /services — must match card ids in ServicesContent */
 export const SERVICE_PAGE_ANCHORS = {
   bis: "bis-certification",
   bee: "bee-registration",
