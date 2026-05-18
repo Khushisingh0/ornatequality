@@ -18,6 +18,7 @@ const inter = Inter({
   display: "swap",
 });
 
+
 export function AboutHero() {
   return (
     <section className={`${styles.aboutHero} ${inter.className}`} aria-label="About hero">
@@ -46,8 +47,7 @@ export function AboutHero() {
             For over 13 years, Ornate has been helping manufacturers, importers, and global brands
             simplify regulatory compliance, secure certifications, and achieve seamless market access
             with confidence.
-          </p>
-
+           </p>
           <div className={styles.aboutHeroCtaRow}>
             <a className={styles.aboutHeroBtnPrimary} href="#">
               TALK TO EXPERT →
@@ -62,7 +62,7 @@ export function AboutHero() {
               Home
             </Link>
             <span className={styles.aboutHeroCrumbSep} aria-hidden="true">
-              {"›"}
+              {">"}
             </span>
             <span className={styles.aboutHeroCrumbCurrent}>About Us</span>
           </div>

@@ -1,8 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Inter, Playfair_Display } from "next/font/google";
 import styles from "../../styles/hero.module.css";
 import heroImg from "../../assests/abtor.png";
+import bisLogo from "@/assests/certi-img/BIS.webp";
+import beeLogo from "@/assests/certi-img/BEElogo.webp";
+import eprLogo from "@/assests/certi-img/msmp.jpeg";
+import wpcLogo from "@/assests/certi-img/wpc.webp";
+import {
+  SERVICE_PAGE_ANCHORS,
+  serviceHref,
+  type MegaMenuIcon,
+} from "@/components/common/servicesMegaMenu.data";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -79,6 +89,69 @@ const WHATSAPP_HREF =
   "https://wa.me/919266877738?text=" +
   encodeURIComponent("Hi, I'd like to speak with an expert at Ornate Quality.");
 
+const HERO_CERTIFICATIONS = [
+  { name: "BIS", href: serviceHref(SERVICE_PAGE_ANCHORS.bis), icon: { type: "image", src: bisLogo, alt: "BIS certification" } },
+  { name: "WPC", href: serviceHref(SERVICE_PAGE_ANCHORS.wpc), icon: { type: "image", src: wpcLogo, alt: "WPC approval" } },
+  { name: "BEE", href: serviceHref(SERVICE_PAGE_ANCHORS.bee), icon: { type: "image", src: beeLogo, alt: "BEE registration" } },
+  { name: "EPR", href: serviceHref(SERVICE_PAGE_ANCHORS.epr), icon: { type: "image", src: eprLogo, alt: "EPR registration" } },
+  {
+    name: "CE",
+    href: serviceHref(SERVICE_PAGE_ANCHORS.ce),
+    icon: { type: "glyph", glyph: "CE", tone: "blue" },
+  },
+] as const satisfies ReadonlyArray<{
+  name: string;
+  href: string;
+  icon: MegaMenuIcon;
+}>;
+
+/** Duplicated for visible horizontal marquee motion */
+const HERO_CERT_SCROLL = [...HERO_CERTIFICATIONS, ...HERO_CERTIFICATIONS];
+
+function HeroCertIcon({ icon }: { icon: MegaMenuIcon }) {
+  if (icon.type === "image") {
+    return (
+      <span className={styles.certIcon}>
+        <Image src={icon.src} alt="" width={26} height={26} className={styles.certIconImg} />
+      </span>
+    );
+  }
+
+  return (
+    <span className={`${styles.certIcon} ${styles[`certGlyph_${icon.tone}`]}`} aria-hidden="true">
+      <span className={styles.certGlyphText}>{icon.glyph}</span>
+    </span>
+  );
+}
+
+function HeroCertificationStrip({
+  stripId,
+  ariaHidden,
+}: {
+  stripId: string;
+  ariaHidden?: boolean;
+}) {
+  return (
+    <ul
+      className={styles.certIconRow}
+      aria-hidden={ariaHidden ? true : undefined}
+    >
+      {HERO_CERT_SCROLL.map(({ name, href, icon }, index) => (
+        <li key={`${stripId}-${name}-${index}`} className={styles.certIconItem}>
+          <Link
+            href={href}
+            className={styles.certIconLink}
+            aria-label={ariaHidden ? undefined : `${name} certification service`}
+            tabIndex={ariaHidden ? -1 : undefined}
+          >
+            <HeroCertIcon icon={icon} />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 const Hero = () => {
   return (
     <section className={`${styles.hero} ${inter.className}`} aria-label="Hero">
@@ -95,6 +168,15 @@ const Hero = () => {
               Expert solutions for BIS, WPC, BEE, EPR, CE and more. From consultation to
               certification – we make compliance simple.
             </p>
+
+            <div className={styles.certMarqueeWrap} aria-label="Core certification services">
+              <div className={styles.certMarqueeInner} role="presentation">
+                <div className={styles.certMarqueeTrack}>
+                  <HeroCertificationStrip stripId="h1" />
+                  <HeroCertificationStrip stripId="h2" ariaHidden />
+                </div>
+              </div>
+            </div>
 
             <div className={styles.ctaRow}>
               <a className={styles.primaryBtn} href="/contact">

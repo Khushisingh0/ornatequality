@@ -59,12 +59,123 @@ hero .container{
 }
 
 .subtitle {
-  margin: 0 0 28px;
+  margin: 0 0 14px;
   font-size: clamp(16px, 0.6vw + 15px, 18px);
   font-weight: 500;
   line-height: 1.55;
   color: var(--hero-gray);
   max-width: 48ch;
+}
+
+/* Certification icons — same width as subtitle paragraph */
+.certMarqueeWrap {
+  width: 100%;
+  max-width: 48ch;
+  margin: 0 0 22px;
+  min-width: 0;
+  background: transparent;
+}
+
+.certMarqueeInner {
+  overflow: hidden;
+  width: 100%;
+  background: transparent;
+}
+
+.certMarqueeTrack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: max-content;
+  background: transparent;
+  animation: hero-cert-marquee 28s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.certMarqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+/* Two duplicate strips — move exactly half for seamless loop */
+@keyframes hero-cert-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.certIconRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-shrink: 0;
+  gap: clamp(8px, 1vw, 14px);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.certIconItem {
+  flex: 0 0 auto;
+}
+
+.certIconLink {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 6px;
+  text-decoration: none;
+  background: transparent;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.certIconLink:hover {
+  transform: scale(1.06);
+  opacity: 0.92;
+}
+
+.certIconLink:focus-visible {
+  outline: 2px solid rgba(11, 87, 181, 0.35);
+  outline-offset: 2px;
+}
+
+.certIcon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.certIconImg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.certGlyphText {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.certGlyph_blue {
+  background: transparent;
+  color: #0b57b5;
 }
 
 .ctaRow {
@@ -335,7 +446,33 @@ hero .container{
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .certMarqueeTrack {
+    animation: none;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .certMarqueeTrack::-webkit-scrollbar {
+    display: none;
+  }
+
+  .certMarqueeTrack > ul:nth-child(2) {
+    display: none;
+  }
+
+  .certMarqueeTrack > ul:first-of-type {
+    flex-wrap: nowrap;
+  }
+}
+
 @media (max-width: 640px) {
+  .certMarqueeWrap {
+    max-width: 100%;
+  }
+
   .subtitle {
     max-width: 100%;
   }

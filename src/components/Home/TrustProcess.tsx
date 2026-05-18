@@ -182,7 +182,7 @@ const TrustProcess = () => {
                   <span className={styles.bulletIcon} aria-hidden="true">
                     <CheckIcon />
                   </span>
-                  <span className={styles.bulletText}>PAN India Service</span>
+                  <span className={styles.bulletText}>Global India Service</span>
                 </li>
               </ul>
 

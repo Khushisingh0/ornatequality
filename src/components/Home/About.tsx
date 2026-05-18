@@ -5,7 +5,7 @@ import { Playfair_Display } from "next/font/google";
 import styles from "../../styles/about.module.css";
 
 import aboutImg1 from "../../assests/supernova.png";
-import aboutImg2 from "../../assests/about2.webp";
+import aboutImg2 from "../../assests/abt22.png";
 import {
   IconEndToEnd,
   IconExpertTeam,

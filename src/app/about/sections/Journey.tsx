@@ -7,7 +7,7 @@ const milestones = [
   { year: "2015", label: "1000+ Certifications", icon: <IconBadge />, tone: "amber" },
   { year: "2018", label: "Pan India Expansion", icon: <IconUsers />, tone: "teal" },
   { year: "2021", label: "Global Client Network", icon: <IconGlobe />, tone: "violet" },
-  { year: "2026", label: "Premium Digital Compliance Platform", icon: <IconTarget />, tone: "rose" },
+  { year: "2026", label: "Advanced Compliance & Certification Solutions", icon: <IconTarget />, tone: "rose" },
   { year: "—", label: "Continuous Growth", icon: <IconCalendar />, tone: "slate" },
 ];
 
@@ -16,7 +16,6 @@ export function Journey() {
     <section className={styles.journeyWrap} aria-label="Our journey">
       <div className={styles.container}>
         <div className={styles.journeyTitle}>OUR JOURNEY</div>
-
         <div className={styles.timeline} role="list" aria-label="Milestones timeline">
           {milestones.map((m) => (
             <div className={styles.milestone} role="listitem" key={`${m.year}-${m.label}`}>
