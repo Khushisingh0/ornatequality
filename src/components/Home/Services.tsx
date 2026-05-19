@@ -148,6 +148,7 @@ function IconEpr(props: React.SVGProps<SVGSVGElement>) {
 type ServiceItem = {
   title: string;
   description: string;
+  href: string;
   Icon: (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element;
 };
 
@@ -157,21 +158,25 @@ const Services = () => {
       {
         title: "BIS CRS Registration",
         description: "Complete support for BIS CRS certification for electronic products.",
+        href: "/services/bis-crs-registration",
         Icon: IconBis,
       },
       {
         title: "ISI Mark Certification",
         description: "Get ISI Mark for your products as per Indian Standards.",
+        href: "/services#bis-certification",
         Icon: IconIsi,
       },
       {
         title: "WPC ETA Approval",
         description: "WPC approval for wireless & telecom products.",
+        href: "/services#wpc-approval",
         Icon: IconWpc,
       },
       {
         title: "EPR Registration",
         description: "EPR compliance for producers, importers & brands.",
+        href: "/services#epr-registration",
         Icon: IconEpr,
       },
     ],
@@ -203,7 +208,7 @@ const Services = () => {
                 </div>
                 <h3 className={styles.cardTitle}>{s.title}</h3>
                 <p className={styles.cardText}>{s.description}</p>
-                <a className={styles.learnMore} href="#">
+                <a className={styles.learnMore} href={s.href}>
                   Learn More <span aria-hidden="true">→</span>
                 </a>
               </article>

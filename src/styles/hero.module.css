@@ -11,9 +11,7 @@
   isolation: isolate;
   background: var(--hero-white);
 }
-hero .container{
-  
-}
+
 .heroTop {
   background: var(--hero-white);
 }
@@ -31,6 +29,7 @@ hero .container{
   grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
   align-items: stretch;
   gap: clamp(24px, 4vw, 48px);
+
 }
 
 .left {

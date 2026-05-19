@@ -27,11 +27,15 @@ export type MegaMenuColumn = {
   items: MegaMenuItem[];
 };
 
+export const SERVICE_ROUTES = {
+  bisCrs: "/services/bis-crs-registration",
+} as const;
+
 export const SERVICE_PAGE_ANCHORS = {
   bis: "bis-certification",
   bee: "bee-registration",
   epr: "epr-registration",
-  lmpc: "lmpc-registration",
+  lmpc: "lmpc-registration",  
   wpc: "wpc-approval",
   tec: "tec-certification",
   ce: "ce-certification",
@@ -40,6 +44,7 @@ export const SERVICE_PAGE_ANCHORS = {
 } as const;
 
 export function serviceHref(slug: string) {
+  if (slug.startsWith("/")) return slug;
   return `/services#${slug}`;
 }
 
@@ -52,7 +57,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
     items: [
       {
         label: "BIS CRS REGISTRATION",
-        slug: SERVICE_PAGE_ANCHORS.bis,
+        slug: SERVICE_ROUTES.bisCrs,
         icon: { type: "image", src: bisLogo, alt: "BIS CRS" },
       },
       {
@@ -128,6 +133,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
         slug: SERVICE_PAGE_ANCHORS.list,
         icon: { type: "glyph", glyph: "Rx", tone: "red" },
       },
+    
     ],
   },
   {
@@ -161,6 +167,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
         slug: SERVICE_PAGE_ANCHORS.testing,
         icon: { type: "image", src: nablLogo, alt: "NABL" },
       },
+     
       {
         label: "TPI (Third Party Inspection)",
         slug: SERVICE_PAGE_ANCHORS.list,
@@ -174,3 +181,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
     ],
   },
 ];
+
+
+
+

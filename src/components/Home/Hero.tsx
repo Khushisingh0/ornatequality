@@ -10,6 +10,7 @@ import eprLogo from "@/assests/certi-img/msmp.jpeg";
 import wpcLogo from "@/assests/certi-img/wpc.webp";
 import {
   SERVICE_PAGE_ANCHORS,
+  SERVICE_ROUTES,
   serviceHref,
   type MegaMenuIcon,
 } from "@/components/common/servicesMegaMenu.data";
@@ -90,7 +91,7 @@ const WHATSAPP_HREF =
   encodeURIComponent("Hi, I'd like to speak with an expert at Ornate Quality.");
 
 const HERO_CERTIFICATIONS = [
-  { name: "BIS", href: serviceHref(SERVICE_PAGE_ANCHORS.bis), icon: { type: "image", src: bisLogo, alt: "BIS certification" } },
+  { name: "BIS", href: SERVICE_ROUTES.bisCrs, icon: { type: "image", src: bisLogo, alt: "BIS certification" } },
   { name: "WPC", href: serviceHref(SERVICE_PAGE_ANCHORS.wpc), icon: { type: "image", src: wpcLogo, alt: "WPC approval" } },
   { name: "BEE", href: serviceHref(SERVICE_PAGE_ANCHORS.bee), icon: { type: "image", src: beeLogo, alt: "BEE registration" } },
   { name: "EPR", href: serviceHref(SERVICE_PAGE_ANCHORS.epr), icon: { type: "image", src: eprLogo, alt: "EPR registration" } },
