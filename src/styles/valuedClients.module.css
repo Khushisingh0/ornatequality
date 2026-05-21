@@ -106,7 +106,7 @@
   flex-wrap: nowrap;
   align-items: center;
   width: max-content;
-  animation: vc-marquee 48s linear infinite;
+  animation: vc-marquee 80s linear infinite;
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;

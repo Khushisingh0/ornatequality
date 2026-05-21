@@ -12,6 +12,21 @@ import reliance from "@/assests/clientslogo/Reliance-digital.webp";
 import tseries from "@/assests/clientslogo/tseries.webp";
 import nokia from "@/assests/clientslogo/Nokia.webp";
 
+import age from "@/assests/clientlogo/age.png";
+import alfaa from "@/assests/clientlogo/alfaa.jpg";
+import cambium from "@/assests/clientlogo/cambium.png";
+import digismart from "@/assests/clientlogo/digismart.png";
+import dishtv from "@/assests/clientlogo/dishtv.png";
+import ekkaa from "@/assests/clientlogo/ekkaa.png";
+import eson from "@/assests/clientlogo/eson.png";
+import orion from "@/assests/clientlogo/orion.png";
+import veira from "@/assests/clientlogo/veira.png";
+import videotex from "@/assests/clientlogo/videotex.png";
+import westway from "@/assests/clientlogo/westway.png";
+import brandworks from "@/assests/clientlogo/brandworks.png";
+import datamini from "@/assests/clientlogo/datamini.png";
+import mage from "@/assests/clientlogo/image.png";
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["600", "700"],
@@ -19,14 +34,28 @@ const playfair = Playfair_Display({
 });
 
 const CLIENTS = [
-  { name: "Flipkart", src: flipkart },
-  { name: "Croma", src: croma },
-  { name: "Hitachi", src: hitachi },
-  { name: "Asianet", src: asianet },
-  { name: "Hyundai", src: hyundai },
-  { name: "Reliance Digital", src: reliance },
-  { name: "T-Series", src: tseries },
-  { name: "Nokia", src: nokia },
+  { id: "flipkart", name: "Flipkart", src: flipkart },
+  { id: "croma", name: "Croma", src: croma },
+  { id: "hitachi", name: "Hitachi", src: hitachi },
+  { id: "asianet", name: "Asianet", src: asianet },
+  { id: "hyundai", name: "Hyundai", src: hyundai },
+  { id: "reliance", name: "Reliance Digital", src: reliance },
+  { id: "tseries", name: "T-Series", src: tseries },
+  { id: "nokia", name: "Nokia", src: nokia },
+  { id: "age", name: "AGE", src: age },
+  { id: "alfaa", name: "Alfaa", src: alfaa },
+  { id: "cambium", name: "Cambium", src: cambium },
+  { id: "digismart", name: "Digismart", src: digismart },
+  { id: "dishtv", name: "Dish TV", src: dishtv },
+  { id: "ekkaa", name: "Ekkaa", src: ekkaa },
+  { id: "eson", name: "Eson", src: eson },
+  { id: "orion", name: "Orion", src: orion },
+  { id: "veira", name: "Veira", src: veira },
+  { id: "videotex", name: "Videotex", src: videotex },
+  { id: "westway", name: "Westway", src: westway },
+  { id: "brandworks", name: "Brandworks", src: brandworks },
+  { id: "datamini", name: "Datamini", src: datamini },
+  { id: "mage", name: "Mage", src: mage },
 ] as const;
 
 function LogoStrip({
@@ -41,8 +70,8 @@ function LogoStrip({
       className={styles.logoRow}
       aria-hidden={ariaHidden ? true : undefined}
     >
-      {CLIENTS.map(({ name, src }) => (
-        <li key={`${stripId}-${name}`} className={styles.logoItem}>
+      {CLIENTS.map(({ id, name, src }) => (
+        <li key={`${stripId}-${id}`} className={styles.logoItem}>
           <div className={styles.logoSlot}>
             <Image
               src={src}
