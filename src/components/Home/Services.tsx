@@ -1,7 +1,13 @@
-"use client"
-import React, { useMemo } from "react";
+"use client";
+
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { Playfair_Display } from "next/font/google";
 import styles from "../../styles/services.module.css";
+import bisCrsIcon from "@/assests/certi-img/BIS.webp";
+import isiMarkIcon from "@/assests/certi-img/isi.png";
+import wpcEtaIcon from "@/assests/certi-img/wpc.webp";
+import eprRegistrationIcon from "@/assests/certi-img/msmp.jpeg";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -9,179 +15,135 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-function IconBis(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true" {...props}>
-      <defs>
-        <linearGradient id="bisG" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#0f5fa8" />
-          <stop offset="55%" stopColor="#0b79c9" />
-          <stop offset="100%" stopColor="#e12007" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M32 6 8 18v15c0 14 9.2 27.2 24 31 14.8-3.8 24-17 24-31V18L32 6Z"
-        fill="rgba(15,95,168,0.12)"
-        stroke="url(#bisG)"
-        strokeWidth="2"
-      />
-      <path
-        d="M24 34c3-6 13-6 16 0"
-        fill="none"
-        stroke="url(#bisG)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M22 26h20"
-        fill="none"
-        stroke="url(#bisG)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconIsi(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true" {...props}>
-      <rect
-        x="10"
-        y="10"
-        width="44"
-        height="44"
-        rx="12"
-        fill="#ffffff"
-        stroke="rgba(10,27,43,0.22)"
-        strokeWidth="2"
-      />
-      <path
-        d="M22 22h20M22 32h20M22 42h20"
-        stroke="#111827"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M24 22v20"
-        stroke="#0b79c9"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconWpc(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true" {...props}>
-      <circle cx="32" cy="32" r="22" fill="rgba(148,163,184,0.18)" />
-      <path
-        d="M20 34c4-7 20-7 24 0"
-        fill="none"
-        stroke="#0f5fa8"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M24 28c3-4 13-4 16 0"
-        fill="none"
-        stroke="#64748b"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M28 22c2-2 6-2 8 0"
-        fill="none"
-        stroke="#0b79c9"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconEpr(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true" {...props}>
-      <circle cx="32" cy="32" r="22" fill="rgba(34,197,94,0.14)" />
-      <path
-        d="M32 12c6 0 10 4 10 10 0 4-2 7-5 9"
-        fill="none"
-        stroke="#16a34a"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M32 52c-6 0-10-4-10-10 0-4 2-7 5-9"
-        fill="none"
-        stroke="#16a34a"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M26 18l-6 2 3 5"
-        fill="none"
-        stroke="#16a34a"
-        strokeWidth="3"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-      <path
-        d="M38 46l6-2-3-5"
-        fill="none"
-        stroke="#16a34a"
-        strokeWidth="3"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-      <path
-        d="M24 34h16"
-        stroke="rgba(22,163,74,0.55)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 type ServiceItem = {
   title: string;
   description: string;
   href: string;
-  Icon: (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element;
+  icon: StaticImageData;
+  iconAlt: string;
 };
 
+function IconChevronLeft(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
+      <path
+        d="M14.5 6 8.5 12l6 6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function IconChevronRight(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
+      <path
+        d="M9.5 6 15.5 12l-6 6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 const Services = () => {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
   const services = useMemo<ServiceItem[]>(
     () => [
       {
         title: "BIS CRS Registration",
         description: "Complete support for BIS CRS certification for electronic products.",
         href: "/services/bis-crs-registration",
-        Icon: IconBis,
+        icon: bisCrsIcon,
+        iconAlt: "BIS CRS Registration",
       },
       {
         title: "ISI Mark Certification",
         description: "Get ISI Mark for your products as per Indian Standards.",
         href: "/services#bis-certification",
-        Icon: IconIsi,
+        icon: isiMarkIcon,
+        iconAlt: "ISI Mark Certification",
       },
       {
         title: "WPC ETA Approval",
         description: "WPC approval for wireless & telecom products.",
         href: "/services#wpc-approval",
-        Icon: IconWpc,
+        icon: wpcEtaIcon,
+        iconAlt: "WPC ETA Approval",
       },
       {
         title: "EPR Registration",
         description: "EPR compliance for producers, importers & brands.",
         href: "/services#epr-registration",
-        Icon: IconEpr,
+        icon: eprRegistrationIcon,
+        iconAlt: "EPR Registration",
       },
     ],
     []
   );
+
+  const updateNavState = useCallback(() => {
+    const track = carouselRef.current;
+    if (!track) return;
+
+    const cards = track.querySelectorAll<HTMLElement>("[data-service-card]");
+    if (!cards.length) return;
+
+    const scrollLeft = track.scrollLeft;
+    const maxScroll = track.scrollWidth - track.clientWidth - 2;
+    setCanPrev(scrollLeft > 4);
+    setCanNext(scrollLeft < maxScroll);
+
+    let nearest = 0;
+    let minDist = Infinity;
+    cards.forEach((card, i) => {
+      const dist = Math.abs(card.offsetLeft - scrollLeft);
+      if (dist < minDist) {
+        minDist = dist;
+        nearest = i;
+      }
+    });
+    setActiveIndex(nearest);
+  }, []);
+
+  useEffect(() => {
+    const track = carouselRef.current;
+    if (!track) return;
+
+    updateNavState();
+    track.addEventListener("scroll", updateNavState, { passive: true });
+    window.addEventListener("resize", updateNavState);
+
+    return () => {
+      track.removeEventListener("scroll", updateNavState);
+      window.removeEventListener("resize", updateNavState);
+    };
+  }, [updateNavState, services.length]);
+
+  const scrollToCard = useCallback((index: number) => {
+    const track = carouselRef.current;
+    if (!track) return;
+
+    const card = track.querySelectorAll<HTMLElement>("[data-service-card]")[index];
+    if (!card) return;
+
+    track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    setActiveIndex(index);
+  }, []);
+
+  const scrollPrev = () => scrollToCard(Math.max(0, activeIndex - 1));
+  const scrollNext = () => scrollToCard(Math.min(services.length - 1, activeIndex + 1));
 
   return (
     <section className={styles.services} aria-label="Our core certification services">
@@ -195,7 +157,22 @@ const Services = () => {
         </div>
 
         <div className={styles.carouselWrap}>
-          <div className={styles.carousel} role="list">
+          <button
+            type="button"
+            className={styles.navBtn}
+            onClick={scrollPrev}
+            disabled={!canPrev}
+            aria-label="Previous service"
+          >
+            <IconChevronLeft />
+          </button>
+
+          <div
+            ref={carouselRef}
+            className={styles.carousel}
+            role="list"
+            aria-label="Certification service cards"
+          >
             {services.map((s) => (
               <article
                 key={s.title}
@@ -203,8 +180,14 @@ const Services = () => {
                 role="listitem"
                 data-service-card="true"
               >
-                <div className={styles.iconWrap} aria-hidden="true">
-                  <s.Icon />
+                <div className={styles.iconWrap}>
+                  <Image
+                    src={s.icon}
+                    alt={s.iconAlt}
+                    width={40}
+                    height={40}
+                    className={styles.serviceIconImg}
+                  />
                 </div>
                 <h3 className={styles.cardTitle}>{s.title}</h3>
                 <p className={styles.cardText}>{s.description}</p>
@@ -214,10 +197,20 @@ const Services = () => {
               </article>
             ))}
           </div>
+
+          <button
+            type="button"
+            className={`${styles.navBtn} ${styles.navBtnNext}`}
+            onClick={scrollNext}
+            disabled={!canNext}
+            aria-label="Next service"
+          >
+            <IconChevronRight />
+          </button>
         </div>
 
         <div className={styles.ctaRow}>
-          <a className={styles.ctaBtn} href="#">
+          <a className={styles.ctaBtn} href="/services">
             Explore All Services
           </a>
         </div>

@@ -1,314 +1,538 @@
-/* Trust + Process — top bar surface; headings align with home Hero; height-neutral spacing */
+/* Trust + Process — two columns with vertical divider, contained layout */
 .section {
   --hero-navy: #001b3d;
   --hero-gold: #ff9c08;
   --hero-gray: #555555;
   --tp-deep: #041e5b;
   --tp-blue: #0f5fa8;
-  --tp-muted: rgba(1, 6, 10, 0.72);
+  --tp-banner: #e8f2fa;
+  --tp-divider: #d5dce8;
 
-  background: #fdf8ee;
-  padding: clamp(44px, 6vw, 64px) 0 clamp(40px, 5vw, 56px);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
+  background: #f8f9fc;
+  padding: clamp(48px, 5.5vw, 72px) 0 clamp(44px, 5vw, 64px);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: min(100%, 1280px);
   margin: 0 auto;
-  padding: 0 clamp(14px, 3vw, 20px);
+  padding: 0 clamp(16px, 2.5vw, 24px);
+  min-width: 0;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: clamp(22px, 3.5vw, 36px);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 0;
+  align-items: stretch;
+  min-width: 0;
 }
 
+/* —— Left column —— */
 .left {
-  position: relative;
-  padding-right: 4px;
-  
+  min-width: 0;
+  padding-right: clamp(24px, 3vw, 40px);
+  border-right: 1px solid var(--tp-divider);
 }
 
-.title {
-  margin: 0 0 10px;
-  font-size: clamp(32px, 3.6vw + 14px, 56px);
-  line-height: 1.12;
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hero-gold);
+}
+
+.kickerLine {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--hero-gold);
+  flex-shrink: 0;
+}
+
+.mainTitle {
+  margin: 0 0 4px;
+  font-size: clamp(28px, 2.8vw + 10px, 44px);
+  line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--hero-navy);
 }
 
-.brand {
-  color: var(--hero-gold);
+.subTitle {
+  margin: 0 0 18px;
+  font-size: clamp(22px, 2vw + 8px, 34px);
+  line-height: 1.2;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--hero-navy);
 }
 
-.bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.intro {
+  margin: 0 0 14px;
+  font-size: clamp(14px, 0.35vw + 13px, 15.5px);
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--hero-gray);
+  max-width: 100%;
+}
+
+.featuresGrid {
   display: grid;
-  gap: 9px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 26px) clamp(20px, 2.5vw, 32px);
+  padding-top: clamp(10px, 2.2vw, 18px);
+  border-top: 1px solid rgba(10, 27, 43, 0.08);
+  min-width: 0;
 }
 
-.bullet {
+.featureItem {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: var(--hero-gray);
-  font-size: 14px;
-  line-height: 1.55;
-  font-weight: 500;
+  min-width: 0;
 }
 
-.bulletIcon {
-  width: 26px;
-  height: 26px;
+.featureIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
   display: grid;
   place-items: center;
-  flex: 0 0 auto;
-  margin-top: 0;
-  color: var(--hero-gold);
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(255, 156, 8, 0.28);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.85) inset,
-    0 8px 18px rgba(2, 24, 64, 0.06);
+  color: var(--hero-navy);
+  background: rgba(15, 95, 168, 0.08);
+  border: 1px solid rgba(15, 95, 168, 0.1);
 }
 
-.bulletText {
-  font-weight: 600;
-  font-size: 14px;
+.featureBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.featureTitle {
+  margin: 0 0 5px;
+  font-size: clamp(13.5px, 0.4vw + 12px, 15px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--hero-navy);
+  letter-spacing: -0.01em;
+}
+
+.featureDesc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 500;
   color: var(--hero-gray);
 }
 
-.leftGrid {
-  display: grid;
-  grid-template-columns: 1fr minmax(220px, 300px);
-  gap: clamp(10px, 2vw, 18px);
-  align-items: center;
-}
-
-.manWrap {
-  position: relative;
-  width: min(300px, 100%);
-  height: min(292px, 52vw);
-  max-height: 312px;
-  justify-self: start;
-  display: grid;
-  place-items: end center;
-}
-
-.manWrap::before {
-  content: "";
-  position: absolute;
-  inset: 12px 14px 52px 14px;
-  border-radius: 999px;
-  background: radial-gradient(
-    circle at 42% 28%,
-    rgba(255, 156, 8, 0.22) 0%,
-    rgba(253, 248, 238, 0.85) 52%,
-    rgba(253, 248, 238, 0.95) 100%
-  );
-  z-index: 0;
-}
-
-.manImg {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center 18%;
-  filter: drop-shadow(0 18px 36px rgba(4, 30, 91, 0.14));
-  transform: translateY(-14px);
-}
-
+/* —— Right column —— */
 .right {
-  padding: clamp(4px, 1vw, 10px) 0 0 clamp(6px, 1.5vw, 14px);
-  border-left: 1px solid rgba(10, 27, 43, 0.06);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2vw, 24px);
+  padding-left: clamp(24px, 3vw, 40px);
 }
 
-.titleRight {
-  margin: 0 0 12px;
-  font-size: clamp(22px, 1.35vw + 12px, 34px);
-  line-height: 1.12;
+.processBlock {
+  text-align: center;
+  min-width: 0;
+}
+
+.processTitle {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 1.6vw + 10px, 30px);
+  line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--hero-navy);
-  text-align: center;
 }
 
-.steps {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(10px, 1.8vw, 16px);
-  align-items: start;
-  padding-top: 8px;
-}
-
-.connector {
-  position: absolute;
-  left: 14%;
-  right: 14%;
-  top: 44px;
-  height: 2px;
-  z-index: 0;
+.processUnderline {
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin: 0 auto 22px;
   border-radius: 2px;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(15, 95, 168, 0.22) 0 8px,
-    transparent 8px 14px
-  );
-  opacity: 0.95;
+  background: var(--hero-gold);
 }
 
-.step {
+/* 4-step cards — equal height, aligned headings */
+.processCardsWrap {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  padding-top: 4px;
+}
+
+.processCards {
   position: relative;
   z-index: 1;
   display: grid;
-  justify-items: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 12px);
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+}
+
+.processCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  gap: 7px;
-  padding: 8px 6px 10px;
+  gap: 0;
+  padding: 16px 10px 18px;
   border-radius: 14px;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition:
-    outline-color 180ms ease,
-    background 180ms ease,
-    transform 180ms ease;
+  background: #ffffff;
+  border: 1px solid rgba(10, 27, 43, 0.07);
+  box-shadow: 0 6px 20px rgba(4, 30, 91, 0.07);
+  min-width: 0;
+  height: 100%;
+  min-height: 220px;
 }
 
-.step:hover {
-  background: rgba(15, 95, 168, 0.04);
-  outline-color: rgba(15, 95, 168, 0.22);
+.processCardHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  flex-shrink: 0;
+  min-height: 82px;
+  margin-bottom: 12px;
 }
 
-.stepTop {
-  display: grid;
-  justify-items: center;
-  gap: 8px;
+.processCardTop {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 28px;
+  align-items: center;
 }
 
-.stepCircleBlue,
-.stepCircleGold {
-  width: 62px;
-  height: 62px;
+.stepBadgeBlue,
+.stepBadgeGold {
+  width: 28px;
+  height: 28px;
   border-radius: 999px;
   display: grid;
   place-items: center;
+  font-size: 12px;
+  font-weight: 800;
   color: #fff;
-  border: 4px solid #ffffff;
+  flex-shrink: 0;
   position: relative;
   z-index: 2;
-  box-shadow:
-    0 0 18px rgba(0, 0, 0, 0.08),
-    0 10px 28px rgba(4, 30, 91, 0.18);
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+  box-shadow: 0 0 0 3px #ffffff;
 }
 
-.step:hover .stepCircleBlue,
-.step:hover .stepCircleGold {
-  transform: translateY(-2px);
-  box-shadow:
-    0 0 22px rgba(0, 0, 0, 0.1),
-    0 14px 34px rgba(4, 30, 91, 0.22);
+.stepBadgeBlue {
+  background: linear-gradient(145deg, var(--tp-deep) 0%, var(--tp-blue) 100%);
 }
 
-.stepCircleBlue {
-  background: linear-gradient(145deg, var(--tp-deep) 0%, var(--tp-blue) 58%, #1b8cde 115%);
+.stepBadgeGold {
+  background: linear-gradient(145deg, #8b6914 0%, var(--hero-gold) 100%);
 }
 
-.stepCircleGold {
-  background: linear-gradient(145deg, #8b6914 0%, var(--hero-gold) 52%, #e8d9a8 130%);
+.stepIconWrap {
+  color: var(--hero-navy);
+  line-height: 0;
+  margin: 0;
+  opacity: 0.92;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
 }
 
-.stepNo {
-  font-weight: 900;
-  color: rgba(10, 27, 43, 0.45);
-  font-size: 12px;
-  letter-spacing: 0.06em;
+.stepTitleBox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(1.35em * 2 + 2px);
+  margin-bottom: 12px;
+  flex-shrink: 0;
+  padding: 0 2px;
 }
 
 .stepTitle {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  width: 100%;
+  font-size: clamp(11.5px, 0.35vw + 10px, 13px);
   font-weight: 800;
-  font-size: clamp(13px, 0.4vw + 12px, 14px);
+  line-height: 1.35;
   color: var(--hero-navy);
-  min-height: 0;
-  display: grid;
-  align-content: center;
-  line-height: 1.3;
+  text-wrap: balance;
 }
 
-.stepText {
-  font-size: clamp(12px, 0.25vw + 11px, 13px);
-  line-height: 1.55;
+.stepTitleLine {
+  display: block;
+  width: 100%;
+}
+
+.stepDesc {
+  margin: 0;
+  padding-top: 0;
+  font-size: clamp(11px, 0.2vw + 10px, 12px);
+  line-height: 1.5;
+  font-weight: 500;
   color: var(--hero-gray);
-  max-width: 168px;
+  width: 100%;
+  max-width: 100%;
+  flex: 1 1 auto;
+  text-align: center;
 }
 
-@media (max-width: 1000px) {
+/* Commitment banner — content left | image right (no overlap) */
+.commitBanner {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  height: 152px;
+  min-height: 152px;
+  max-height: 152px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 95, 168, 0.12);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.commitText {
+  flex: 1 1 52%;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.6vw, 18px);
+  min-width: 0;
+  padding: clamp(16px, 2vw, 24px) clamp(14px, 2vw, 22px);
+  box-sizing: border-box;
+  background: linear-gradient(100deg, #f3f9fd 0%, #eaf4fb 55%, #e4f1fa 100%);
+  border-right: 1px solid var(--tp-divider);
+}
+
+.commitShield {
+  flex-shrink: 0;
+  color: var(--hero-navy);
+  line-height: 0;
+  align-self: center;
+}
+
+.commitShield svg {
+  width: 30px;
+  height: 30px;
+}
+
+.commitQuote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  font-size: clamp(14px, 1vw + 10px, 18px);
+  line-height: 1.38;
+  font-weight: 700;
+  color: var(--hero-navy);
+  letter-spacing: -0.01em;
+}
+
+.commitQuote::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-top: 11px;
+  border-radius: 1px;
+  background: rgba(0, 27, 61, 0.38);
+}
+
+.commitQuoteLine {
+  display: block;
+  white-space: nowrap;
+}
+
+.commitImageWrap {
+  position: relative;
+  flex: 0 0 48%;
+  width: 48%;
+  max-width: 48%;
+  height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.commitImage {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+/* Certification logos row */
+.certLogos {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: clamp(4px, 0.8vw, 10px);
+  align-items: end;
+  padding-top: 4px;
+  min-width: 0;
+  width: 100%;
+}
+
+.certLogoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.certLogoImgWrap {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.certLogoImg {
+  width: auto;
+  height: auto;
+  max-width: 36px;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+.certLogoFallback {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--hero-navy);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(10, 27, 43, 0.1);
+}
+
+.certLogoLabel {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hero-navy);
+  text-align: center;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+@media (max-width: 1100px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 0;
+  }
+
+  .left {
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--tp-divider);
   }
 
   .right {
-    padding: 0;
-    border-left: none;
-    border-top: 1px solid rgba(10, 27, 43, 0.06);
-    padding-top: 26px;
+    padding-left: 0;
+    padding-top: 28px;
   }
 
-  .titleRight {
-    text-align: center;
+  .processCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
 
-  .leftGrid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    align-items: start;
-  }
-
-  .manWrap {
-    justify-self: center;
-    width: min(320px, 88%);
-    height: 300px;
-    max-height: none;
-  }
 }
 
 @media (max-width: 700px) {
-  .steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px 12px;
+  .section {
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  .connector {
-    display: none;
+  .container {
+    padding: 0 14px;
   }
 
-  .stepText {
-    max-width: 220px;
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
-}
 
-@media (max-width: 420px) {
-  .steps {
+  .processCards {
     grid-template-columns: 1fr;
     max-width: 320px;
     margin: 0 auto;
   }
 
-  .stepCircleBlue,
-  .stepCircleGold {
-    width: 56px;
-    height: 56px;
+  .processCard {
+    min-height: 0;
+  }
+
+  .stepTitleLine {
+    white-space: normal;
+  }
+
+  .commitBanner {
+    height: 140px;
+    min-height: 140px;
+    max-height: 140px;
+  }
+
+  .commitText {
+    flex: 1 1 54%;
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .commitQuoteLine {
+    white-space: normal;
+  }
+
+  .commitImageWrap {
+    flex: 0 0 46%;
+    width: 46%;
+    max-width: 46%;
+  }
+
+  .certLogos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .certLogoImgWrap {
+    width: 34px;
+    height: 34px;
+  }
+
+  .certLogoImg {
+    max-width: 30px;
+    max-height: 30px;
   }
 }

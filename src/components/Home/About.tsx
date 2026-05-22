@@ -79,15 +79,15 @@ const About = () => {
               Compliance Partner
             </h2>
             <p className={styles.text}>
-              Ornate Certification is a leading regulatory compliance and certification consultancy. We
-              help businesses across industries obtain mandatory approvals and certifications from
-              regulatory bodies in India and international markets.
+            
+Ornate Quality Services is a trusted regulatory compliance and certification consultancy in India, we help organizations secure BIS Certification, CRS Registration, ISI Mark Certification, WPC Approval, TEC Certification, LMPC Registration, BEE Certification, FMCS, and other required permissions. Basically we make the whole journey easier, from documentation support and testing coordination, to application filing and certification assistance. 
+
             </p>
             <p className={styles.text}>
-              With deep expertise and a client-first approach, we ensure fast approvals, reduced risk,
-              and complete peace of mind.{" "}
+             Our team has industry know-how and a client first mindset, so approvals move quicker, compliance risks get reduced, and market entry feels smoother for manufacturers, importers, startups, plus global enterprises. This is across many industries 
+               
               <Link href="/about" className={styles.inlineReadMore}>
-                 Read More 
+                   Read More 
               </Link>
             </p>
 

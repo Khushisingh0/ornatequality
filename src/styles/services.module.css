@@ -51,18 +51,69 @@
 
 .carouselWrap {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.navBtn {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 27, 43, 0.12);
+  background: #ffffff;
+  color: var(--hero-navy);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(4, 30, 91, 0.1);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.navBtn:hover:not(:disabled) {
+  border-color: rgba(255, 156, 8, 0.45);
+  box-shadow: 0 8px 22px rgba(4, 30, 91, 0.14);
+  transform: translateY(-1px);
+}
+
+.navBtn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid rgba(255, 156, 8, 0.55);
+  outline-offset: 2px;
 }
 
 .carousel {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  flex: 1;
+  min-width: 0;
+  display: flex;
   gap: 18px;
-  overflow: visible;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   padding: 6px 4px 12px;
 }
 
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
 .card {
+  flex: 0 0 calc((100% - 54px) / 4);
+  min-width: calc((100% - 54px) / 4);
   scroll-snap-align: start;
   background: #ffffff;
   border: 1px solid rgba(10, 27, 43, 0.08);
@@ -102,10 +153,16 @@
   border-radius: 16px;
   display: grid;
   place-items: center;
-  background: rgba(255, 156, 8, 0.1);
-  border: 1px solid rgba(255, 156, 8, 0.22);
+  /* background: rgba(255, 156, 8, 0.1); */
+  /* border: 1px solid rgba(15, 15, 14, 0.22); */
   margin: 0 auto 12px;
   justify-self: center;
+}
+
+.serviceIconImg {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 .cardTitle {
@@ -190,13 +247,38 @@
   outline-offset: 3px;
 }
 
+@media (max-width: 1100px) {
+  .card {
+    flex: 0 0 calc((100% - 36px) / 3);
+    min-width: calc((100% - 36px) / 3);
+  }
+}
+
 @media (max-width: 900px) {
   .services {
     padding: 40px 0 48px;
   }
 
-  .carousel {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .card {
+    flex: 0 0 calc((100% - 18px) / 2);
+    min-width: calc((100% - 18px) / 2);
+  }
+}
+
+@media (max-width: 620px) {
+  .carouselWrap {
+    gap: 8px;
+    padding: 0;
+  }
+
+  .navBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .card {
+    flex: 0 0 100%;
+    min-width: 100%;
   }
 }
 
@@ -205,12 +287,7 @@
     padding: 0 14px;
   }
 
-  .carouselWrap {
-    display: block;
-  }
-
   .carousel {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
     padding: 10px 2px 14px;
   }
 }

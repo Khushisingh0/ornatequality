@@ -159,11 +159,10 @@ const Hero = () => {
       <div className={styles.heroTop}>
         <div className={styles.container}>
           <div className={styles.left}>
-            <p className={styles.tagline}>Your compliance partner —</p>
+            <p className={styles.tagline}>YOUR TRUSTED COMPLIANCE PARTNER —</p>
 
             <h1 className={`${styles.title} ${playfair.className}`}>
-              Helping Businesses Achieve Compliance. Build Trust. Grow Globally.
-            </h1>
+Helping Businesses Achieve Product Compliance & Certification Success            </h1>
 
             <p className={styles.subtitle}>
               Expert solutions for BIS, WPC, BEE, EPR, CE and more. From consultation to
