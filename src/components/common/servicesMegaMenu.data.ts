@@ -29,6 +29,8 @@ export type MegaMenuColumn = {
 
 export const SERVICE_ROUTES = {
   bisCrs: "/services/bis-crs-registration",
+  bisIsi: "/services/bis-isi-mark-certification",
+  bisFmcs: "/services/bis-fmcs-certification",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -100,7 +102,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
     items: [
       {
         label: "BIS-ISI MARK CERTIFICATION",
-        slug: SERVICE_PAGE_ANCHORS.bis,
+        slug: SERVICE_ROUTES.bisIsi,
         icon: { type: "image", src: bisLogo, alt: "BIS ISI" },
       },
       {
@@ -115,7 +117,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "FMCS (Foreign Manufacturers Certification Scheme)",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.bisFmcs,
         icon: { type: "glyph", glyph: "FM", tone: "navy" },
       },
       {

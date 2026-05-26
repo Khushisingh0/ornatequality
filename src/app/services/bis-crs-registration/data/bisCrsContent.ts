@@ -52,7 +52,8 @@ export const LATEST_NOTIFICATIONS = [
 
 export const OUR_SERVICES_LINKS = [
   { label: "BIS CRS Registration", href: "/services/bis-crs-registration" },
-  { label: "BIS ISI Mark Certification", href: "/services#bis-certification" },
+  { label: "BIS ISI Mark Certification", href: "/services/bis-isi-mark-certification" },
+  { label: "BIS FMCS Certification", href: "/services/bis-fmcs-certification" },
   { label: "WPC-ETA Approval", href: "/services#wpc-approval" },
   { label: "BEE Registration", href: "/services#bee-registration" },
   { label: "EPR Registration", href: "/services#epr-registration" },

@@ -71,7 +71,7 @@ const Services = () => {
       {
         title: "ISI Mark Certification",
         description: "Get ISI Mark for your products as per Indian Standards.",
-        href: "/services#bis-certification",
+        href: "/services/bis-isi-mark-certification",
         icon: isiMarkIcon,
         iconAlt: "ISI Mark Certification",
       },
