@@ -97,7 +97,7 @@ const HERO_CERTIFICATIONS = [
   { name: "EPR", href: serviceHref(SERVICE_PAGE_ANCHORS.epr), icon: { type: "image", src: eprLogo, alt: "EPR registration" } },
   {
     name: "CE",
-    href: serviceHref(SERVICE_PAGE_ANCHORS.ce),
+    href: SERVICE_ROUTES.ce,
     icon: { type: "glyph", glyph: "CE", tone: "blue" },
   },
 ] as const satisfies ReadonlyArray<{

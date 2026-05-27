@@ -48,6 +48,7 @@ const newsItems = [
     excerpt:
       "Brands must align energy performance declarations and lab reports with the latest BEE notification for listed appliances.",
     image: newsImg4,
+  
   },
   {
     id: "epr-cpcb-categories",

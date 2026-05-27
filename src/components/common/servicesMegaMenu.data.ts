@@ -34,6 +34,7 @@ export const SERVICE_ROUTES = {
   bee: "/services/bee-certification",
   wpc: "/services/wpc-eta-approval",
   tec: "/services/tec-certification",
+  ce: "/services/ce-certification",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -115,7 +116,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "CE CERTIFICATION",
-        slug: SERVICE_PAGE_ANCHORS.ce,
+        slug: SERVICE_ROUTES.ce,
         icon: { type: "glyph", glyph: "CE", tone: "blue" },
       },
       {

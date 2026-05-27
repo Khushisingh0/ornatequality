@@ -158,7 +158,7 @@ export default function ContactPage() {
             >
               <DirectionIcon />
               <span>Get Directions</span>
-            </a>
+            </a> 
           </div>
 
           <div className={styles.mapGrid}>
@@ -168,6 +168,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open Supertech Astralis location in Google Maps"
+            
             >
               <iframe
                 title="Ornate Quality - Office Location at Supertech Astralis, Sector 94, Noida"
@@ -210,6 +211,7 @@ export default function ContactPage() {
                     <a className={styles.link} href="tel:+918880013897">
                       +91-8880013897
                     </a>
+                    
                   </span>
                 </li>
                 <li>
@@ -232,6 +234,7 @@ export default function ContactPage() {
                     Sunday - Closed
                   </span>
                 </li>
+
               </ul>
 
               <a

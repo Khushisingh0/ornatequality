@@ -201,7 +201,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={styles.link} href="/services">
+                <a className={styles.link} href="/services/ce-certification">
                   CE Certification
                 </a>
               </li>

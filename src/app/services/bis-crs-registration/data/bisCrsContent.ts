@@ -59,7 +59,7 @@ export const OUR_SERVICES_LINKS = [
   { label: "EPR Registration", href: "/services#epr-registration" },
   { label: "LMPC Registration", href: "/services#lmpc-registration" },
   { label: "TEC Certification", href: "/services/tec-certification" },
-  { label: "CE Certification", href: "/services#ce-certification" },
+  { label: "CE Certification", href: "/services/ce-certification" },
 ];
 
 export const IMPORTANCE_ITEMS = [

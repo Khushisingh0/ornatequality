@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from "react";
+import { useActiveTocScroll } from "@/hooks/useActiveTocScroll";
 import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
@@ -153,6 +154,7 @@ function FaqAccordion() {
 
 export function WpcPageContent() {
   const [activeId, setActiveId] = useState(WPC_TOC[0].id);
+  const tocListRef = useActiveTocScroll(activeId);
 
   const scrollToSection = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -190,11 +192,12 @@ export function WpcPageContent() {
         <div className={styles.layout}>
           <nav className={styles.toc} aria-label="Table of contents">
             <div className={styles.tocHead}>Table of Contents</div>
-            <ol className={styles.tocList}>
+            <ol ref={tocListRef} className={styles.tocList}>
               {WPC_TOC.map((item, i) => (
                 <li key={item.id} className={styles.tocItem}>
                   <button
                     type="button"
+                    data-toc-id={item.id}
                     className={`${styles.tocLink} ${activeId === item.id ? styles.tocLinkActive : ""}`}
                     onClick={() => scrollToSection(item.id)}
                   >
