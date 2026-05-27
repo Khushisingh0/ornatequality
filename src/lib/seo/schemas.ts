@@ -1,6 +1,6 @@
 import { DEFAULT_PHONE, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const organizationSchema = {
+export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE_NAME,
@@ -11,7 +11,7 @@ const organizationSchema = {
   sameAs: ["https://www.linkedin.com/", "https://www.facebook.com/"],
 };
 
-const professionalServiceSchema = {
+export const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: SITE_NAME,
@@ -21,18 +21,27 @@ const professionalServiceSchema = {
   telephone: DEFAULT_PHONE,
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Office No. 1726, Astralis Tower, Sector 94",
     addressLocality: "Noida",
     addressRegion: "Uttar Pradesh",
+    postalCode: "201301",
     addressCountry: "IN",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 28.5355,
-    longitude: 77.391,
+    latitude: 28.5511,
+    longitude: 77.3246,
   },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
     opens: "09:00",
     closes: "18:30",
   },
@@ -49,17 +58,24 @@ const professionalServiceSchema = {
   ],
 };
 
-export function HomeJsonLd() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
-      />
-    </>
-  );
+export const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description:
+    "BIS Certification, CRS Registration, WPC Approval, TEC Certification, FMCS, LMCS and regulatory compliance consultancy in India.",
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/logo.png`,
+    },
+  },
+};
+
+/** Pretty-printed JSON-LD for readable “View Page Source” (like classic PHP sites). */
+export function jsonLdScript(schema: object): string {
+  return JSON.stringify(schema, null, 4);
 }

@@ -13,6 +13,7 @@ export default function BisFmcsCertificationPage() {
     <>
       <BisFmcsBanner />
       <BisFmcsPageContent />
+      
     </>
   );
 }

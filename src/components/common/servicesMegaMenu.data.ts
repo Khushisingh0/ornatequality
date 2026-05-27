@@ -31,6 +31,7 @@ export const SERVICE_ROUTES = {
   bisCrs: "/services/bis-crs-registration",
   bisIsi: "/services/bis-isi-mark-certification",
   bisFmcs: "/services/bis-fmcs-certification",
+  bee: "/services/bee-certification",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -64,7 +65,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "BEE (Bureau of Energy Efficiency)",
-        slug: SERVICE_PAGE_ANCHORS.bee,
+        slug: SERVICE_ROUTES.bee,
         icon: { type: "image", src: beeLogo, alt: "BEE" },
       },
       {

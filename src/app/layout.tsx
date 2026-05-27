@@ -4,6 +4,7 @@ import "./globals.css";
 import TopBar from "@/components/common/Topbar";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,8 +15,19 @@ export const metadata: Metadata = {
   },
   description:
     "BIS Certification, CRS Registration, WPC Approval, TEC, LMPC, FMCS and regulatory compliance consultancy in India.",
+  authors: [{ name: SITE_NAME }],
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+  },
+  formatDetection: {
+    telephone: false,
+  },
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
 };
 
@@ -32,6 +44,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <JsonLdScripts />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <TopBar />
         <Header />
