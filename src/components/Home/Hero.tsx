@@ -92,7 +92,7 @@ const WHATSAPP_HREF =
 
 const HERO_CERTIFICATIONS = [
   { name: "BIS", href: SERVICE_ROUTES.bisCrs, icon: { type: "image", src: bisLogo, alt: "BIS certification" } },
-  { name: "WPC", href: serviceHref(SERVICE_PAGE_ANCHORS.wpc), icon: { type: "image", src: wpcLogo, alt: "WPC approval" } },
+  { name: "WPC", href: SERVICE_ROUTES.wpc, icon: { type: "image", src: wpcLogo, alt: "WPC approval" } },
   { name: "BEE", href: SERVICE_ROUTES.bee, icon: { type: "image", src: beeLogo, alt: "BEE registration" } },
   { name: "EPR", href: serviceHref(SERVICE_PAGE_ANCHORS.epr), icon: { type: "image", src: eprLogo, alt: "EPR registration" } },
   {

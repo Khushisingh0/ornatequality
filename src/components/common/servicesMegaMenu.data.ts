@@ -32,6 +32,8 @@ export const SERVICE_ROUTES = {
   bisIsi: "/services/bis-isi-mark-certification",
   bisFmcs: "/services/bis-fmcs-certification",
   bee: "/services/bee-certification",
+  wpc: "/services/wpc-eta-approval",
+  tec: "/services/tec-certification",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -152,12 +154,12 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "WPC-ETA Approval",
-        slug: SERVICE_PAGE_ANCHORS.wpc,
+        slug: SERVICE_ROUTES.wpc,
         icon: { type: "image", src: wpcLogo, alt: "WPC ETA" },
       },
       {
         label: "TEC APPROVAL | Department of Telecommunications",
-        slug: SERVICE_PAGE_ANCHORS.tec,
+        slug: SERVICE_ROUTES.tec,
         icon: { type: "image", src: tecLogo, alt: "TEC" },
       },
       {

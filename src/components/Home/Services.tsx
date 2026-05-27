@@ -78,7 +78,7 @@ const Services = () => {
       {
         title: "WPC ETA Approval",
         description: "WPC approval for wireless & telecom products.",
-        href: "/services#wpc-approval",
+        href: "/services/wpc-eta-approval",
         icon: wpcEtaIcon,
         iconAlt: "WPC ETA Approval",
       },

@@ -54,11 +54,11 @@ export const OUR_SERVICES_LINKS = [
   { label: "BIS CRS Registration", href: "/services/bis-crs-registration" },
   { label: "BIS ISI Mark Certification", href: "/services/bis-isi-mark-certification" },
   { label: "BIS FMCS Certification", href: "/services/bis-fmcs-certification" },
-  { label: "WPC-ETA Approval", href: "/services#wpc-approval" },
+  { label: "WPC-ETA Approval", href: "/services/wpc-eta-approval" },
   { label: "BEE Registration", href: "/services/bee-certification" },
   { label: "EPR Registration", href: "/services#epr-registration" },
   { label: "LMPC Registration", href: "/services#lmpc-registration" },
-  { label: "TEC Certification", href: "/services#tec-certification" },
+  { label: "TEC Certification", href: "/services/tec-certification" },
   { label: "CE Certification", href: "/services#ce-certification" },
 ];
 

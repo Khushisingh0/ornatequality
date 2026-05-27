@@ -176,12 +176,12 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={styles.link} href="/services">
+                <a className={styles.link} href="/services/wpc-eta-approval">
                   WPC Approval
                 </a>
               </li>
               <li>
-                <a className={styles.link} href="/services">
+                <a className={styles.link} href="/services/tec-certification">
                   TEC Certification
                 </a>
               </li>
