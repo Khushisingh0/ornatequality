@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import bisBanner from "@/assests/services/bis_banner.webp";
+import bisBanner from "@/assests/services/biss.png";
 
 export function BisCrsBanner() {
   return (

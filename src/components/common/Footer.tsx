@@ -186,7 +186,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={styles.link} href="/services">
+                <a className={styles.link} href="/services/lmpc-registration">
                   LMPC Registration
                 </a>
               </li>
@@ -196,7 +196,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={styles.link} href="/services">
+                <a className={styles.link} href="/services/epr-registration">
                   EPR Registration
                 </a>
               </li>

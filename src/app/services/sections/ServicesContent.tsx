@@ -44,7 +44,6 @@ type ServiceItem = {
   title: string;
   description: string;
   icon: any;
-  /** Optional wide image at the top of the card; icon row stays below unchanged. */
   cardBanner?: any;
 };
 

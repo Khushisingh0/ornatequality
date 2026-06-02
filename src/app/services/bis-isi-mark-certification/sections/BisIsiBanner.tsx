@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import bisBanner from "@/assests/services/isimark.png";
+import bisBanner from "@/assests/services/isi.png";
 
 export function BisIsiBanner() {
   return (

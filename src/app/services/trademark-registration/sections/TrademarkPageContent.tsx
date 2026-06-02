@@ -12,18 +12,18 @@ import {
   LATEST_NOTIFICATIONS,
   OUR_SERVICES_LINKS,
 } from "../../bis-crs-registration/data/bisCrsContent";
-
 import {
-  CE_TOC,
-  PRODUCTS_COVERED_ROWS,
+  TRADEMARK_TOC,
+  TRADEMARK_TYPES_ROWS,
+  PROCESS_STEPS,
+  REQUIREMENTS_BULLETS,
   DOCUMENTS_ROWS,
   PENALTIES_ROWS,
-  PROCESS_STEPS,
   BENEFITS_ITEMS,
   FAQ_ITEMS,
-} from "../data/ceContent";
+} from "../data/trademarkContent";
 
-const CE_PAGE_PATH = "/services/ce-certification";
+const TRADEMARK_PAGE_PATH = "/services/trademark-registration";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,7 +47,7 @@ function CallbackForm() {
         </span>
         <p className={styles.formSuccessTitle}>Request Submitted!</p>
         <p className={styles.formSuccessText}>
-          Our CE certification expert will contact you within one business day.
+          Our trademark expert will contact you within one business day.
         </p>
       </div>
     );
@@ -56,26 +56,25 @@ function CallbackForm() {
   return (
     <form onSubmit={handleSubmit} noValidate>
       <div className={styles.formField}>
-        <label className={styles.formLabel} htmlFor="ce-callback-name">
+        <label className={styles.formLabel} htmlFor="tm-callback-name">
           Name
         </label>
         <input
-          id="ce-callback-name"
+          id="tm-callback-name"
           className={styles.formInput}
           type="text"
           name="name"
           required
           placeholder="Your full name"
           autoComplete="name"
-        
         />
       </div>
       <div className={styles.formField}>
-        <label className={styles.formLabel} htmlFor="ce-callback-email">
+        <label className={styles.formLabel} htmlFor="tm-callback-email">
           Email
         </label>
         <input
-          id="ce-callback-email"
+          id="tm-callback-email"
           className={styles.formInput}
           type="email"
           name="email"
@@ -85,11 +84,11 @@ function CallbackForm() {
         />
       </div>
       <div className={styles.formField}>
-        <label className={styles.formLabel} htmlFor="ce-callback-mobile">
+        <label className={styles.formLabel} htmlFor="tm-callback-mobile">
           Mobile Number
         </label>
         <input
-          id="ce-callback-mobile"
+          id="tm-callback-mobile"
           className={styles.formInput}
           type="tel"
           name="mobile"
@@ -100,20 +99,22 @@ function CallbackForm() {
         />
       </div>
       <div className={styles.formField}>
-        <label className={styles.formLabel} htmlFor="ce-callback-service">
+        <label className={styles.formLabel} htmlFor="tm-callback-service">
           Service
         </label>
         <select
-          id="ce-callback-service"
+          id="tm-callback-service"
           className={styles.formSelect}
           name="service"
-          defaultValue="CE Certification"
+          defaultValue="Trademark Registration"
         >
-          <option value="CE Certification">CE Certification</option>
-          <option value="WPC-ETA Approval">WPC-ETA Approval</option>
-          <option value="TEC Certification">TEC Certification</option>
+          <option value="Trademark Registration">Trademark Registration</option>
           <option value="BIS CRS Registration">BIS CRS Registration</option>
           <option value="BEE Certification">BEE Certification</option>
+          <option value="EPR Registration">EPR Registration</option>
+          <option value="GeM Portal Registration">GeM Portal Registration</option>
+          <option value="LMPC Registration">LMPC Registration</option>
+          <option value="IEC Registration">IEC Registration</option>
           <option value="Other">Other</option>
         </select>
       </div>
@@ -155,13 +156,12 @@ function FaqAccordion() {
   );
 }
 
-export function CePageContent() {
-  const [activeId, setActiveId] = useState(CE_TOC[0].id);
+export function TrademarkPageContent() {
+  const [activeId, setActiveId] = useState(TRADEMARK_TOC[0].id);
   const tocListRef = useActiveTocScroll(activeId);
 
   const scrollToSection = useCallback((id: string) => {
     const el = document.getElementById(id);
-    
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveId(id);
@@ -169,7 +169,7 @@ export function CePageContent() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = CE_TOC.map((item) => item.id);
+    const sectionIds = TRADEMARK_TOC.map((item) => item.id);
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -197,12 +197,14 @@ export function CePageContent() {
           <nav className={styles.toc} aria-label="Table of contents">
             <div className={styles.tocHead}>Table of Contents</div>
             <ol ref={tocListRef} className={styles.tocList}>
-              {CE_TOC.map((item, i) => (
+              {TRADEMARK_TOC.map((item, i) => (
                 <li key={item.id} className={styles.tocItem}>
                   <button
                     type="button"
                     data-toc-id={item.id}
-                    className={`${styles.tocLink} ${activeId === item.id ? styles.tocLinkActive : ""}`}
+                    className={`${styles.tocLink} ${
+                      activeId === item.id ? styles.tocLinkActive : ""
+                    }`}
                     onClick={() => scrollToSection(item.id)}
                   >
                     <span className={styles.tocNum}>{i + 1}.</span>
@@ -219,37 +221,35 @@ export function CePageContent() {
           <article className={styles.main}>
             <section id="introduction" className={styles.section}>
               <h2 className={styles.sectionTitle}>
-                CE Certification for Indian Manufacturers — Complete Guide to Exporting Products to Europe
+                Trademark Registration in India — Complete Guide to Protecting Your Brand Name and Logo
               </h2>
               <div className={styles.introGrid}>
                 <div className={styles.introTextCol}>
                   <p className={styles.sectionText}>
-                    If you are an Indian manufacturer looking to sell your products in Europe, CE Marking
-                    is not optional — it is the law. The CE Mark is a mandatory conformity marking for
-                    products sold in the European Economic Area (EEA), and it tells regulators, buyers,
-                    and consumers that your product meets all applicable European health, safety, and
-                    environmental requirements.
+                    Your brand name is one of your most valuable business assets. It is what
+                    customers recognise, trust, and return to. It is what distinguishes your products
+                    from every competitor in the market. And without a registered trademark, it is
+                    also one of the easiest things for someone else to copy.
                   </p>
                   <p className={styles.sectionText}>
-                    CE stands for Conformité Européenne — French for European Conformity. The marking is
-                    not a quality endorsement or a product standard in itself. It is a manufacturer's
-                    declaration that the product complies with all relevant EU Directives and
-                    Regulations for its category. Without the CE Mark, your product cannot legally
-                    enter or be sold in any of the 30 EEA member countries.
+                    Trademark Registration in India gives you the exclusive legal right to use your
+                    brand name, logo, slogan, or any other distinctive mark in connection with your
+                    goods or services. A registered trademark — marked with the ® symbol — tells
+                    the world that your brand is protected, that you own it, and that anyone who uses
+                    it without your permission is breaking the law.
                   </p>
                   <p className={styles.sectionText}>
-                    At Ornate Quality Services, we help Indian manufacturers obtain CE Certification for
-                    a wide range of product categories — from electronics and electrical equipment to
-                    machinery, medical devices, toys, and personal protective equipment. This guide
-                    explains everything you need to know about CE Marking — what it is, which products
-                    need it, how the process works, and what it costs.
+                    At Ornate Quality Services, we help manufacturers, importers, startups, and
+                    established businesses register their trademarks in India quickly and correctly.
+                    In this guide, we explain exactly what trademark registration is, who needs it, how
+                    the process works, how much it costs, and what happens if you delay.
                   </p>
                 </div>
 
                 <div className={styles.introImageWrap}>
                   <Image
                     src={buildingImage}
-                    alt="CE certification support for European exports"
+                    alt="Trademark registration and brand protection support"
                     fill
                     sizes="(min-width: 960px) 320px, 100vw"
                     className={styles.introImage}
@@ -261,112 +261,121 @@ export function CePageContent() {
                     &ldquo;
                   </span>
                   <p className={styles.blockquoteText}>
-                    Planning to export to Europe? Contact our team for a free CE Marking consultation
-                    and get a clear roadmap for your product&apos;s European market entry.
+                    Building a brand in India? Contact our team for a free trademark consultation
+                    and find out how to protect it before someone else does.
                   </p>
                 </blockquote>
               </div>
             </section>
 
-            <section id="what-is-ce" className={styles.section}>
-              <h2 className={styles.sectionTitle}>What is CE Certification?</h2>
+            <section id="what-is-trademark" className={styles.section}>
+              <h2 className={styles.sectionTitle}>What is Trademark Registration?</h2>
               <div className={styles.splitGrid}>
                 <div>
                   <p className={styles.sectionText}>
-                    CE Marking is a mandatory conformity assessment marking required for products sold
-                    within the European Economic Area (EEA) — which includes all 27 EU member states plus
-                    Iceland, Liechtenstein, and Norway. The CE Mark signifies that a product has been
-                    assessed against all applicable EU Directives or Regulations and found to comply with
-                    their essential health, safety, and environmental protection requirements.
+                    A trademark is any word, name, logo, symbol, device, label, signature, or combination
+                    thereof that is used to identify goods or services of one business and distinguish them
+                    from those of others. In India, trademarks are governed by the Trade Marks Act, 1999,
+                    and administered by the Office of the Controller General of Patents, Designs and Trade
+                    Marks (CGPDTM).
                   </p>
                   <p className={styles.sectionText}>
-                    For Indian manufacturers, CE Certification is the process of demonstrating that a
-                    product meets all applicable European requirements — through technical documentation,
-                    testing, conformity assessment, and in some cases, independent third-party
-                    verification by a Notified Body.
+                    Trademark Registration is the process of officially recording your trademark with the
+                    Trade Marks Registry — securing your exclusive right to use that mark in connection with
+                    the specific goods or services for which it is registered. Once registered, your trademark
+                    is valid for 10 years and can be renewed indefinitely every 10 years.
                   </p>
                   <p className={styles.sectionText}>
-                    The CE Mark is not a single certificate from a single body — it is a self-declaration
-                    of conformity backed by technical evidence. The manufacturer (or their Authorised
-                    Representative in the EU) is responsible for preparing a Technical File, issuing a
-                    Declaration of Conformity, and affixing the CE Mark.
+                    In India, trademark protection is available for a wide range of marks — including brand
+                    names, product names, logos, slogans, sounds, colours, and even the shape of packaging.
+                    A registered trademark gives you the right to use the ® symbol, to take legal action against
+                    infringers, and to license your brand.
                   </p>
                   <p className={styles.sectionText}>
-                    Some high-risk categories require third-party assessment by a Notified Body. Others
-                    allow self-certification provided all requirements are met. Our team will confirm the
-                    correct conformity assessment route for your product.
+                    Using a trademark without registration gives you some common law rights in India, but only
+                    a registered trademark gives you the full force of the Trade Marks Act — including the right
+                    to sue for infringement, claim damages, and have infringing goods seized.
                   </p>
                 </div>
+
                 <div className={styles.whatIsVisual} aria-hidden="true">
-                  <span className={styles.whatIsIcon}>CE</span>
-                  <span className={styles.whatIsLabel}>EU CONFORMITY</span>
+                  <span className={styles.whatIsIcon}>TM</span>
+                  <span className={styles.whatIsLabel}>TRADEMARK PROTECTION</span>
                 </div>
               </div>
             </section>
 
             <section id="importance" className={styles.section}>
-              <h2 className={styles.sectionTitle}>Why CE Certification Matters for Indian Exporters</h2>
-              <h3 className={styles.subsectionTitle}>Mandatory for European Market Entry</h3>
+              <h2 className={styles.sectionTitle}>Why Trademark Registration Is Essential for Your Business</h2>
+              <h3 className={styles.subsectionTitle}>Exclusive Legal Right to Your Brand</h3>
               <p className={styles.sectionText}>
-                CE Marking is a legal requirement for products in notified categories sold in the EEA.
-                Products without the CE Mark are illegal to sell, distribute, or even display for sale.
-                Enforcement by customs and market surveillance is active, and non-compliance can lead to
-                import refusals, recalls, and liability.
+                Trademark registration gives you the exclusive right to use your brand name or logo for the specific
+                goods and services you register it under — across all of India. Without registration, anyone can use a
+                similar name or logo, and your ability to stop them is limited and legally uncertain.
               </p>
-              <h3 className={styles.subsectionTitle}>Access to 30 European Countries with One Marking</h3>
+
+              <h3 className={styles.subsectionTitle}>Protection Against Copycats and Infringers</h3>
               <p className={styles.sectionText}>
-                One CE-marked product can be legally sold across all 30 EEA member countries — giving
-                Indian manufacturers access to a combined market of 450+ million consumers.
+                India's marketplace — both online and offline — is full of businesses that copy successful brand names and
+                logos. A registered trademark gives you legal tools to stop infringers, including cease and desist notices,
+                court orders, and criminal complaints under the Trade Marks Act.
               </p>
-              <h3 className={styles.subsectionTitle}>Required by European Importers and Distributors</h3>
+
+              <h3 className={styles.subsectionTitle}>Essential for E-Commerce Brand Protection</h3>
               <p className={styles.sectionText}>
-                European importers and distributors will not onboard products without CE compliance
-                documentation. Importers are also legally co-responsible for CE compliance.
+                Amazon India, Flipkart, and other e-commerce platforms require trademark registration to act against counterfeiters
+                and unauthorised sellers. Without a registered trademark, platforms cannot take action effectively on your behalf.
               </p>
-              <h3 className={styles.subsectionTitle}>E-Commerce Export Compliance</h3>
+
+              <h3 className={styles.subsectionTitle}>Builds Business Value and Credibility</h3>
               <p className={styles.sectionText}>
-                Platforms like Amazon EU and other marketplaces require CE compliance documentation where
-                applicable. Non-compliance leads to delisting and potential account actions.
+                A registered trademark is an intellectual property asset. It increases business valuation, strengthens investor
+                due diligence, and makes your brand more attractive for partners, distributors, and licensees.
               </p>
-              <h3 className={styles.subsectionTitle}>Builds Long-Term Brand Credibility in Europe</h3>
+
+              <h3 className={styles.subsectionTitle}>Foundation for International Expansion</h3>
               <p className={styles.sectionText}>
-                European buyers associate CE marking with safety and regulatory compliance. Proper CE
-                conformity assessment strengthens long-term trust and partnerships.
+                If you plan to expand globally, Indian trademark registration is the first step. It establishes your priority date and
+                supports international trademark applications under the Madrid Protocol.
               </p>
             </section>
 
-            <section id="products-covered" className={styles.section}>
-              <h2 className={styles.sectionTitle}>Which Products Require CE Marking?</h2>
+            <section id="what-can-be" className={styles.section}>
+              <h2 className={styles.sectionTitle}>What Can Be Registered as a Trademark in India?</h2>
               <p className={styles.sectionText}>
-                CE Marking applies to products covered under one or more EU Directives or Regulations.
-                Many products fall under multiple Directives simultaneously; our team maps all applicable
-                requirements for your product.
+                The Trade Marks Act, 1999, allows registration of a wide range of marks. The following table covers the most common types
+                of trademarks registered in India and examples of each.
               </p>
               <table className={styles.compareTable}>
                 <thead>
                   <tr>
-                    <th scope="col">Product Category</th>
-                    <th scope="col">Common Products</th>
-                    <th scope="col">Applicable EU Directive / Regulation</th>
+                    <th scope="col">Type of Trademark</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Examples</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {PRODUCTS_COVERED_ROWS.map((row) => (
-                    <tr key={row.category}>
-                      <th scope="row">{row.category}</th>
-                      <td>{row.products}</td>
-                      <td>{row.directive}</td>
+                  {TRADEMARK_TYPES_ROWS.map((row) => (
+                    <tr key={row.type}>
+                      <th scope="row">{row.type}</th>
+                      <td>{row.description}</td>
+                      <td>{row.examples}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <p className={styles.sectionText}>
+                Not every mark can be registered. Generic words, descriptive terms, geographical names, and marks that are identical or
+                confusingly similar to existing registered trademarks generally cannot be registered. We run a thorough trademark search
+                before filing to assess registrability.
+              </p>
             </section>
 
             <section id="process" className={styles.section}>
-              <h2 className={styles.sectionTitle}>CE Marking Certification Process — Step by Step</h2>
+              <h2 className={styles.sectionTitle}>Trademark Registration Process in India — Step by Step</h2>
               <p className={styles.sectionText}>
-                The CE Marking process is a structured conformity assessment covering directives, standards,
-                testing, documentation, and (where required) Notified Body involvement.
+                The trademark registration process is managed by the Trade Marks Registry under CGPDTM. Applications are filed online through
+                the IP India portal.
               </p>
               <div className={styles.processFlow} role="list">
                 {PROCESS_STEPS.map((step) => (
@@ -387,40 +396,23 @@ export function CePageContent() {
             </section>
 
             <section id="requirements" className={styles.section}>
-              <h2 className={styles.sectionTitle}>CE Marking Requirements for Indian Manufacturers</h2>
-              <h3 className={styles.subsectionTitle}>Product Compliance Requirements</h3>
+              <h2 className={styles.sectionTitle}>Trademark Registration Requirements in India</h2>
               <ul className={styles.bulletList}>
-                <li>Product must meet essential health, safety, and environmental requirements</li>
-                <li>Product must be tested against relevant harmonised EN standards</li>
-                <li>Technical File must be prepared and retained for at least 10 years</li>
-                <li>Signed Declaration of Conformity must be issued and retained</li>
-                <li>CE Mark must be affixed correctly to product and packaging</li>
+                {REQUIREMENTS_BULLETS.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
-
-              <h3 className={styles.subsectionTitle}>EU Authorised Representative Requirements</h3>
               <p className={styles.sectionText}>
-                For many categories, manufacturers outside the EU may need to appoint an EU Authorised
-                Representative (AR) established in the EEA. The AR is a point of contact for market
-                surveillance authorities and can be co-responsible for compliance depending on the product
-                category. We advise on AR requirements and selection.
-              </p>
-
-              <h3 className={styles.subsectionTitle}>Notified Body Requirements (High-Risk Products)</h3>
-              <p className={styles.sectionText}>
-                Certain high-risk categories require third-party assessment by a Notified Body. We confirm
-                if NB involvement is mandatory and support the engagement and submission workflow.
-              </p>
-              <p className={styles.sectionText}>
-                Not sure which Directives apply or whether you need a Notified Body? Contact us for a free
-                feasibility assessment.
+                Prior use vs proposed use: a trademark application can be filed based on prior use (used in trade) or on a proposed to be used basis.
+                Our team advises on the best basis for your specific situation.
               </p>
             </section>
 
             <section id="documents" className={styles.section}>
-              <h2 className={styles.sectionTitle}>Documents Required for CE Certification</h2>
+              <h2 className={styles.sectionTitle}>Documents Required for Trademark Registration</h2>
               <p className={styles.sectionText}>
-                The following documents form the core of the Technical File. Requirements vary by product
-                category and applicable Directive.
+                The following documents are required for trademark registration in India. Requirements vary slightly based on entity type
+                and whether the application is based on prior use or proposed use.
               </p>
               <table className={styles.compareTable}>
                 <thead>
@@ -440,53 +432,59 @@ export function CePageContent() {
                   ))}
                 </tbody>
               </table>
+              <p className={styles.sectionText}>
+                We provide a precise document checklist based on your applicant type and filing basis, and review documents for accuracy
+                before submission.
+              </p>
             </section>
 
             <section id="cost" className={styles.section}>
-              <h2 className={styles.sectionTitle}>CE Certification Cost for Indian Manufacturers</h2>
-              <h3 className={styles.subsectionTitle}>Laboratory Testing Charges</h3>
+              <h2 className={styles.sectionTitle}>Trademark Registration Cost in India</h2>
               <p className={styles.sectionText}>
-                Testing is often the biggest cost. For many consumer electronics products, accredited testing
-                typically costs around EUR 1,500 to EUR 5,000 depending on standards and scope. Testing can
-                be done at accredited labs in India if they hold relevant ISO 17025 scope.
+                Trademark registration is among the most affordable registrations for MSMEs and startups in India.
               </p>
-              <h3 className={styles.subsectionTitle}>Notified Body Fees</h3>
+              <h3 className={styles.subsectionTitle}>Government Filing Fee</h3>
               <p className={styles.sectionText}>
-                When Notified Body involvement is required, fees may range from EUR 2,000 to EUR 15,000 for
-                initial certification, with annual surveillance costs thereafter.
+                The government fee is INR 4,500 per class for individuals, sole proprietors, MSMEs, startups, and small enterprises with Udyam
+                Registration. For companies and large entities, the fee is INR 9,000 per class. These fees are payable at filing time and are non-refundable.
               </p>
-              <h3 className={styles.subsectionTitle}>Technical File Preparation</h3>
+              <h3 className={styles.subsectionTitle}>Multi-Class Strategy</h3>
               <p className={styles.sectionText}>
-                Technical File preparation requires expertise in Directives, EN standards, and risk assessment.
-                Ornate provides fixed, transparent professional fees for end-to-end support.
+                Many businesses register only one class and later discover their brand is unprotected in adjacent categories. We advise on a multi-class
+                strategy to give comprehensive protection from the outset.
               </p>
-              <h3 className={styles.subsectionTitle}>EU Authorised Representative Fee</h3>
+              <h3 className={styles.subsectionTitle}>Professional Service Fees</h3>
               <p className={styles.sectionText}>
-                AR appointment typically involves annual fees (commonly EUR 500 to EUR 2,000 per year) depending
-                on category and services required.
+                Ornate Quality Services charges a transparent, fixed professional fee for search, class identification, application preparation, online filing,
+                and response drafting if required.
+              </p>
+              <h3 className={styles.subsectionTitle}>Expedited Examination</h3>
+              <p className={styles.sectionText}>
+                The Trade Marks Registry offers expedited examination for an additional government fee, allowing faster examination than the standard queue.
+                We advise whether expedited examination is suitable for your situation.
               </p>
             </section>
 
             <section id="validity" className={styles.section}>
-              <h2 className={styles.sectionTitle}>CE Marking Validity and Ongoing Compliance</h2>
+              <h2 className={styles.sectionTitle}>Trademark Registration Validity and Renewal</h2>
               <p className={styles.sectionText}>
-                CE Marking does not have a fixed expiry date. It remains valid as long as the product continues
-                to comply with applicable EU requirements and no significant changes are made.
+                A registered trademark in India is valid for 10 years from the date of filing of the application (not from the registration date). This
+                backdates protection to the filing date.
               </p>
-              <h3 className={styles.subsectionTitle}>When CE Compliance Must Be Re-evaluated</h3>
+              <h3 className={styles.subsectionTitle}>Renewal Every 10 Years</h3>
               <p className={styles.sectionText}>
-                Re-evaluation is required when there are significant product changes or when Directives/standards
-                are updated and transition periods expire. We monitor updates and advise on impact proactively.
+                Trademarks must be renewed every 10 years. Renewal applications should be filed within 6 months before expiry (or within 6 months after
+                expiry with a surcharge). Non-renewed trademarks are removed from the register.
               </p>
-              <h3 className={styles.subsectionTitle}>Post-Brexit Considerations for UK Market</h3>
+              <h3 className={styles.subsectionTitle}>Non-Use and Cancellation</h3>
               <p className={styles.sectionText}>
-                The UK generally requires UKCA marking. CE may still be accepted for some categories under transitional
-                rules. We advise if you target EU + UK together.
+                A registered trademark can be removed if it has not been used continuously for 5 years. Maintaining evidence of use (invoices, packaging,
+                advertising, and commercial records) helps defend against cancellation challenges.
               </p>
             </section>
 
             <section id="benefits" className={styles.section}>
-              <h2 className={styles.sectionTitle}>Key Benefits of CE Certification for Indian Manufacturers</h2>
+              <h2 className={styles.sectionTitle}>Key Benefits of Trademark Registration for Your Business</h2>
               <ul className={styles.bulletList}>
                 {BENEFITS_ITEMS.map((item) => (
                   <li key={item}>{item}</li>
@@ -495,16 +493,15 @@ export function CePageContent() {
             </section>
 
             <section id="penalties" className={styles.section}>
-              <h2 className={styles.sectionTitle}>Consequences of Selling Non-CE Marked Products in Europe</h2>
+              <h2 className={styles.sectionTitle}>Penalties for Trademark Infringement in India</h2>
               <p className={styles.sectionText}>
-                European market surveillance authorities enforce CE compliance actively. A compliance failure in one
-                EU country can trigger action across multiple EEA markets.
+                The Trade Marks Act, 1999, provides civil and criminal remedies. Trademark owners have powerful legal tools for enforcement.
               </p>
               <table className={styles.compareTable}>
                 <thead>
                   <tr>
-                    <th scope="col">Violation</th>
-                    <th scope="col">Consequence</th>
+                    <th scope="col">Using / Violation</th>
+                    <th scope="col">Remedy / Penalty</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -516,45 +513,53 @@ export function CePageContent() {
                   ))}
                 </tbody>
               </table>
+              <p className={styles.sectionText}>
+                Trademark owners can approach appellate forums and High Courts for interim injunctions. When pursued properly,
+                enforcement options like Anton Piller orders can help stop infringement effectively.
+              </p>
             </section>
 
             <section id="case-study" className={styles.section}>
               <h2 className={styles.sectionTitle}>
-                Real Example — How We Helped an Indian LED Lighting Manufacturer Achieve CE Marking
+                Real Example — How We Helped a Delhi FMCG Brand Protect Its Name Before a Copycat Did
               </h2>
               <p className={styles.sectionText}>
-                A Gujarat-based LED lighting manufacturer lost a European distribution contract after failing to
-                provide Technical File and accredited test reports. They had assumed that printing a CE mark on
-                packaging was enough.
+                A Delhi-based FMCG startup that manufactured and sold natural personal care products under a distinctive brand name approached
+                Ornate Quality Services after discovering that a similar brand name had recently appeared on Amazon India — selling similar products
+                at lower prices and designed to capitalise on the recognition built over three years of marketing investment.
               </p>
+
               <h3 className={styles.subsectionTitle}>The Challenge</h3>
               <p className={styles.sectionText}>
-                The manufacturer had been affixing CE marking based on a supplier declaration, without a proper
-                conformity assessment. The distributor suspended the contract due to missing compliance evidence.
+                The startup had been using their brand name for three years but had never registered it as a trademark. The copycat brand also
+                had not registered the similar name either — creating a race at the Trade Marks Registry.
               </p>
+
               <h3 className={styles.subsectionTitle}>What We Did</h3>
               <p className={styles.sectionText}>
-                We performed a CE gap assessment, identified the applicable Directives (LVD, EMC, RoHS), coordinated
-                accredited testing, prepared the Technical File and risk assessment, and drafted the Declaration of
-                Conformity.
+                We conducted an immediate trademark search confirming that neither the exact name nor the similar name was registered in relevant classes.
+                We prepared the application on an urgent basis, filed within 48 hours, and secured the priority filing date. We also filed a complaint with Amazon
+                India's brand protection team with evidence of copying.
               </p>
+
               <h3 className={styles.subsectionTitle}>The Result</h3>
               <p className={styles.sectionText}>
-                CE compliance was achieved within 11 weeks. The distributor reinstated the contract, and the
-                manufacturer now runs new product development through compliance screening before finalising specs.
+                The startup secured a filing date ahead of any application by the copycat. Amazon removed the infringing listing within 10 days. The trademark is
+                now registered in all three classes and the business displays the ® symbol on packaging and marketing materials. They are also enrolled in Amazon's
+                Brand Registry for additional automated protection.
               </p>
             </section>
 
             <section id="faq" className={styles.section}>
-              <h2 className={styles.sectionTitle}>Frequently Asked Questions — CE Certification</h2>
+              <h2 className={styles.sectionTitle}>Frequently Asked Questions — Trademark Registration</h2>
               <FaqAccordion />
             </section>
 
             <section id="get-started" className={`${styles.section} ${styles.ctaSection}`}>
-              <h2 className={styles.sectionTitle}>Get Expert Assistance for CE Certification</h2>
+              <h2 className={styles.sectionTitle}>Get Expert Assistance for Trademark Registration</h2>
               <p className={styles.ctaText}>
-                Need help with Directive identification, testing coordination, Technical File preparation, or CE
-                marking? Connect with Ornate Quality Services for complete support.
+                Need help with trademark search, class identification, IP India filing, examination responses, or opposition defence? Connect with Ornate
+                Quality Services for complete support.
               </p>
               <div className={styles.ctaButtons}>
                 <Link href="/contact" className={styles.ctaBtnPrimary}>
@@ -614,7 +619,7 @@ export function CePageContent() {
                       <Link
                         href={link.href}
                         className={`${styles.servicesLink} ${
-                          link.href === CE_PAGE_PATH ? styles.servicesLinkActive : ""
+                          link.href === TRADEMARK_PAGE_PATH ? styles.servicesLinkActive : ""
                         }`}
                       >
                         {link.label}

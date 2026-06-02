@@ -34,6 +34,8 @@ export function CertificationHelpForm() {
     setSubmitted(true);
   }
 
+  
+
   if (submitted) {
     return (
       <div className={styles.certGuide} role="region" aria-label="Certification guidance">

@@ -85,7 +85,7 @@ const Services = () => {
       {
         title: "EPR Registration",
         description: "EPR compliance for producers, importers & brands.",
-        href: "/services#epr-registration",
+        href: "/services/epr-registration",
         icon: eprRegistrationIcon,
         iconAlt: "EPR Registration",
       },

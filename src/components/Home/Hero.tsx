@@ -94,7 +94,7 @@ const HERO_CERTIFICATIONS = [
   { name: "BIS", href: SERVICE_ROUTES.bisCrs, icon: { type: "image", src: bisLogo, alt: "BIS certification" } },
   { name: "WPC", href: SERVICE_ROUTES.wpc, icon: { type: "image", src: wpcLogo, alt: "WPC approval" } },
   { name: "BEE", href: SERVICE_ROUTES.bee, icon: { type: "image", src: beeLogo, alt: "BEE registration" } },
-  { name: "EPR", href: serviceHref(SERVICE_PAGE_ANCHORS.epr), icon: { type: "image", src: eprLogo, alt: "EPR registration" } },
+  { name: "EPR", href: "/services/epr-registration", icon: { type: "image", src: eprLogo, alt: "EPR registration" } },
   {
     name: "CE",
     href: SERVICE_ROUTES.ce,

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import wpcBanner from "@/assests/services/wpc.png";
+import wpcBanner from "@/assests/certi-img/wpc.png";
 
 export function WpcBanner() {
   return (
@@ -15,4 +15,5 @@ export function WpcBanner() {
       />
     </section>
   );
+  
 }

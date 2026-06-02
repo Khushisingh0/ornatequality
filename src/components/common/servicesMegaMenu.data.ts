@@ -35,6 +35,12 @@ export const SERVICE_ROUTES = {
   wpc: "/services/wpc-eta-approval",
   tec: "/services/tec-certification",
   ce: "/services/ce-certification",
+  lmpc: "/services/lmpc-registration",
+  epr: "/services/epr-registration",
+  gem: "/services/gem-registration",
+  iec: "/services/iec-registration",
+  trademark: "/services/trademark-registration",
+  iso: "/services/iso-certification",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -73,27 +79,27 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "EPR (Extended Producer Responsibility)",
-        slug: SERVICE_PAGE_ANCHORS.epr,
+        slug: SERVICE_ROUTES.epr,
         icon: { type: "image", src: eprLogo, alt: "EPR" },
       },
       {
         label: "GEM (Government e-Marketplace)",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.gem,
         icon: { type: "glyph", glyph: "GeM", tone: "orange" },
       },
       {
         label: "TRADEMARK REGISTRATION",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.trademark,
         icon: { type: "glyph", glyph: "™", tone: "red" },
       },
       {
         label: "IEC (Import Export Code)",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.iec,
         icon: { type: "glyph", glyph: "IEC", tone: "blue" },
       },
       {
         label: "LMPC (Legal Metrology Packaged Commodities)",
-        slug: SERVICE_PAGE_ANCHORS.lmpc,
+        slug: SERVICE_ROUTES.lmpc,
         icon: { type: "image", src: lmpcLogo, alt: "LMPC" },
       },
     ],
@@ -111,7 +117,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "ISO (International Organization for Standardization)",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.iso,
         icon: { type: "image", src: isoLogo, alt: "ISO" },
       },
       {
