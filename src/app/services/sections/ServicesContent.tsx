@@ -66,6 +66,7 @@ function TabIcon({ type }: { type: TabKey }) {
           <rect x="3" y="10" width="18" height="4" fill="#FFFFFF" />
           <rect x="3" y="14" width="18" height="4" fill="#138808" />
           <circle cx="12" cy="12" r="1.6" fill="#1A5FB4" />
+          
         </g>
         <rect
           x="3"

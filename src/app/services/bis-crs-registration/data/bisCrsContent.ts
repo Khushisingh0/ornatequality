@@ -61,6 +61,8 @@ export const OUR_SERVICES_LINKS = [
   { label: "IEC Registration", href: "/services/iec-registration" },
   { label: "Trademark Registration", href: "/services/trademark-registration" },
   { label: "ISO Certification", href: "/services/iso-certification" },
+  { label: "FSSAI Registration", href: "/services/fssai-registration" },
+  { label: "CDSCO Registration", href: "/services/cdsco-registration" },
   { label: "LMPC Registration", href: "/services/lmpc-registration" },
   { label: "TEC Certification", href: "/services/tec-certification" },
   { label: "CE Certification", href: "/services/ce-certification" },

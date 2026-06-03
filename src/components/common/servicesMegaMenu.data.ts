@@ -41,6 +41,8 @@ export const SERVICE_ROUTES = {
   iec: "/services/iec-registration",
   trademark: "/services/trademark-registration",
   iso: "/services/iso-certification",
+  fssai: "/services/fssai-registration",
+  cdsco: "/services/cdsco-registration",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -142,7 +144,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "CDSCO (Central Drugs Standard Control Organization)",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.cdsco,
         icon: { type: "glyph", glyph: "Rx", tone: "red" },
       },
     
@@ -156,7 +158,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
     items: [
       {
         label: "FSSAI (Food Safety and Standards Authority of India)",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.fssai,
         icon: { type: "glyph", glyph: "FSS", tone: "green" },
       },
       {
