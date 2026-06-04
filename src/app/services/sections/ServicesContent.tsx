@@ -210,6 +210,7 @@ export function ServicesContent() {
     const scrollToHash = () => {
       const hash = window.location.hash.replace("#", "");
       if (!hash) return;
+  
 
       requestAnimationFrame(() => {
         const el = document.getElementById(hash);
