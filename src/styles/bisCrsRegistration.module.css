@@ -22,7 +22,7 @@
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 var(--page-gutter, clamp(14px, 2.5vw, 24px));
   box-sizing: border-box;
 }
 
@@ -131,24 +131,27 @@
 .section {
   background: #fff;
   border-radius: 8px;
-  padding: 28px 32px;
+  padding: clamp(18px, 2.5vw, 28px) clamp(16px, 2.8vw, 32px);
   box-shadow: 0 2px 12px rgba(10, 31, 68, 0.06);
   border: 1px solid rgba(148, 163, 184, 0.14);
-  scroll-margin-top: 120px;
+  scroll-margin-top: calc(var(--topbar-height, 48px) + var(--header-height, 72px) + 16px);
+  min-width: 0;
 }
 
 .sectionTitle {
-  font-size: 22px;
+  font-size: clamp(18px, 1.2vw + 14px, 22px);
   font-weight: 700;
   color: #0a1f44;
-  margin: 0 0 16px;
+  margin: 0 0 clamp(12px, 1.5vw, 16px);
   padding-bottom: 10px;
   border-bottom: 2px solid #e83b47;
   display: inline-block;
+  max-width: 100%;
+  line-height: 1.3;
 }
 
 .sectionText {
-  font-size: 14px;
+  font-size: clamp(13px, 0.25vw + 12px, 14px);
   line-height: 1.75;
   color: #475569;
   margin: 0 0 14px;
@@ -169,7 +172,8 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 12px;
-  font-size: 13px;
+  font-size: clamp(12px, 0.2vw + 11px, 13px);
+  max-width: 100%;
 }
 
 .compareTable th,
@@ -840,10 +844,22 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 1280px) {
+  .layout {
+    grid-template-columns: 200px minmax(0, 1fr) 240px;
+    gap: 16px;
+    padding: 24px 0 40px;
+  }
+
+  .toc {
+    top: calc(var(--topbar-height, 48px) + var(--header-height, 72px) + 8px);
+  }
+}
+
 @media (max-width: 1100px) {
   .layout {
-    grid-template-columns: 210px minmax(0, 1fr) 250px;
-    gap: 16px;
+    grid-template-columns: 190px minmax(0, 1fr) 220px;
+    gap: 14px;
   }
 
   .importanceGrid {
@@ -900,9 +916,46 @@
   }
 }
 
+@media (max-width: 768px) {
+  .layout {
+    padding: 20px 0 36px;
+    gap: 16px;
+  }
+
+  .subsectionTitle {
+    font-size: clamp(14px, 0.4vw + 13px, 16px);
+  }
+
+  .compareTable {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .compareTable thead,
+  .compareTable tbody,
+  .compareTable tr {
+    display: table;
+    width: 100%;
+    min-width: 520px;
+  }
+
+  .processFlow {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+  }
+
+  .widgetHead {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 600px) {
   .section {
-    padding: 20px 18px;
+    padding: 18px 14px;
   }
 
   .tocList {
@@ -915,5 +968,17 @@
 
   .productsGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaBtnPrimary,
+  .ctaBtnSecondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 }

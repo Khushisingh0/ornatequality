@@ -1399,3 +1399,42 @@
   }
 }
 
+@media (max-width: 640px) {
+  .valuesGrid,
+  .trustGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .industryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .logoRow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .valuesGrid,
+  .trustGrid,
+  .industryGrid,
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .logoRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+

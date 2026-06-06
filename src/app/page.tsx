@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Hero from "@/components/Home/Hero";
 import About from "@/components/Home/About";
 import Services from "@/components/Home/Services";
-import TrustProcess from "@/components/Home/TrustProcess";
-import BlogSection from "@/components/Home/BlogSection";
-import ValuedClients from "@/components/Home/ValuedClients";
-import Query from "@/components/Home/Query";
-import Faq from "@/components/Home/Faq";
 import Importance from "@/components/Home/Importance";
+
+const TrustProcess = dynamic(() => import("@/components/Home/TrustProcess"));
+const BlogSection = dynamic(() => import("@/components/Home/BlogSection"));
+const ValuedClients = dynamic(() => import("@/components/Home/ValuedClients"));
+const Query = dynamic(() => import("@/components/Home/Query"));
+const Faq = dynamic(() => import("@/components/Home/Faq"));
 import { JsonLdList } from "@/components/seo/JsonLdScripts";
 import {
   HOME_DESCRIPTION,

@@ -107,7 +107,7 @@ const Footer = () => {
           <div className={styles.brandCol}>
             <div className={styles.brandRow}>
               <div className={styles.logoPlate}>
-                <Image src={logo} alt="Ornate" className={styles.logo} priority />
+                <Image src={logo} alt="Ornate" className={styles.logo} loading="lazy" />
               </div>
             </div>
             <p className={styles.brandText}>

@@ -162,28 +162,30 @@ export default function ContactPage() {
           </div>
 
           <div className={styles.mapGrid}>
-            <a
-              className={styles.mapFrame}
-              href="https://www.google.com/maps/place/Supertech+Astralis/@28.5510933,77.3245904,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce5ce975fb079:0xe10ea4df9cc7fa68!8m2!3d28.5510933!4d77.3245904!16s%2Fg%2F11gk7j2v35"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Supertech Astralis location in Google Maps"
-            
-            >
+            <div className={styles.mapFrame}>
               <iframe
+                className={styles.mapIframe}
                 title="Ornate Quality - Office Location at Supertech Astralis, Sector 94, Noida"
                 src="https://www.google.com/maps?q=Supertech+Astralis,+Sector+94,+Noida,+Uttar+Pradesh+201304&hl=en&z=17&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
               />
-              <span className={styles.mapOverlay}>
-                <span className={styles.mapOverlayPill}>
-                  <PinIcon />
-                  <span>Open in Google Maps</span>
+              <a
+                className={styles.mapOpenLink}
+                href="https://www.google.com/maps/place/Supertech+Astralis/@28.5510933,77.3245904,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce5ce975fb079:0xe10ea4df9cc7fa68!8m2!3d28.5510933!4d77.3245904!16s%2Fg%2F11gk7j2v35"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Supertech Astralis location in Google Maps"
+              >
+                <span className={styles.mapOverlay}>
+                  <span className={styles.mapOverlayPill}>
+                    <PinIcon />
+                    <span>Open in Google Maps</span>
+                  </span>
                 </span>
-              </span>
-            </a>
+              </a>
+            </div>
 
             <div className={styles.addressCard}>
               <div className={styles.addressBadge}>

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import styles from "../../styles/common/topbar.module.css";
 
 function IconPhone(props: React.SVGProps<SVGSVGElement>) {
@@ -49,19 +51,39 @@ function IconLocation(props: React.SVGProps<SVGSVGElement>) {
     >
       <path
         fill="currentColor"
-        d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
+        d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5Z"
       />
     </svg>
   );
 }
 
 const Topbar = () => {
+  const topbarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = topbarRef.current;
+    if (!el) return;
+
+    const syncHeight = () => {
+      document.documentElement.style.setProperty("--topbar-height", `${el.offsetHeight}px`);
+    };
+
+    syncHeight();
+    const observer = new ResizeObserver(syncHeight);
+    observer.observe(el);
+    window.addEventListener("resize", syncHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", syncHeight);
+    };
+  }, []);
+
   return (
-    <div className={styles.topbar}>
+    <div ref={topbarRef} className={styles.topbar}>
       <div className={styles.inner}>
         <div className={styles.section} data-slot="left">
-         
-           <a className={styles.item} href="tel:+919266877738">
+          <a className={styles.item} href="tel:+919266877738">
             <IconPhone className={styles.icon} />
             <span className={styles.text}>+91 926-687-7738</span>
           </a>

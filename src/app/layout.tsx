@@ -5,6 +5,7 @@ import TopBar from "@/components/common/Topbar";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import { inter, playfair } from "@/lib/fonts";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -43,7 +44,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <head>
         <JsonLdScripts />
       </head>

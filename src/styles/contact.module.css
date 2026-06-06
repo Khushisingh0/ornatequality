@@ -4,13 +4,13 @@
     radial-gradient(900px 280px at 18% 0%, rgba(15, 95, 168, 0.18), transparent 55%),
     radial-gradient(820px 260px at 92% 15%, rgba(0, 178, 160, 0.14), transparent 60%),
     linear-gradient(180deg, #eaf5ff 0%, #dfefff 55%, #d7ecff 100%);
-  padding: 54px 0;
+  padding: clamp(36px, 5vw, 54px) 0;
 }
 
 .container {
-  max-width: 1320px;
+  max-width: min(1320px, calc(100vw - 32px));
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--page-gutter, clamp(14px, 2.5vw, 24px));
 }
 
 .grid {
@@ -26,7 +26,7 @@
 
 .h1 {
   margin: 0 0 8px;
-  font-size: 42px;
+  font-size: clamp(28px, 2.8vw + 14px, 42px);
   line-height: 1.05;
   font-weight: 900;
   letter-spacing: -0.7px;
@@ -221,7 +221,12 @@
 /* ========================= */
 .mapSection {
   margin-top: 32px;
-  padding: 18px;
+  padding: clamp(12px, 3vw, 18px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 14px;
@@ -300,50 +305,61 @@
   grid-template-columns: 1.5fr 1fr;
   gap: 16px;
   align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .mapFrame {
   position: relative;
   display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid rgba(148, 163, 184, 0.30);
   box-shadow: 0 14px 36px rgba(2, 24, 64, 0.12);
-  height: 360px;
+  height: clamp(220px, 42vw, 360px);
   background: #e6eef7;
   isolation: isolate;
-  text-decoration: none;
 }
 
-.mapFrame iframe {
+.mapIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  max-width: 100%;
   border: 0;
   display: block;
   filter: saturate(1.05) contrast(1.02);
-  transition: transform 320ms ease;
 }
 
-.mapFrame:hover iframe {
-  transform: scale(1.02);
-}
-
-.mapOverlay {
+.mapOpenLink {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   padding: 14px;
+  text-decoration: none;
   background: linear-gradient(180deg, transparent 65%, rgba(2, 24, 64, 0.18) 100%);
   opacity: 0;
+  pointer-events: none;
   transition: opacity 220ms ease;
 }
 
-.mapFrame:hover .mapOverlay,
-.mapFrame:focus-visible .mapOverlay {
+.mapOpenLink:hover,
+.mapOpenLink:focus-visible {
   opacity: 1;
+}
+
+.mapOverlay {
+  pointer-events: auto;
+  display: inline-flex;
 }
 
 .mapOverlayPill {
@@ -468,7 +484,7 @@
 
 .directionBtn:focus-visible,
 .viewMapBtn:focus-visible,
-.mapFrame:focus-visible {
+.mapOpenLink:focus-visible {
   outline: 2px solid rgba(59, 130, 246, 0.55);
   outline-offset: 3px;
 }
@@ -489,7 +505,7 @@
   }
 
   .mapFrame {
-    height: 300px;
+    height: clamp(240px, 48vw, 320px);
   }
 }
 
@@ -507,12 +523,16 @@
   }
 
   .mapSection {
-    padding: 18px;
-    margin-top: 32px;
+    padding: 12px;
+    margin-top: 24px;
   }
 
   .mapTitle {
-    font-size: 22px;
+    font-size: clamp(18px, 4.5vw, 22px);
+  }
+
+  .mapSubtitle {
+    font-size: 12px;
   }
 
   .mapHeader {
@@ -522,6 +542,22 @@
   .directionBtn {
     width: 100%;
     justify-content: center;
+  }
+
+  .mapFrame {
+    height: clamp(200px, 56vw, 280px);
+    border-radius: 10px;
+  }
+
+  .mapOpenLink {
+    opacity: 1;
+    padding: 10px;
+    background: linear-gradient(180deg, transparent 78%, rgba(2, 24, 64, 0.14) 100%);
+  }
+
+  .mapOverlayPill {
+    font-size: 11px;
+    padding: 7px 12px;
   }
 
   .addressList li {
