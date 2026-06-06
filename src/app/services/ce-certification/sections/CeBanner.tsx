@@ -15,7 +15,8 @@ export function CeBanner() {
         sizes="100vw"
         
       />
+
+      
     </section>
   );
 }
-

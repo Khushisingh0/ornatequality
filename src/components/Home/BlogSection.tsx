@@ -16,6 +16,7 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+
 export default function BlogSection() {
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -45,6 +46,7 @@ export default function BlogSection() {
       excerpt:
         "Learn how to get BIS certification for your products and ensure compliance with Indian standards.",
     },
+
     {
       img: blog2,
       tag: "EPR",
@@ -52,6 +54,7 @@ export default function BlogSection() {
       excerpt:
         "Understand Extended Producer Responsibility and how it impacts compliance, sustainability, and your brand’s growth.",
     },
+    
     {
       img: blog3,
       tag: "WPC-ETA",

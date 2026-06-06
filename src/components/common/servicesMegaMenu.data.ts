@@ -43,6 +43,10 @@ export const SERVICE_ROUTES = {
   iso: "/services/iso-certification",
   fssai: "/services/fssai-registration",
   cdsco: "/services/cdsco-registration",
+  pesoCcoe: "/services/peso-ccoe-registration",
+  nabl: "/services/nabl-accreditation",
+  tpi: "/services/third-party-inspection",
+  rohs: "/services/rohs-certification",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -139,7 +143,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "CCOE / PESO",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.pesoCcoe,
         icon: { type: "glyph", glyph: "CC", tone: "navy" },
       },
       {
@@ -173,18 +177,18 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "RoHS COMPLIANCE",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.rohs,
         icon: { type: "glyph", glyph: "RoHS", tone: "green" },
       },
       {
         label: "NABL LAB TESTING SERVICES",
-        slug: SERVICE_PAGE_ANCHORS.testing,
+        slug: SERVICE_ROUTES.nabl,
         icon: { type: "image", src: nablLogo, alt: "NABL" },
       },
      
       {
         label: "TPI (Third Party Inspection)",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.tpi,
         icon: { type: "glyph", glyph: "TPI", tone: "red" },
       },
       {

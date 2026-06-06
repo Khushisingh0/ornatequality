@@ -13,6 +13,7 @@ export default function GemRegistrationPage() {
     <>
       <GemBanner />
       <GemPageContent />
+      
     </>
   );
 }
