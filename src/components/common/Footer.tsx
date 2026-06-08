@@ -9,6 +9,7 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   display: "swap",
+  
 });
 
 function IconPin(props: React.SVGProps<SVGSVGElement>) {
@@ -111,7 +112,7 @@ const Footer = () => {
               </div>
             </div>
             <p className={styles.brandText}>
-              Your trusted partner for certification, compliance and regulatory approvals. We
+              Your trusted partner for certification, khushi compliance and regulatory approvals. We
               help you achieve compliance with confidence.
             </p>
 
