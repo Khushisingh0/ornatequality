@@ -40,6 +40,7 @@ export function IconEndToEnd(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+
 export function IconPanGlobal(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>

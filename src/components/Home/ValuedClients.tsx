@@ -60,7 +60,7 @@ const CLIENTS = [
 
 function LogoStrip({
   ariaHidden,
-  stripId,
+  stripId,    
 }: {
   ariaHidden?: boolean;
   stripId: string;
@@ -117,3 +117,4 @@ export default function ValuedClients() {
     </section>
   );
 }
+

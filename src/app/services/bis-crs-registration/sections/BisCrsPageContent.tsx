@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import buildingImage from "@/assests/services/bis_building_image.webp";
+import buildingImage from "@/assests/services/certificate.png";
 import {
   BIS_CRS_TOC,
   WHY_ORNATE_ITEMS,

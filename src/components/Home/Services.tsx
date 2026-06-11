@@ -8,7 +8,6 @@ import bisCrsIcon from "@/assests/certi-img/BIS.webp";
 import isiMarkIcon from "@/assests/certi-img/isi.png";
 import wpcEtaIcon from "@/assests/certi-img/wpc.webp";
 import eprRegistrationIcon from "@/assests/certi-img/msmp.jpeg";
-
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["600", "700"],

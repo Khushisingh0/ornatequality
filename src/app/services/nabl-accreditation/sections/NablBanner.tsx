@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import nablBanner from "@/assests/certi-img/nabl.webp";
+import nablBanner from "@/assests/services/nabl.png";
 
 export function NablBanner() {
   return (

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import buildingImage from "@/assests/services/bis_building_image.webp";
+import buildingImage from "@/assests/services/certificate.png";
 import {
   WHY_ORNATE_ITEMS,
   LATEST_NOTIFICATIONS,
@@ -233,7 +233,9 @@ export function TrademarkPageContent() {
                   </p>
                   <p className={styles.sectionText}>
                     Trademark Registration in India gives you the exclusive legal right to use your
-                    brand name, logo, slogan, or any other distinctive mark in connection with your
+                    brand name, logo, sl
+                    
+                    ogan, or any other distinctive mark in connection with your
                     goods or services. A registered trademark — marked with the ® symbol — tells
                     the world that your brand is protected, that you own it, and that anyone who uses
                     it without your permission is breaking the law.

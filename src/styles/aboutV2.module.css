@@ -417,7 +417,7 @@
 }
 
 .journeyTitle {
-  composes: sectionHeadingCenter;
+  color-scheme: sectionHeadingCenter;
   margin: 0 0 18px;
 }
 

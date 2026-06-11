@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import rohsBanner from "@/assests/services/ce.png";
+import rohsBanner from "@/assests/services/rohs.png";
 
 export function RohsBanner() {
   return (

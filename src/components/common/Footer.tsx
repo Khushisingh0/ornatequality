@@ -162,7 +162,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link className={styles.link} href="/contact">
-                  Contact Us
+                  Contact Us 
                 </Link>
               </li>
             </ul>
