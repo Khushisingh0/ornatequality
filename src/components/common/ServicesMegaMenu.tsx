@@ -11,10 +11,25 @@ import {
   type MegaMenuColumn,
 } from "./servicesMegaMenu.data";
 
+const COLUMN_META: Record<string, { tagline: string; className: string }> = {
+  registration: {
+    tagline: "Licences & regulatory filings",
+    className: styles.column_reg,
+  },
+  certification: {
+    tagline: "Standards, marks & approvals",
+    className: styles.column_cert,
+  },
+  other: {
+    tagline: "Specialised compliance support",
+    className: styles.column_other,
+  },
+};
+
 function ColumnHeaderIcon({ column }: { column: MegaMenuColumn }) {
   if (column.headerGlyph === "reg") {
     return (
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
         <path
           d="M4 20V8l8-4 8 4v12H4Z"
           fill="none"
@@ -28,7 +43,7 @@ function ColumnHeaderIcon({ column }: { column: MegaMenuColumn }) {
   }
   if (column.headerGlyph === "cert") {
     return (
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
         <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.8" />
         <path
           d="m8 12 2.5 2.5L16 9"
@@ -42,7 +57,7 @@ function ColumnHeaderIcon({ column }: { column: MegaMenuColumn }) {
     );
   }
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
       <rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.8" />
       <path d="M8 10h8M8 14h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
@@ -53,7 +68,7 @@ function MenuItemIcon({ icon }: { icon: MegaMenuIcon }) {
   if (icon.type === "image") {
     return (
       <span className={styles.itemIcon}>
-        <Image src={icon.src} alt={icon.alt} width={28} height={28} className={styles.itemIconImg} />
+        <Image src={icon.src} alt={icon.alt} width={24} height={24} className={styles.itemIconImg} />
       </span>
     );
   }
@@ -65,44 +80,81 @@ function MenuItemIcon({ icon }: { icon: MegaMenuIcon }) {
   );
 }
 
+function parseItemLabel(label: string): { primary: string; secondary?: string } {
+  const parenMatch = label.match(/^(.+?)\s*\((.+)\)$/);
+  if (parenMatch) {
+    return { primary: parenMatch[1].trim(), secondary: parenMatch[2].trim() };
+  }
+
+  const pipeParts = label.split("|").map((part) => part.trim());
+  if (pipeParts.length === 2) {
+    return { primary: pipeParts[0], secondary: pipeParts[1] };
+  }
+
+  return { primary: label };
+}
+
+function MenuItemLabel({ label }: { label: string }) {
+  const { primary, secondary } = parseItemLabel(label);
+
+  return (
+    <span className={styles.itemText}>
+      <span className={styles.itemPrimary}>{primary}</span>
+      {secondary ? <span className={styles.itemSecondary}>{secondary}</span> : null}
+    </span>
+  );
+}
+
 type ServicesMegaMenuProps = {
   variant?: "desktop" | "mobile";
   onNavigate?: () => void;
 };
 
 export function ServicesMegaMenu({ variant = "desktop", onNavigate }: ServicesMegaMenuProps) {
+  const isMobile = variant === "mobile";
+
   return (
     <div
-      className={variant === "mobile" ? styles.mobilePanel : styles.panel}
+      className={isMobile ? styles.mobilePanel : styles.panel}
       role="navigation"
       aria-label="Services menu"
     >
       <div className={styles.columns}>
-        {servicesMegaMenuColumns.map((column) => (
-          <div key={column.id} className={styles.column}>
-            <div className={styles.columnHead}>
-              <span className={styles.columnHeadIcon} aria-hidden="true">
-                <ColumnHeaderIcon column={column} />
-              </span>
-              <h3 className={styles.columnTitle}>{column.title}</h3>
-            </div>
-            <div
-              className={`${styles.columnRule} ${column.accent === "teal" ? styles.columnRuleTeal : styles.columnRuleRed}`}
-              aria-hidden="true"
-            />
+        {servicesMegaMenuColumns.map((column) => {
+          const meta = COLUMN_META[column.id] ?? COLUMN_META.other;
 
-            <ul className={styles.itemList}>
-              {column.items.map((item) => (
-                <li key={item.label}>
-                  <Link href={serviceHref(item.slug)} className={styles.itemLink} onClick={onNavigate}>
-                    <MenuItemIcon icon={item.icon} />
-                    <span className={styles.itemLabel}>{item.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          return (
+            <div key={column.id} className={`${styles.column} ${meta.className}`}>
+              <div className={styles.columnHead}>
+                <div className={styles.columnHeadMain}>
+                  <span className={styles.columnHeadIcon} aria-hidden="true">
+                    <ColumnHeaderIcon column={column} />
+                  </span>
+                  <div className={styles.columnHeadText}>
+                    <h3 className={styles.columnTitle}>{column.title}</h3>
+                    <p className={styles.columnTagline}>{meta.tagline}</p>
+                  </div>
+                </div>
+                <span className={styles.columnCount}>{column.items.length}</span>
+              </div>
+              <div className={styles.columnRule} aria-hidden="true" />
+
+              <ul className={styles.itemList}>
+                {column.items.map((item) => (
+                  <li key={item.label}>
+                    <Link href={serviceHref(item.slug)} className={styles.itemLink} onClick={onNavigate}>
+                      <MenuItemIcon icon={item.icon} />
+                      <MenuItemLabel label={item.label} />
+                      <span className={styles.itemArrow} aria-hidden="true">
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
 
       <div className={styles.panelFooter}>
