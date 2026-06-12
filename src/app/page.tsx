@@ -14,7 +14,10 @@ import { JsonLdList } from "@/components/seo/JsonLdScripts";
 import {
   HOME_DESCRIPTION,
   HOME_KEYWORDS,
+  HOME_OG_IMAGE_ALT,
   HOME_TITLE,
+  homeBreadcrumbSchema,
+  homeFaqSchema,
   homeWebPageSchema,
 } from "@/lib/seo/home";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -23,50 +26,42 @@ export const metadata: Metadata = {
   title: HOME_TITLE,
   description: HOME_DESCRIPTION,
   keywords: HOME_KEYWORDS,
-  authors: [{ name: SITE_NAME }],
-  robots: {
-    index: true,
-    follow: true,
-    "max-image-preview": "large",
-    "max-snippet": -1,
-  },
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
     title: HOME_TITLE,
-    description:
-      "Expert consultants for BIS Certification, CRS Registration, WPC Approval, TEC Certification, FMCS, LMPC, and compliance services in India.",
+    description: HOME_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/favicon.ico",
-        width: 256,
-        height: 256,
-        alt: SITE_NAME,
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: HOME_OG_IMAGE_ALT,
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    site: "@OrnateQuality",
+    creator: "@OrnateQuality",
     title: HOME_TITLE,
-    description:
-      "Expert consultants for BIS Certification, CRS Registration, WPC Approval, TEC Certification, FMCS, LMPC, and compliance services in India.",
-  },
-  other: {
-    language: "English",
-    "geo.region": "IN-UP",
-    "geo.placename": "Noida",
+    description: HOME_DESCRIPTION,
+    images: ["/og-image.jpg"],
   },
 };
 
 export default function HomePage() {
   return (
     <>
-      <JsonLdList schemas={[homeWebPageSchema]} />
+      <JsonLdList
+        schemas={[homeWebPageSchema, homeFaqSchema, homeBreadcrumbSchema]}
+      />
       <Hero />
       <About />
       <Importance />

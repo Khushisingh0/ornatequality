@@ -47,6 +47,7 @@ export const SERVICE_ROUTES = {
   nabl: "/services/nabl-accreditation",
   tpi: "/services/third-party-inspection",
   rohs: "/services/rohs-certification",
+  audit: "/services/audit-services",
 } as const;
 
 export const SERVICE_PAGE_ANCHORS = {
@@ -193,7 +194,7 @@ export const servicesMegaMenuColumns: MegaMenuColumn[] = [
       },
       {
         label: "AUDIT SERVICES",
-        slug: SERVICE_PAGE_ANCHORS.list,
+        slug: SERVICE_ROUTES.audit,
         icon: { type: "glyph", glyph: "AUD", tone: "navy" },
       },
     ],

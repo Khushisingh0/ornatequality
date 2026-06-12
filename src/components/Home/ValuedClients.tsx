@@ -77,7 +77,7 @@ function LogoStrip({
               src={src}
               alt={ariaHidden ? "" : `${name} logo`}
               fill
-              sizes="(max-width: 640px) 210px, 260px"
+              sizes="104px"
               className={styles.logoImg}
             />
           </div>
@@ -109,7 +109,6 @@ export default function ValuedClients() {
             <div className={styles.track}>
               <LogoStrip stripId="m1" />
               <LogoStrip stripId="m2" ariaHidden />
-              <LogoStrip stripId="m3" ariaHidden />
             </div>
           </div>
         </div>

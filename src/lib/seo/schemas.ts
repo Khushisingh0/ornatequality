@@ -1,61 +1,146 @@
-import { DEFAULT_PHONE, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  DEFAULT_PHONE,
+  DEFAULT_PHONE_2,
+  SITE_ADDRESS,
+  SITE_ALT_NAME,
+  SITE_EMAIL,
+  SITE_EMAIL_MARKETING,
+  SITE_GEO,
+  SITE_LEGAL_NAME,
+  SITE_NAME,
+  SITE_SOCIAL,
+  SITE_URL,
+} from "@/lib/site";
 
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: SITE_NAME,
+  "@id": `${SITE_URL}#organization`,
+  name: SITE_LEGAL_NAME,
+  alternateName: SITE_ALT_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.png`,
+    width: 200,
+    height: 60,
+  },
   description:
-    "Ornate Quality Services provides BIS Certification, CRS Registration, WPC Approval, TEC Certification, FMCS Certification, LMPC Registration, product testing, and regulatory compliance services in India.",
-  sameAs: ["https://www.linkedin.com/", "https://www.facebook.com/"],
+    "Ornate Quality Services Pvt. Ltd. is India's trusted consultancy for BIS Certification, WPC Approval, TEC Certificate, CRS Registration, ISI Mark, LMPC, FMCS, BEE, EPR, ISO, CE and complete regulatory compliance services.",
+  telephone: DEFAULT_PHONE,
+  email: SITE_EMAIL,
+  address: {
+    "@type": "PostalAddress",
+    ...SITE_ADDRESS,
+  },
+  sameAs: [...SITE_SOCIAL],
 };
 
 export const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: SITE_NAME,
-  image: `${SITE_URL}/logo.png`,
-  "@id": SITE_URL,
-  url: SITE_URL,
-  telephone: DEFAULT_PHONE,
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_LEGAL_NAME,
+  alternateName: SITE_NAME,
+  url: `${SITE_URL}/`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.png`,
+    width: 300,
+    height: 80,
+  },
+  image: `${SITE_URL}/og-image.jpg`,
+  description:
+    "Ornate Quality Services is India's trusted regulatory compliance and certification consultancy, providing BIS Certification, CRS Registration, ISI Mark, WPC Approval, TEC, BEE, EPR, LMPC, and FMCS services with 13+ years of experience and 5000+ successful certifications.",
+  foundingDate: "2011",
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    minValue: 10,
+  },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Office No. 1726, Astralis Tower, Sector 94",
-    addressLocality: "Noida",
-    addressRegion: "Uttar Pradesh",
-    postalCode: "201301",
-    addressCountry: "IN",
+    ...SITE_ADDRESS,
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 28.5511,
-    longitude: 77.3246,
+    latitude: SITE_GEO.latitude,
+    longitude: SITE_GEO.longitude,
   },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
+  telephone: [DEFAULT_PHONE, DEFAULT_PHONE_2],
+  email: [SITE_EMAIL, SITE_EMAIL_MARKETING],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: DEFAULT_PHONE,
+      contactType: "customer service",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+    },
+  ],
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
+  serviceArea: {
+    "@type": "Country",
+    name: "India",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Certification & Compliance Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "BIS CRS Registration" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "ISI Mark Certification" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "WPC ETA Approval" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "TEC Certification" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "BEE Certification" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "EPR Registration" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "LMPC Registration" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "FMCS Certification" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "CE Certification" },
+      },
     ],
-    opens: "09:00",
-    closes: "18:30",
   },
-  serviceType: [
+  knowsAbout: [
     "BIS Certification",
     "CRS Registration",
-    "ISI Certification",
     "WPC Approval",
     "TEC Certification",
-    "FMCS Certification",
+    "BEE Certification",
+    "EPR Registration",
     "LMPC Registration",
-    "Product Testing",
-    "Regulatory Compliance Services",
+    "FMCS Certification",
+    "CE Certification",
+    "Regulatory Compliance India",
+    "Product Certification India",
   ],
+  sameAs: [...SITE_SOCIAL],
 };
 
 export const webSiteSchema = {
@@ -64,10 +149,10 @@ export const webSiteSchema = {
   name: SITE_NAME,
   url: SITE_URL,
   description:
-    "BIS Certification, CRS Registration, WPC Approval, TEC Certification, FMCS, LMCS and regulatory compliance consultancy in India.",
+    "BIS Certification, CRS Registration, WPC Approval, TEC Certification, FMCS, LMPC and regulatory compliance consultancy in India.",
   publisher: {
     "@type": "Organization",
-    name: SITE_NAME,
+    name: SITE_LEGAL_NAME,
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/logo.png`,

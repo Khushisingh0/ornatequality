@@ -6,34 +6,29 @@ import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { inter, playfair } from "@/lib/fonts";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  HOME_DESCRIPTION,
+  HOME_KEYWORDS,
+  HOME_OG_IMAGE_ALT,
+  HOME_TITLE,
+} from "@/lib/seo/home";
+import { SITE_LEGAL_NAME, SITE_NAME, SITE_URL } from "@/lib/site";
+
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
+const bingVerification = process.env.BING_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "BIS Certification Consultant India | Ornate Quality Services",
-    template: `%s | Ornate Quality Services`,
+    default: HOME_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
 
-  description:
-    "India's trusted BIS Certification Consultant. Expert support for WPC, TEC, CRS, BEE, EPR & LMPC. 13+ years · 5000+ certifications · 98% success rate. Free consultation.",
+  description: HOME_DESCRIPTION,
+  keywords: HOME_KEYWORDS,
 
-  keywords: [
-    "BIS Certification Consultant India",
-    "BIS CRS Registration",
-    "ISI Mark Certification",
-    "WPC ETA Approval",
-    "TEC Certification",
-    "BEE Certification",
-    "EPR Registration",
-    "LMPC Registration",
-    "FMCS Certification",
-    "product compliance India",
-    "regulatory compliance consultant India",
-  ],
-
-  authors: [{ name: "Ornate Quality Services Pvt. Ltd." }],
+  authors: [{ name: SITE_LEGAL_NAME }],
 
   robots: {
     index: true,
@@ -47,8 +42,8 @@ export const metadata: Metadata = {
     },
   },
 
- alternates: {
-  canonical: SITE_URL,
+  alternates: {
+    canonical: SITE_URL,
     languages: {
       "en-IN": "/",
       "x-default": "/",
@@ -58,20 +53,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    siteName: "Ornate Quality Services",
+    siteName: SITE_NAME,
     url: SITE_URL,
-
-    title: "BIS Certification Consultant India | Ornate Quality Services",
-
-    description:
-      "India's trusted BIS Certification Consultant. Expert support for WPC, TEC, CRS, BEE, EPR & LMPC. 13+ years · 5000+ certifications · 98% success rate. Free consultation.",
-
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ornate Quality Services — BIS Certification Consultant India",
+        alt: HOME_OG_IMAGE_ALT,
+        type: "image/jpeg",
       },
     ],
   },
@@ -80,29 +72,60 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@OrnateQuality",
     site: "@OrnateQuality",
-
-    title: "BIS Certification Consultant India | Ornate Quality Services",
-
-    description:
-      "India's trusted BIS Certification Consultant. Expert support for WPC, TEC, CRS, BEE, EPR & LMPC. 13+ years · 5000+ certifications · 98% success rate.",
-
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: ["/og-image.jpg"],
   },
 
-  verification: {
-    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
-    other: {
-      "msvalidate.01": "REPLACE_WITH_BING_WEBMASTER_TOKEN",
-    },
-  },
+  ...(googleVerification || bingVerification
+    ? {
+        verification: {
+          ...(googleVerification ? { google: googleVerification } : {}),
+          ...(bingVerification
+            ? { other: { "msvalidate.01": bingVerification } }
+            : {}),
+        },
+      }
+    : {}),
 
   formatDetection: {
     telephone: false,
   },
 
+  manifest: "/site.webmanifest",
+
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      {
+        url: "/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        url: "/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
     shortcut: "/favicon.ico",
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
+
+  other: {
+    language: "English",
+    "geo.region": "IN-UP",
+    "geo.placename": "Noida, Uttar Pradesh, India",
+    "geo.position": "28.5510933;77.3245904",
+    ICBM: "28.5510933, 77.3245904",
   },
 };
 
@@ -124,10 +147,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-          <meta name="geo.region" content="IN-UP" />
-  <meta name="geo.placename" content="Noida, Uttar Pradesh, India" />
-  <meta name="geo.position" content="28.5510933;77.3245904" />
-  <meta name="ICBM" content="28.5510933,77.3245904" />
         <JsonLdScripts />
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
@@ -139,5 +158,3 @@ export default function RootLayout({
     </html>
   );
 }
-
- 

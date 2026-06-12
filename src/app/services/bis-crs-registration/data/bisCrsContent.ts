@@ -67,6 +67,7 @@ export const OUR_SERVICES_LINKS = [
   { label: "NABL Accreditation", href: "/services/nabl-accreditation" },
   { label: "Third Party Inspection", href: "/services/third-party-inspection" },
   { label: "RoHS Certification", href: "/services/rohs-certification" },
+  { label: "Audit Services", href: "/services/audit-services" },
   { label: "LMPC Registration", href: "/services/lmpc-registration" },
   { label: "TEC Certification", href: "/services/tec-certification" },
   { label: "CE Certification", href: "/services/ce-certification" },

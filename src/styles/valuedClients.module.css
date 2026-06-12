@@ -1,9 +1,8 @@
-/* Valued clients — gray surface; heading/subheading match home Hero; layout/height unchanged */
 .section {
   --hero-navy: #001b3d;
   --hero-gray: #555555;
   --hero-gold: #ff9c08;
-  --vc-surface: #f3f4f6;
+  --vc-surface: #ffffff;
 
   background: var(--vc-surface);
   padding: clamp(48px, 7vw, 72px) 0 clamp(44px, 6vw, 64px);
@@ -16,7 +15,6 @@
   padding: 0 clamp(14px, 3vw, 22px);
 }
 
-/* Match blog / hero strip: centered stack + gold underline */
 .headingBlock {
   display: grid;
   justify-items: center;
@@ -52,7 +50,6 @@
   color: var(--hero-gray);
 }
 
-/* Full-viewport-width marquee (break out of centered content column) */
 .marqueeBleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -63,8 +60,8 @@
 .marquee {
   position: relative;
   overflow: hidden;
-  padding: clamp(18px, 2.5vw, 28px) 0;
-  background: var(--vc-surface);
+  padding: clamp(16px, 2.5vw, 24px) 0;
+  background: #ffffff;
 }
 
 .marquee::before,
@@ -73,55 +70,41 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: clamp(32px, 8vw, 80px);
+  width: clamp(40px, 10vw, 100px);
   z-index: 2;
   pointer-events: none;
 }
 
 .marquee::before {
   left: 0;
-  background: linear-gradient(90deg, var(--vc-surface) 0%, transparent 100%);
+  background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
 }
 
 .marquee::after {
   right: 0;
-  background: linear-gradient(270deg, var(--vc-surface) 0%, transparent 100%);
+  background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
 }
 
 .marqueeInner {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    #000 2.5%,
-    #000 97.5%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(90deg, transparent 0%, #000 2.5%, #000 97.5%, transparent 100%);
 }
 
 .track {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: stretch;
   width: max-content;
-  animation: vc-marquee 80s linear infinite;
+  animation: vc-marquee 28s linear infinite;
   will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-.track:hover {
-  animation-play-state: paused;
 }
 
 @keyframes vc-marquee {
-  from {
+  0% {
     transform: translate3d(0, 0, 0);
   }
-  to {
-    transform: translate3d(-33.3333333333%, 0, 0);
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -129,9 +112,9 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  gap: clamp(10px, 1.2vw, 18px);
+  gap: clamp(20px, 2.8vw, 36px);
   list-style: none;
-  padding: 0;
+  padding: 0 clamp(10px, 1.4vw, 18px);
   margin: 0;
 }
 
@@ -141,23 +124,37 @@
 
 .logoSlot {
   position: relative;
-  height: clamp(68px, 9.5vw, 112px);
-  width: clamp(88px, 9vw, 138px);
-  background: transparent;
+  --logo-box: clamp(76px, 9vw, 104px);
+  width: var(--logo-box);
+  height: var(--logo-box);
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 10px;
+  padding: clamp(10px, 1.2vw, 14px);
+  box-sizing: border-box;
+  box-shadow:
+    0 2px 8px rgba(0, 27, 61, 0.08),
+    0 1px 2px rgba(0, 27, 61, 0.04);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.logoItem:hover .logoSlot {
+  border-color: #d0d5dd;
+  box-shadow:
+    0 6px 16px rgba(0, 27, 61, 0.1),
+    0 2px 4px rgba(0, 27, 61, 0.06);
 }
 
 .logoImg {
   object-fit: contain;
   object-position: center;
-  mix-blend-mode: multiply;
-  filter: grayscale(0.08);
-  opacity: 0.94;
-  transition: opacity 180ms ease, filter 180ms ease;
+  opacity: 0.92;
+  transition: opacity 180ms ease;
 }
 
 .logoItem:hover .logoImg {
   opacity: 1;
-  filter: grayscale(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -170,8 +167,8 @@
     flex-wrap: wrap;
     row-gap: 14px;
   }
-  .track > ul:nth-child(2),
-  .track > ul:nth-child(3) {
+
+  .track > ul:nth-child(2) {
     display: none;
   }
 
@@ -179,12 +176,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 6px 10px;
-    gap: 10px 16px;
-  }
-
-  .marqueeInner {
-    -webkit-mask-image: none;
-    mask-image: none;
+    gap: 20px 28px;
   }
 
   .marquee::before,
@@ -198,6 +190,3 @@
     margin-right: 0;
   }
 }
-
-
-
