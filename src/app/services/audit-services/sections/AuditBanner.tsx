@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/bisCrsRegistration.module.css";
-import auditBanner from "@/assests/services/etc.png";
+import auditBanner from "@/assests/services/audit.png";
 
 export function AuditBanner() {
   return (

@@ -11,7 +11,7 @@ export function EprBanner() {
         alt="EPR Registration in India — Extended Producer Responsibility compliance under CPCB"
         priority
         className={styles.bannerImg}
-        sizes="100vw"
+          sizes="100vw"
       />
     </section>
   );
